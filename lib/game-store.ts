@@ -2,6 +2,7 @@
 
 export type GameScreen = 
   | "landing" 
+  | "maze"
   | "seed-flash" 
   | "gate"
   | "era-room" 
