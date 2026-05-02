@@ -1,0 +1,708 @@
+{
+  "generatedAt": "2026-05-02T05:37:48.144Z",
+  "memes": [
+    {
+      "id": "dancing_baby",
+      "status": "skipped_existing",
+      "output": "/memes/dancing_baby.webp",
+      "bytes": 11188,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/000/375/870.jpg",
+        "title": "Dancing Baby",
+        "source": "tinyfish_agent",
+        "runId": "a6a2d2b3-f46a-4b48-afd8-23d86bbb616a",
+        "runUrl": "https://agent.tinyfish.ai/runs/a6a2d2b3-f46a-4b48-afd8-23d86bbb616a",
+        "reason": "It is the primary representative icon for the 'Dancing Baby' entry on Know Your Meme, depicting the iconic 3D-rendered baby from 1996 that became one of the first internet memes."
+      },
+      "failures": [
+        {
+          "source": {
+            "type": "wikimedia_search",
+            "query": "Dancing Baby meme"
+          },
+          "error": "Command failed: magick /Users/nottanjune/Code-Projects/WLYO/.tmp/assets/memes/dancing_baby-1777697579196.input -auto-orient -resize 800x800> -quality 82 /Users/nottanjune/Code-Projects/WLYO/.tmp/assets/memes/dancing_baby-1777697579196.webp\nmagick: no decode delegate for this image format `/Users/nottanjune/Code-Projects/WLYO/.tmp/assets/memes/dancing_baby-1777697579196.input' @ error/constitute.c/ReadImage/752.\n"
+        }
+      ]
+    },
+    {
+      "id": "hampster_dance",
+      "status": "skipped_existing",
+      "output": "/memes/hampster_dance.webp",
+      "bytes": 74648,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/000/097/Picture_5.png",
+        "title": "Hampster Dance",
+        "source": "tinyfish_agent",
+        "runId": "ea5ae92e-c490-4d3b-912e-8d6e2749a091",
+        "runUrl": "https://agent.tinyfish.ai/runs/ea5ae92e-c490-4d3b-912e-8d6e2749a091",
+        "reason": "This is the primary entry icon for the 'Hampster Dance' meme on Know Your Meme. It is the official representative image selected by the site editors to depict the iconic grid of dancing hamsters that characterizes the meme."
+      },
+      "failures": [
+        {
+          "source": {
+            "type": "wikimedia_search",
+            "query": "Hampster Dance"
+          },
+          "error": "Command failed: magick /Users/nottanjune/Code-Projects/WLYO/.tmp/assets/memes/hampster_dance-1777699198740.input -auto-orient -resize 800x800> -quality 82 /Users/nottanjune/Code-Projects/WLYO/.tmp/assets/memes/hampster_dance-1777699198740.webp\nmagick: no decode delegate for this image format `/Users/nottanjune/Code-Projects/WLYO/.tmp/assets/memes/hampster_dance-1777699198740.input' @ error/constitute.c/ReadImage/752.\n"
+        }
+      ]
+    },
+    {
+      "id": "all_your_base",
+      "status": "skipped_existing",
+      "output": "/memes/all_your_base.webp",
+      "bytes": 113772,
+      "winner": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/78/All_your_base_are_belong_to_us_at_US-50.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "File:All your base are belong to us at US-50.jpg",
+        "source": "wikimedia"
+      },
+      "failures": []
+    },
+    {
+      "id": "star_wars_kid",
+      "status": "skipped_existing",
+      "output": "/memes/star_wars_kid.webp",
+      "bytes": 27824,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/000/014/star_wars_kid_meme_banner_image.jpg",
+        "title": "Star Wars Kid",
+        "source": "tinyfish_agent",
+        "runId": "017c3027-2149-4fec-b47a-75edf071ebfd",
+        "runUrl": "https://agent.tinyfish.ai/runs/017c3027-2149-4fec-b47a-75edf071ebfd",
+        "reason": "This is the official representative banner image for the 'Star Wars Kid' meme entry on Know Your Meme, capturing the iconic moment of the viral video where Ghyslain Raza mimics a lightsaber duel with a golf ball retriever. It is a direct image URL from a preferred domain (i.kym-cdn.com)."
+      },
+      "failures": []
+    },
+    {
+      "id": "dial_up_modem",
+      "status": "skipped_existing",
+      "output": "/memes/dial_up_modem.webp",
+      "bytes": 94090,
+      "winner": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Modem-usr-courier-v34-front-online.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "File:Modem-usr-courier-v34-front-online.jpg",
+        "source": "wikimedia"
+      },
+      "failures": []
+    },
+    {
+      "id": "rickroll",
+      "status": "skipped_existing",
+      "output": "/memes/rickroll.webp",
+      "bytes": 3020,
+      "winner": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Totally_not_a_Rickroll_QR_code.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "File:Totally not a Rickroll QR code.png",
+        "source": "wikimedia"
+      },
+      "failures": []
+    },
+    {
+      "id": "leeroy_jenkins",
+      "status": "skipped_existing",
+      "output": "/memes/leeroy_jenkins.webp",
+      "bytes": 57388,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/000/191/leeroy-jenkins.jpg",
+        "title": "Leeroy Jenkins",
+        "source": "tinyfish_agent",
+        "runId": "dfb605fe-12c8-4978-8ba8-5180a04780ef",
+        "runUrl": "https://agent.tinyfish.ai/runs/dfb605fe-12c8-4978-8ba8-5180a04780ef",
+        "reason": "This is the primary representative image for the 'Leeroy Jenkins' entry on Know Your Meme, identified as the 'original' resolution icon for the meme page. It depicts the iconic World of Warcraft paladin character associated with the meme."
+      },
+      "failures": []
+    },
+    {
+      "id": "lolcats",
+      "status": "skipped_existing",
+      "output": "/memes/lolcats.webp",
+      "bytes": 30146,
+      "winner": {
+        "url": "https://i.kym-cdn.com/photos/images/original/000/000/078/lol_cat_icanhascheezburger.jpg",
+        "title": "I can has cheezburger? | LOLcats",
+        "source": "tinyfish_agent",
+        "runId": "13f2ad76-1eef-469e-b814-ac72c1d8884c",
+        "runUrl": "https://agent.tinyfish.ai/runs/13f2ad76-1eef-469e-b814-ac72c1d8884c",
+        "reason": "This image is the original 2007 'I can has cheezburger?' cat meme that launched the LOLcats phenomenon and the Cheezburger network. It features the iconic 'Happy Cat' with the classic lolspeak caption."
+      },
+      "failures": []
+    },
+    {
+      "id": "numa_numa",
+      "status": "skipped_existing",
+      "output": "/memes/numa_numa.webp",
+      "bytes": 76366,
+      "winner": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Museo_del_Bicentenario_-_%22Retrato_de_Juan_Domingo_Per%C3%B3n_y_Eva_Duarte%22%2C_Numa_Ayrinhac.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "File:Museo del Bicentenario - \"Retrato de Juan Domingo Perón y Eva Duarte\", Numa Ayrinhac.jpg",
+        "source": "wikimedia"
+      },
+      "failures": []
+    },
+    {
+      "id": "trollface",
+      "status": "skipped_existing",
+      "output": "/memes/trollface.webp",
+      "bytes": 31622,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg",
+        "title": "Trollface",
+        "source": "tinyfish_agent",
+        "runId": "d99fd8b0-1869-4f1d-a7b1-059e9e2d182f",
+        "runUrl": "https://agent.tinyfish.ai/runs/d99fd8b0-1869-4f1d-a7b1-059e9e2d182f",
+        "reason": "This is the primary representative image for the Trollface meme on Know Your Meme, the definitive encyclopedia for internet culture. The URL is from the preferred domain i.kym-cdn.com and corresponds to the original icon used for the meme entry."
+      },
+      "failures": [
+        {
+          "source": {
+            "type": "imgflip_template",
+            "name": "Troll Face"
+          },
+          "error": "No Imgflip template named \"Troll Face\""
+        }
+      ]
+    },
+    {
+      "id": "bad_luck_brian",
+      "status": "skipped_existing",
+      "output": "/memes/bad_luck_brian.webp",
+      "bytes": 10034,
+      "winner": {
+        "source": "generated_card",
+        "title": "Bad Luck Brian"
+      },
+      "failures": [
+        {
+          "source": {
+            "type": "imgflip_template",
+            "name": "Bad Luck Brian"
+          },
+          "error": "No Imgflip template named \"Bad Luck Brian\""
+        }
+      ]
+    },
+    {
+      "id": "success_kid",
+      "status": "skipped_existing",
+      "output": "/memes/success_kid.webp",
+      "bytes": 5702,
+      "winner": {
+        "source": "imgflip",
+        "title": "Success Kid",
+        "url": "https://i.imgflip.com/1bhk.jpg",
+        "id": "61544"
+      },
+      "failures": []
+    },
+    {
+      "id": "philosoraptor",
+      "status": "skipped_existing",
+      "output": "/memes/philosoraptor.webp",
+      "bytes": 10078,
+      "winner": {
+        "source": "generated_card",
+        "title": "Philosoraptor"
+      },
+      "failures": [
+        {
+          "source": {
+            "type": "imgflip_template",
+            "name": "Philosoraptor"
+          },
+          "error": "No Imgflip template named \"Philosoraptor\""
+        }
+      ]
+    },
+    {
+      "id": "doge",
+      "status": "skipped_existing",
+      "output": "/memes/doge.webp",
+      "bytes": 13406,
+      "winner": {
+        "source": "imgflip",
+        "title": "Buff Doge vs. Cheems",
+        "url": "https://i.imgflip.com/43a45p.png",
+        "id": "247375501"
+      },
+      "failures": []
+    },
+    {
+      "id": "pepe",
+      "status": "skipped_existing",
+      "output": "/memes/pepe.webp",
+      "bytes": 14542,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/017/618/pepefroggie.jpg",
+        "title": "Pepe the Frog",
+        "source": "tinyfish_agent",
+        "runId": "6e0343a1-2ff6-4848-8010-541b0a8fabe1",
+        "runUrl": "https://agent.tinyfish.ai/runs/6e0343a1-2ff6-4848-8010-541b0a8fabe1",
+        "reason": "This image is the primary representative icon for the official 'Pepe the Frog' entry on Know Your Meme, serving as the high-resolution original version of the character's most recognizable face used to define the meme on the site."
+      },
+      "failures": [
+        {
+          "source": {
+            "type": "imgflip_template",
+            "name": "Sad Pepe"
+          },
+          "error": "No Imgflip template named \"Sad Pepe\""
+        }
+      ]
+    },
+    {
+      "id": "harambe",
+      "status": "skipped_existing",
+      "output": "/memes/harambe.webp",
+      "bytes": 31790,
+      "winner": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Do_it_for_Harambe.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "File:Do it for Harambe.jpg",
+        "source": "wikimedia"
+      },
+      "failures": []
+    },
+    {
+      "id": "dat_boi",
+      "status": "skipped_existing",
+      "output": "/memes/dat_boi.webp",
+      "bytes": 24608,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/020/401/HereDatBoi.jpg",
+        "title": "Dat Boi",
+        "source": "tinyfish_agent",
+        "runId": "de9ad561-011a-42e9-b509-176df357746a",
+        "runUrl": "https://agent.tinyfish.ai/runs/de9ad561-011a-42e9-b509-176df357746a",
+        "reason": "This is the primary representative image for the 'Dat Boi' meme on Know Your Meme, featuring the iconic green 3D frog riding a unicycle. The 'original' CDN URL provides the highest quality version of the entry's main icon."
+      },
+      "failures": []
+    },
+    {
+      "id": "salt_bae",
+      "status": "skipped_existing",
+      "output": "/memes/salt_bae.webp",
+      "bytes": 21032,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/021/971/Salt-Bae-001.jpg",
+        "title": "Salt Bae",
+        "source": "tinyfish_agent",
+        "runId": "42eb452a-ed88-4359-a201-cf4224b5dbd9",
+        "runUrl": "https://agent.tinyfish.ai/runs/42eb452a-ed88-4359-a201-cf4224b5dbd9",
+        "reason": "This image captures the iconic salt-sprinkling gesture by Turkish chef Nusret Gökçe, which became the definitive visual representation of the 'Salt Bae' meme. It is the primary representative image on the official Know Your Meme entry for this topic."
+      },
+      "failures": []
+    },
+    {
+      "id": "distracted_boyfriend",
+      "status": "skipped_existing",
+      "output": "/memes/distracted_boyfriend.webp",
+      "bytes": 36290,
+      "winner": {
+        "source": "imgflip",
+        "title": "Distracted Boyfriend",
+        "url": "https://i.imgflip.com/1ur9b0.jpg",
+        "id": "112126428"
+      },
+      "failures": []
+    },
+    {
+      "id": "mocking_spongebob",
+      "status": "skipped_existing",
+      "output": "/memes/mocking_spongebob.webp",
+      "bytes": 18548,
+      "winner": {
+        "source": "imgflip",
+        "title": "Mocking Spongebob",
+        "url": "https://i.imgflip.com/1otk96.jpg",
+        "id": "102156234"
+      },
+      "failures": []
+    },
+    {
+      "id": "roll_safe",
+      "status": "skipped_existing",
+      "output": "/memes/roll_safe.webp",
+      "bytes": 19762,
+      "winner": {
+        "source": "imgflip",
+        "title": "Roll Safe Think About It",
+        "url": "https://i.imgflip.com/1h7in3.jpg",
+        "id": "89370399"
+      },
+      "failures": []
+    },
+    {
+      "id": "evil_kermit",
+      "status": "skipped_existing",
+      "output": "/memes/evil_kermit.webp",
+      "bytes": 5778,
+      "winner": {
+        "source": "imgflip",
+        "title": "Evil Kermit",
+        "url": "https://i.imgflip.com/1e7ql7.jpg",
+        "id": "84341851"
+      },
+      "failures": []
+    },
+    {
+      "id": "drake_hotline_bling",
+      "status": "skipped_existing",
+      "output": "/memes/drake_hotline_bling.webp",
+      "bytes": 20584,
+      "winner": {
+        "source": "imgflip",
+        "title": "Drake Hotline Bling",
+        "url": "https://i.imgflip.com/30b1gx.jpg",
+        "id": "181913649"
+      },
+      "failures": []
+    },
+    {
+      "id": "left_exit_12",
+      "status": "skipped_existing",
+      "output": "/memes/left_exit_12.webp",
+      "bytes": 24818,
+      "winner": {
+        "source": "imgflip",
+        "title": "Left Exit 12 Off Ramp",
+        "url": "https://i.imgflip.com/22bdq6.jpg",
+        "id": "124822590"
+      },
+      "failures": []
+    },
+    {
+      "id": "we_are_number_one",
+      "status": "skipped_existing",
+      "output": "/memes/we_are_number_one.webp",
+      "bytes": 56322,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/021/353/Screen_Shot_2018-08-29_at_5.05.27_PM.png",
+        "title": "We Are Number One",
+        "source": "tinyfish_agent",
+        "runId": "403f52e0-4927-4198-8643-06a1a0df3207",
+        "runUrl": "https://agent.tinyfish.ai/runs/403f52e0-4927-4198-8643-06a1a0df3207",
+        "reason": "This is the official representative image for the 'We Are Number One' entry on Know Your Meme. It features the iconic shot of Robbie Rotten and his three clones from the LazyTown episode 'Robbie's Dream Team', which is central to the meme's identity and its various remixes."
+      },
+      "failures": []
+    },
+    {
+      "id": "stonks",
+      "status": "skipped_existing",
+      "output": "/memes/stonks.webp",
+      "bytes": 42450,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/029/959/Screen_Shot_2019-06-05_at_1.26.32_PM.jpg",
+        "title": "Stonks",
+        "source": "tinyfish_agent",
+        "runId": "2cab921e-992d-4ded-8c66-5446b7bbdf20",
+        "runUrl": "https://agent.tinyfish.ai/runs/2cab921e-992d-4ded-8c66-5446b7bbdf20",
+        "reason": "This is the primary representative image from the 'Stonks' entry on Know Your Meme, showing the iconic 'Meme Man' in front of a stock market chart with the caption 'Stonks'."
+      },
+      "failures": [
+        {
+          "source": {
+            "type": "imgflip_template",
+            "name": "Stonks"
+          },
+          "error": "No Imgflip template named \"Stonks\""
+        }
+      ]
+    },
+    {
+      "id": "woman_yelling_cat",
+      "status": "skipped_existing",
+      "output": "/memes/woman_yelling_cat.webp",
+      "bytes": 24632,
+      "winner": {
+        "source": "imgflip",
+        "title": "Woman Yelling At Cat",
+        "url": "https://i.imgflip.com/345v97.jpg",
+        "id": "188390779"
+      },
+      "failures": []
+    },
+    {
+      "id": "ok_boomer",
+      "status": "skipped_existing",
+      "output": "/memes/ok_boomer.webp",
+      "bytes": 6244,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/031/656/cover5.jpg",
+        "title": "OK Boomer",
+        "source": "tinyfish_agent",
+        "runId": "78db8050-d06f-4265-baf8-2dd40c85fb47",
+        "runUrl": "https://agent.tinyfish.ai/runs/78db8050-d06f-4265-baf8-2dd40c85fb47",
+        "reason": "This is the official representative cover image for the 'OK Boomer' entry on Know Your Meme. It features the iconic bold text graphic that became synonymous with the meme's viral spread on platforms like TikTok and Twitter."
+      },
+      "failures": []
+    },
+    {
+      "id": "big_chungus",
+      "status": "skipped_existing",
+      "output": "/memes/big_chungus.webp",
+      "bytes": 20486,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/027/843/chungcover.jpg",
+        "title": "Big Chungus",
+        "source": "tinyfish_agent",
+        "runId": "eafb855c-a0eb-41fe-abb2-95220946ea50",
+        "runUrl": "https://agent.tinyfish.ai/runs/eafb855c-a0eb-41fe-abb2-95220946ea50",
+        "reason": "This is the primary representative image for the Big Chungus meme, showing the fat Bugs Bunny character in the iconic parody PlayStation 4 game cover art that popularized the meme."
+      },
+      "failures": []
+    },
+    {
+      "id": "baby_yoda",
+      "status": "skipped_existing",
+      "output": "/memes/baby_yoda.webp",
+      "bytes": 3658,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/newsfeed/000/031/995/yoda.jpg",
+        "title": "Baby Yoda Drinking Soup",
+        "source": "tinyfish_agent",
+        "runId": "8edd7793-338e-4eb8-abae-6195872521f2",
+        "runUrl": "https://agent.tinyfish.ai/runs/8edd7793-338e-4eb8-abae-6195872521f2",
+        "reason": "This image, commonly known as 'Baby Yoda Drinking Soup', is one of the most iconic and viral meme formats featuring the character Grogu. It is widely recognized as a definitive representative of the 'Baby Yoda' meme phenomenon."
+      },
+      "failures": []
+    },
+    {
+      "id": "bernie_chair",
+      "status": "skipped_existing",
+      "output": "/memes/bernie_chair.webp",
+      "bytes": 35306,
+      "winner": {
+        "source": "imgflip",
+        "title": "Bernie I Am Once Again Asking For Your Support",
+        "url": "https://i.imgflip.com/3oevdk.jpg",
+        "id": "222403160"
+      },
+      "failures": []
+    },
+    {
+      "id": "surgery_grape",
+      "status": "skipped_existing",
+      "output": "/memes/surgery_grape.webp",
+      "bytes": 20144,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/027/702/Screen_Shot_2018-11-26_at_10.02.57_AM.png",
+        "title": "They Did Surgery On a Grape",
+        "source": "tinyfish_agent",
+        "runId": "eebaaf42-e8c0-4e62-9dc0-cc6c519a9f95",
+        "runUrl": "https://agent.tinyfish.ai/runs/eebaaf42-e8c0-4e62-9dc0-cc6c519a9f95",
+        "reason": "This is the official representative image from the 'They Did Surgery On a Grape' entry on Know Your Meme. It depicts the original 2010 footage of the da Vinci Surgical System performing surgery on a grape, which became the central visual for the viral meme and copypasta."
+      },
+      "failures": []
+    },
+    {
+      "id": "among_us",
+      "status": "skipped_existing",
+      "output": "/memes/among_us.webp",
+      "bytes": 25752,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/035/973/cover3.jpg",
+        "title": "When the Imposter Is Sus / Sus Jerma",
+        "source": "tinyfish_agent",
+        "runId": "0d266f6e-b6aa-4cb9-b63c-9019670a9361",
+        "runUrl": "https://agent.tinyfish.ai/runs/0d266f6e-b6aa-4cb9-b63c-9019670a9361",
+        "reason": "This image, featuring a digitally altered smile on streamer Jerma985, is the most iconic and widely recognized visual representation specifically associated with the 'Among Us sus' meme. It became the definitive visual for the phrase 'When the imposter is sus' across internet culture."
+      },
+      "failures": []
+    },
+    {
+      "id": "vine_boom",
+      "status": "skipped_existing",
+      "output": "/memes/vine_boom.webp",
+      "bytes": 8190,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/037/411/covervineboom.jpg",
+        "title": "Vine Thud / Boom Sound Effect",
+        "source": "tinyfish_agent",
+        "runId": "b4fabff1-68a0-47db-b9c1-a71014566e5e",
+        "runUrl": "https://agent.tinyfish.ai/runs/b4fabff1-68a0-47db-b9c1-a71014566e5e",
+        "reason": "This is the official primary cover image for the 'Vine Thud / Boom Sound Effect' entry on Know Your Meme. It features the word 'BOOM' in a stylistic font, which is the most direct visual representation of the sound effect meme as documented on the site."
+      },
+      "failures": []
+    },
+    {
+      "id": "to_be_continued",
+      "status": "skipped_existing",
+      "output": "/memes/to_be_continued.webp",
+      "bytes": 7080,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/019/907/maxresdefault.jpg",
+        "title": "Yes - Roundabout / To Be Continued",
+        "source": "tinyfish_agent",
+        "runId": "d195841a-206d-40cb-8aba-77f7e11061d1",
+        "runUrl": "https://agent.tinyfish.ai/runs/d195841a-206d-40cb-8aba-77f7e11061d1",
+        "reason": "This image is the primary high-resolution 'original' icon used by Know Your Meme to represent the 'To Be Continued' (Yes - Roundabout) meme entry. It is a direct jpg URL from a preferred CDN and serves as the canonical representative image for the meme."
+      },
+      "failures": []
+    },
+    {
+      "id": "skibidi_toilet",
+      "status": "skipped_existing",
+      "output": "/memes/skibidi_toilet.webp",
+      "bytes": 33346,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/045/027/skibcover.jpg",
+        "title": "Skibidi Toilet",
+        "source": "tinyfish_agent",
+        "runId": "2a9e0b99-0bef-4745-8eda-9c2ec1121126",
+        "runUrl": "https://agent.tinyfish.ai/runs/2a9e0b99-0bef-4745-8eda-9c2ec1121126",
+        "reason": "This is the primary cover image for the main 'Skibidi Toilet' subculture entry on Know Your Meme. It features the iconic visual of a head emerging from a toilet, which is the central element of the meme series."
+      },
+      "failures": []
+    },
+    {
+      "id": "rizz",
+      "status": "skipped_existing",
+      "output": "/memes/rizz.webp",
+      "bytes": 65492,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/040/522/unspoken_rizz.jpg",
+        "title": "Unspoken Rizz",
+        "source": "tinyfish_agent",
+        "runId": "d425d605-4cfb-4b39-bcca-291bf5c052e2",
+        "runUrl": "https://agent.tinyfish.ai/runs/d425d605-4cfb-4b39-bcca-291bf5c052e2",
+        "reason": "The 'Unspoken Rizz' image, featuring a well-dressed man (often identified as a character in a suit) adjusting his tie, is the definitive visual representation of the 'Rizz' meme. It serves as the primary icon for the 'Rizz / Unspoken Rizz' entry on Know Your Meme and is the most widely recognized image associated with the slang term."
+      },
+      "failures": []
+    },
+    {
+      "id": "aura_farming",
+      "status": "skipped_existing",
+      "output": "/memes/aura_farming.webp",
+      "bytes": 22586,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/054/946/paf.jpg",
+        "title": "Piccolo Aura Farming",
+        "source": "tinyfish_agent",
+        "runId": "6b569d8b-51a1-4775-80a0-0c5589053f6c",
+        "runUrl": "https://agent.tinyfish.ai/runs/6b569d8b-51a1-4775-80a0-0c5589053f6c",
+        "reason": "The 'Piccolo Aura Farming' image is the most representative visual for the aura farming meme. While 'aura farming' is a broader slang term, the specific meme trend is overwhelmingly associated with the character Piccolo from Dragon Ball standing calmly with his arms crossed while his cape blows in the wind, a scene widely cited as the definitive example of the concept."
+      },
+      "failures": []
+    },
+    {
+      "id": "what_the_sigma",
+      "status": "skipped_existing",
+      "output": "/memes/what_the_sigma.webp",
+      "bytes": 31624,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/049/186/what_the_sigma.jpg",
+        "title": "Erm, What the Sigma?",
+        "source": "tinyfish_agent",
+        "runId": "eaf5870e-bd5c-4203-b9e5-fb8b352bbef2",
+        "runUrl": "https://agent.tinyfish.ai/runs/eaf5870e-bd5c-4203-b9e5-fb8b352bbef2",
+        "reason": "This is the primary representative entry icon for the 'Erm, What the Sigma?' meme on Know Your Meme, featuring the iconic depiction of a character often associated with the catchphrase."
+      },
+      "failures": []
+    },
+    {
+      "id": "gyatt",
+      "status": "skipped_existing",
+      "output": "/memes/gyatt.webp",
+      "bytes": 18994,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/040/638/gyatheader1.jpg",
+        "title": "Gyatt",
+        "source": "tinyfish_agent",
+        "runId": "4279dfdd-55e6-4770-b13e-d8982f9f11c2",
+        "runUrl": "https://agent.tinyfish.ai/runs/4279dfdd-55e6-4770-b13e-d8982f9f11c2",
+        "reason": "This is the primary representative header image for the definitive 'Gyatt' meme entry on Know Your Meme. It serves as the main visual for the slang term and its associated internet culture."
+      },
+      "failures": []
+    },
+    {
+      "id": "fanum_tax",
+      "status": "skipped_existing",
+      "output": "/memes/fanum_tax.webp",
+      "bytes": 92006,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/046/803/fanum_tax.jpg",
+        "title": "Fanum Tax",
+        "source": "tinyfish_agent",
+        "runId": "e99c146b-a3f4-4c01-98e8-da7dfea96c99",
+        "runUrl": "https://agent.tinyfish.ai/runs/e99c146b-a3f4-4c01-98e8-da7dfea96c99",
+        "reason": "This is the primary representative image (original entry icon) for the 'Fanum Tax' meme on Know Your Meme. It serves as the official visual identifier for the entry and is hosted on the preferred i.kym-cdn.com domain."
+      },
+      "failures": []
+    },
+    {
+      "id": "ohio",
+      "status": "skipped_existing",
+      "output": "/memes/ohio.webp",
+      "bytes": 32950,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/041/576/cantevenohio.jpg",
+        "title": "Can't Even X in Ohio / Only In Ohio",
+        "source": "tinyfish_agent",
+        "runId": "7ef88235-924d-4a08-a95d-ab75571fe6de",
+        "runUrl": "https://agent.tinyfish.ai/runs/7ef88235-924d-4a08-a95d-ab75571fe6de",
+        "reason": "This is the official entry icon for the 'Only in Ohio' meme on Know Your Meme. It represents the 2022 TikTok trend featuring surreal and scary 'Only in Ohio' footage, which is the most common association with this specific phrase."
+      },
+      "failures": []
+    },
+    {
+      "id": "mewing",
+      "status": "skipped_existing",
+      "output": "/memes/mewing.webp",
+      "bytes": 27312,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/028/870/mewinggg.jpg",
+        "title": "Mewing",
+        "source": "tinyfish_agent",
+        "runId": "feb5af92-1659-4e95-a293-2d0d0de195b9",
+        "runUrl": "https://agent.tinyfish.ai/runs/feb5af92-1659-4e95-a293-2d0d0de195b9",
+        "reason": "This is the primary entry icon for the 'Mewing' meme on Know Your Meme, which serves as the official representative image for the entire topic, illustrating the jawline focus and the practice itself."
+      },
+      "failures": []
+    },
+    {
+      "id": "low_taper_fade",
+      "status": "skipped_existing",
+      "output": "/memes/low_taper_fade.webp",
+      "bytes": 34270,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/047/947/ninjacover.jpg",
+        "title": "Imagine If Ninja Got a Low Taper Fade",
+        "source": "tinyfish_agent",
+        "runId": "7be4714e-a82a-4ce5-8a91-5f4747fe3999",
+        "runUrl": "https://agent.tinyfish.ai/runs/7be4714e-a82a-4ce5-8a91-5f4747fe3999",
+        "reason": "This image is the primary cover image for the 'Imagine If Ninja Got a Low Taper Fade' entry on Know Your Meme, which is the foundational and most widely recognized version of the 'low taper fade' meme involving the streamer Ninja."
+      },
+      "failures": []
+    },
+    {
+      "id": "six_seven",
+      "status": "skipped_existing",
+      "output": "/memes/six_seven.webp",
+      "bytes": 74778,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/053/028/67-meme-header.jpg",
+        "title": "67 Meme",
+        "source": "tinyfish_agent",
+        "runId": "b25a9ade-a812-4a59-a9d5-b89ab554e54b",
+        "runUrl": "https://agent.tinyfish.ai/runs/b25a9ade-a812-4a59-a9d5-b89ab554e54b",
+        "reason": "This is the primary header image for the '67 Meme' entry on Know Your Meme, providing a representative collage of the visual elements and TikTok trends associated with the '6-7' meme."
+      },
+      "failures": []
+    },
+    {
+      "id": "pizza_here",
+      "status": "skipped_existing",
+      "output": "/memes/pizza_here.webp",
+      "bytes": 11144,
+      "winner": {
+        "url": "https://i.kym-cdn.com/entries/icons/original/000/031/902/cover6.jpg",
+        "title": "Ayo the Pizza Here",
+        "source": "tinyfish_agent",
+        "runId": "b91d1fc0-c562-456b-ac04-59a58a76b236",
+        "runUrl": "https://agent.tinyfish.ai/runs/b91d1fc0-c562-456b-ac04-59a58a76b236",
+        "reason": "This is the primary representative image (original cover icon) for the 'Ayo the Pizza Here' entry on Know Your Meme, showing the iconic scene from CalebCity's viral Vine."
+      },
+      "failures": []
+    }
+  ]
+}

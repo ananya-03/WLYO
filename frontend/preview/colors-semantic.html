@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { background: var(--void); padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+  .row { display: flex; align-items: center; gap: 14px; }
+  .chip { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; }
+  .meta { display: flex; flex-direction: column; gap: 2px; }
+  .role { font-family: var(--font-body); font-size: 12px; font-weight: 600; color: var(--off-white); letter-spacing: .04em; }
+  .usage { font-family: var(--font-body); font-size: 11px; color: var(--dim); }
+  .divider { height: 1px; background: rgba(185,174,232,.1); margin: 4px 0; }
+</style>
+</head>
+<body>
+  <div class="row"><div class="chip" style="background:var(--void);border:1px solid #333"></div><div class="meta"><div class="role">--color-bg</div><div class="usage">Page background, deepest layer</div></div></div>
+  <div class="row"><div class="chip" style="background:var(--ink)"></div><div class="meta"><div class="role">--color-surface</div><div class="usage">Cards, panels, gate tiles</div></div></div>
+  <div class="row"><div class="chip" style="background:var(--ink-light)"></div><div class="meta"><div class="role">--color-surface-2</div><div class="usage">Hover surface, nested panels</div></div></div>
+  <div class="divider"></div>
+  <div class="row"><div class="chip" style="background:var(--hot-magenta);box-shadow:0 0 10px rgba(255,43,214,.5)"></div><div class="meta"><div class="role">--color-primary</div><div class="usage">Danger, drama, active gates</div></div></div>
+  <div class="row"><div class="chip" style="background:var(--acid-green);box-shadow:0 0 10px rgba(57,255,20,.5)"></div><div class="meta"><div class="role">--color-success</div><div class="usage">Correct, unlocked, hit states</div></div></div>
+  <div class="row"><div class="chip" style="background:var(--electric-blue);box-shadow:0 0 10px rgba(0,240,255,.5)"></div><div class="meta"><div class="role">--color-nav</div><div class="usage">Navigation, portal energy</div></div></div>
+  <div class="row"><div class="chip" style="background:var(--warning-orange);box-shadow:0 0 10px rgba(255,159,28,.5)"></div><div class="meta"><div class="role">--color-warn</div><div class="usage">Warnings, countdowns, aura tax</div></div></div>
+  <div class="divider"></div>
+  <div class="row"><div class="chip" style="background:var(--off-white)"></div><div class="meta"><div class="role">--color-text</div><div class="usage">Primary text</div></div></div>
+  <div class="row"><div class="chip" style="background:var(--muted-lavender)"></div><div class="meta"><div class="role">--color-text-2</div><div class="usage">Secondary text, blurbs</div></div></div>
+  <div class="row"><div class="chip" style="background:var(--dim)"></div><div class="meta"><div class="role">--color-text-dim</div><div class="usage">Labels, timestamps, captions</div></div></div>
+</body>
+</html>

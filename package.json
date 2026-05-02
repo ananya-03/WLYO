@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "assets": "yarn assets:memes && yarn assets:audio && yarn assets:report",
+    "assets:audio": "node scripts/fetch-audio.mjs",
+    "assets:memes": "node scripts/build-meme-deck.mjs",
+    "assets:memes:tinyfish": "TINYFISH_AGENT=1 node scripts/build-meme-deck.mjs --force",
+    "assets:report": "node scripts/asset-report.mjs",
+    "test:frontend": "node frontend/ui_kits/wlyo/gameData.test.mjs"
+  }
+}

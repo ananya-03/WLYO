@@ -1,0 +1,554 @@
+[
+  {
+    "id": "dancing_baby",
+    "image": "/memes/dancing_baby.webp",
+    "canonical": "Dancing baby",
+    "era": "boomer",
+    "axes": {
+      "rizz": 1,
+      "aura": 2,
+      "sigma": 0
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "hampster_dance",
+    "image": "/memes/hampster_dance.webp",
+    "canonical": "Hampster Dance",
+    "era": "boomer",
+    "axes": {
+      "rizz": 0,
+      "aura": 2,
+      "sigma": 1
+    },
+    "difficulty": 3
+  },
+  {
+    "id": "all_your_base",
+    "image": "/memes/all_your_base.webp",
+    "canonical": "All Your Base Are Belong To Us",
+    "era": "boomer",
+    "axes": {
+      "rizz": 0,
+      "aura": 1,
+      "sigma": 3
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "star_wars_kid",
+    "image": "/memes/star_wars_kid.webp",
+    "canonical": "Star Wars Kid",
+    "era": "boomer",
+    "axes": {
+      "rizz": 0,
+      "aura": 3,
+      "sigma": 1
+    },
+    "difficulty": 3
+  },
+  {
+    "id": "dial_up_modem",
+    "image": "/memes/dial_up_modem.webp",
+    "canonical": "Dial-up modem",
+    "era": "boomer",
+    "axes": {
+      "rizz": 0,
+      "aura": 1,
+      "sigma": 3
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "rickroll",
+    "image": "/memes/rickroll.webp",
+    "canonical": "Rickroll",
+    "era": "millennial",
+    "axes": {
+      "rizz": 2,
+      "aura": 2,
+      "sigma": 1
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "leeroy_jenkins",
+    "image": "/memes/leeroy_jenkins.webp",
+    "canonical": "Leeroy Jenkins",
+    "era": "millennial",
+    "axes": {
+      "rizz": 1,
+      "aura": 2,
+      "sigma": 3
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "lolcats",
+    "image": "/memes/lolcats.webp",
+    "canonical": "LOLcats",
+    "era": "millennial",
+    "axes": {
+      "rizz": 1,
+      "aura": 3,
+      "sigma": 0
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "numa_numa",
+    "image": "/memes/numa_numa.webp",
+    "canonical": "Numa Numa",
+    "era": "millennial",
+    "axes": {
+      "rizz": 2,
+      "aura": 2,
+      "sigma": 0
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "trollface",
+    "image": "/memes/trollface.webp",
+    "canonical": "Trollface",
+    "era": "millennial",
+    "axes": {
+      "rizz": 1,
+      "aura": 1,
+      "sigma": 3
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "bad_luck_brian",
+    "image": "/memes/bad_luck_brian.webp",
+    "canonical": "Bad Luck Brian",
+    "era": "millennial",
+    "axes": {
+      "rizz": 0,
+      "aura": 2,
+      "sigma": 1
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "success_kid",
+    "image": "/memes/success_kid.webp",
+    "canonical": "Success Kid",
+    "era": "millennial",
+    "axes": {
+      "rizz": 2,
+      "aura": 2,
+      "sigma": 2
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "philosoraptor",
+    "image": "/memes/philosoraptor.webp",
+    "canonical": "Philosoraptor",
+    "era": "millennial",
+    "axes": {
+      "rizz": 0,
+      "aura": 1,
+      "sigma": 3
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "doge",
+    "image": "/memes/doge.webp",
+    "canonical": "Doge",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 1,
+      "aura": 3,
+      "sigma": 1
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "pepe",
+    "image": "/memes/pepe.webp",
+    "canonical": "Pepe the Frog",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 0,
+      "aura": 2,
+      "sigma": 3
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "harambe",
+    "image": "/memes/harambe.webp",
+    "canonical": "Harambe",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 0,
+      "aura": 3,
+      "sigma": 2
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "dat_boi",
+    "image": "/memes/dat_boi.webp",
+    "canonical": "Dat Boi",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 1,
+      "aura": 3,
+      "sigma": 1
+    },
+    "difficulty": 3
+  },
+  {
+    "id": "salt_bae",
+    "image": "/memes/salt_bae.webp",
+    "canonical": "Salt Bae",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 3,
+      "aura": 2,
+      "sigma": 1
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "distracted_boyfriend",
+    "image": "/memes/distracted_boyfriend.webp",
+    "canonical": "Distracted Boyfriend",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 2,
+      "aura": 1,
+      "sigma": 0
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "mocking_spongebob",
+    "image": "/memes/mocking_spongebob.webp",
+    "canonical": "Mocking Spongebob",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 1,
+      "aura": 1,
+      "sigma": 2
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "roll_safe",
+    "image": "/memes/roll_safe.webp",
+    "canonical": "Roll Safe",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 3,
+      "aura": 1,
+      "sigma": 2
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "evil_kermit",
+    "image": "/memes/evil_kermit.webp",
+    "canonical": "Evil Kermit",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 0,
+      "aura": 1,
+      "sigma": 3
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "drake_hotline_bling",
+    "image": "/memes/drake_hotline_bling.webp",
+    "canonical": "Drake Hotline Bling",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 3,
+      "aura": 1,
+      "sigma": 1
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "left_exit_12",
+    "image": "/memes/left_exit_12.webp",
+    "canonical": "Left Exit 12",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 1,
+      "aura": 1,
+      "sigma": 2
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "we_are_number_one",
+    "image": "/memes/we_are_number_one.webp",
+    "canonical": "We Are Number One",
+    "era": "older_genz",
+    "axes": {
+      "rizz": 2,
+      "aura": 3,
+      "sigma": 0
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "stonks",
+    "image": "/memes/stonks.webp",
+    "canonical": "Stonks",
+    "era": "genz_core",
+    "axes": {
+      "rizz": 0,
+      "aura": 1,
+      "sigma": 3
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "woman_yelling_cat",
+    "image": "/memes/woman_yelling_cat.webp",
+    "canonical": "Woman Yelling at Cat",
+    "era": "genz_core",
+    "axes": {
+      "rizz": 1,
+      "aura": 2,
+      "sigma": 1
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "ok_boomer",
+    "image": "/memes/ok_boomer.webp",
+    "canonical": "OK Boomer",
+    "era": "genz_core",
+    "axes": {
+      "rizz": 1,
+      "aura": 1,
+      "sigma": 3
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "big_chungus",
+    "image": "/memes/big_chungus.webp",
+    "canonical": "Big Chungus",
+    "era": "genz_core",
+    "axes": {
+      "rizz": 1,
+      "aura": 3,
+      "sigma": 1
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "baby_yoda",
+    "image": "/memes/baby_yoda.webp",
+    "canonical": "Baby Yoda",
+    "era": "genz_core",
+    "axes": {
+      "rizz": 2,
+      "aura": 3,
+      "sigma": 0
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "bernie_chair",
+    "image": "/memes/bernie_chair.webp",
+    "canonical": "Bernie sitting in chair",
+    "era": "genz_core",
+    "axes": {
+      "rizz": 0,
+      "aura": 2,
+      "sigma": 3
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "surgery_grape",
+    "image": "/memes/surgery_grape.webp",
+    "canonical": "They did surgery on a grape",
+    "era": "genz_core",
+    "axes": {
+      "rizz": 0,
+      "aura": 3,
+      "sigma": 2
+    },
+    "difficulty": 3
+  },
+  {
+    "id": "among_us",
+    "image": "/memes/among_us.webp",
+    "canonical": "Among Us sus",
+    "era": "genz_core",
+    "axes": {
+      "rizz": 1,
+      "aura": 2,
+      "sigma": 2
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "vine_boom",
+    "image": "/memes/vine_boom.webp",
+    "canonical": "Vine boom",
+    "era": "genz_core",
+    "axes": {
+      "rizz": 0,
+      "aura": 3,
+      "sigma": 2
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "to_be_continued",
+    "image": "/memes/to_be_continued.webp",
+    "canonical": "To be continued",
+    "era": "genz_core",
+    "axes": {
+      "rizz": 1,
+      "aura": 3,
+      "sigma": 1
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "skibidi_toilet",
+    "image": "/memes/skibidi_toilet.webp",
+    "canonical": "Skibidi Toilet",
+    "era": "genalpha",
+    "axes": {
+      "rizz": 3,
+      "aura": 3,
+      "sigma": 1
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "rizz",
+    "image": "/memes/rizz.webp",
+    "canonical": "Rizz",
+    "era": "genalpha",
+    "axes": {
+      "rizz": 3,
+      "aura": 1,
+      "sigma": 0
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "aura_farming",
+    "image": "/memes/aura_farming.webp",
+    "canonical": "Aura farming",
+    "era": "genalpha",
+    "axes": {
+      "rizz": 1,
+      "aura": 3,
+      "sigma": 1
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "what_the_sigma",
+    "image": "/memes/what_the_sigma.webp",
+    "canonical": "Erm what the sigma",
+    "era": "genalpha",
+    "axes": {
+      "rizz": 1,
+      "aura": 1,
+      "sigma": 3
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "gyatt",
+    "image": "/memes/gyatt.webp",
+    "canonical": "Gyatt",
+    "era": "genalpha",
+    "axes": {
+      "rizz": 3,
+      "aura": 1,
+      "sigma": 0
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "fanum_tax",
+    "image": "/memes/fanum_tax.webp",
+    "canonical": "Fanum Tax",
+    "era": "genalpha",
+    "axes": {
+      "rizz": 1,
+      "aura": 1,
+      "sigma": 3
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "ohio",
+    "image": "/memes/ohio.webp",
+    "canonical": "Ohio",
+    "era": "genalpha",
+    "axes": {
+      "rizz": 1,
+      "aura": 2,
+      "sigma": 3
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "mewing",
+    "image": "/memes/mewing.webp",
+    "canonical": "Mewing",
+    "era": "genalpha",
+    "axes": {
+      "rizz": 2,
+      "aura": 2,
+      "sigma": 2
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "low_taper_fade",
+    "image": "/memes/low_taper_fade.webp",
+    "canonical": "Low taper fade",
+    "era": "genalpha",
+    "axes": {
+      "rizz": 2,
+      "aura": 2,
+      "sigma": 1
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "six_seven",
+    "image": "/memes/six_seven.webp",
+    "canonical": "6 7",
+    "era": "genalpha",
+    "axes": {
+      "rizz": 2,
+      "aura": 3,
+      "sigma": 1
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "pizza_here",
+    "image": "/memes/pizza_here.webp",
+    "canonical": "AYO THE PIZZA HERE",
+    "era": "genalpha",
+    "axes": {
+      "rizz": 2,
+      "aura": 3,
+      "sigma": 0
+    },
+    "difficulty": 2
+  }
+]

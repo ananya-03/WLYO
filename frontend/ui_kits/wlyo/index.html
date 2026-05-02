@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRAINROT MAZE - How Brainrotted Are You?</title>
+<meta name="description" content="Sprint through meme gates, dodge audio doors, land in an Era Room, and leave with a cursed Vibe Report.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#08070f">
+<meta property="og:title" content="BRAINROT MAZE - How Brainrotted Are You?">
+<meta property="og:description" content="A phonk-chaos meme maze with Seed Flash, Maze Gates, Era Room, and Vibe Report.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="./social-preview.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BRAINROT MAZE - How Brainrotted Are You?">
+<meta name="twitter:description" content="Run the cursed meme maze and get your Vibe Report.">
+<meta name="twitter:image" content="./social-preview.svg">
+<link rel="canonical" href="/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2308070f'/%3E%3Cpath d='M12 44V12h18c8 0 13 4 13 10 0 4-2 7-6 8 5 1 9 5 9 10 0 7-6 12-15 12H12zm10-19h8c3 0 5-1 5-4s-2-4-5-4h-8v8zm0 21h9c4 0 6-2 6-5s-2-5-6-5h-9v10z' fill='%23ff2bd6'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='32' fill='%2308070f'/%3E%3Ctext x='90' y='112' text-anchor='middle' font-size='86' font-family='Arial Black' fill='%23ff2bd6'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Space+Grotesk:wght@300;400;500;600;700&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body, #root {
+    width: 100%; height: 100%; overflow: hidden;
+    background: #08070f;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* CRT scanlines always on */
+  body::after {
+    content: '';
+    position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px, transparent 2px,
+      rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px
+    );
+  }
+  /* Screen transition */
+  .screen-wrap {
+    position: absolute; inset: 0;
+    animation: screenIn 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  @keyframes screenIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  /* Toast */
+  .toast {
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    background: rgba(255,159,28,0.15); border: 1.5px solid rgba(255,159,28,0.5);
+    border-radius: 8px; padding: 8px 18px;
+    font-family: 'Comic Neue', cursive; font-weight: 700; font-size: 14px;
+    color: #ff9f1c; z-index: 10000;
+    animation: toastIn 0.3s ease, toastOut 0.3s ease 1.3s forwards;
+    white-space: nowrap;
+  }
+  @keyframes toastIn { from { opacity:0; transform:translateX(-50%) translateY(-8px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+  @keyframes toastOut { to { opacity:0; transform:translateX(-50%) translateY(-8px); } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+window.BRAINROT_ASSET_BASE = '/public';
+</script>
+<script src="gameData.js"></script>
+<script type="text/babel" src="Landing.jsx"></script>
+<script type="text/babel" src="SeedFlash.jsx"></script>
+<script type="text/babel" src="MazeGate.jsx"></script>
+<script type="text/babel" src="EraRoom.jsx"></script>
+<script type="text/babel" src="VibeReport.jsx"></script>
+
+<script type="text/babel">
+const TOTAL_GATES = 7;
+const game = window.BRAINROT_GAME;
+
+function App() {
+  const [screen, setScreen] = React.useState('landing');
+  const [musicOn, setMusicOn] = React.useState(false);
+  const [reducedMotion, setReducedMotion] = React.useState(() => (
+    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches || false
+  ));
+  const [run, setRun] = React.useState(null);
+  const [flashKey, setFlashKey] = React.useState(0);
+  const [toast, setToast] = React.useState(null);
+  const [toastKey, setToastKey] = React.useState(0);
+
+  const showToast = (msg) => {
+    setToast(msg);
+    setToastKey(k => k + 1);
+    setTimeout(() => setToast(null), 1700);
+  };
+
+  const handleStart = () => {
+    const seed = game.pickSeed();
+    setRun(game.createInitialRun(seed));
+    setFlashKey(k => k + 1);
+    setScreen('flash');
+  };
+
+  const handleFlashDone = () => {
+    setScreen('gate');
+  };
+
+  const handleAnswer = (gate, opt) => {
+    setRun(prev => {
+      const nextRun = game.applyAnswer(prev, gate, opt);
+      if (nextRun.gateIndex >= TOTAL_GATES) {
+        setTimeout(() => setScreen('era'), reducedMotion ? 60 : 220);
+      }
+      return nextRun;
+    });
+
+    if (run?.gateIndex + 1 < TOTAL_GATES) {
+      setTimeout(() => setScreen('gate'), reducedMotion ? 20 : 140);
+    } else {
+      setTimeout(() => setScreen('era'), reducedMotion ? 60 : 220);
+    }
+  };
+
+  const handleReplay = () => {
+    showToast('Aura taxed. Minus five aura.');
+    setRun(prev => game.applyAuraTaxReplay(prev));
+    setFlashKey(k => k + 1);
+    setScreen('flash');
+  };
+
+  const handleContinue = () => setScreen('report');
+
+  const handleRunAgain = () => {
+    setScreen('landing');
+    setRun(null);
+    setFlashKey(0);
+  };
+
+  const appStyles = {
+    container: {
+      position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden',
+      background: '#08070f',
+    },
+    shellControls: {
+      position: 'fixed',
+      right: 14,
+      top: 14,
+      bottom: 'auto',
+      zIndex: 10001,
+      display: screen === 'landing' ? 'flex' : 'none',
+      gap: 8,
+      flexWrap: 'wrap',
+      pointerEvents: screen === 'flash' ? 'none' : 'auto',
+      opacity: screen === 'flash' ? 0 : 1,
+      transition: 'opacity 120ms ease',
+    },
+    shellBtn: {
+      minHeight: 36,
+      borderRadius: 8,
+      border: '1px solid rgba(185,174,232,0.26)',
+      background: 'rgba(8,7,15,0.72)',
+      color: '#b9aee8',
+      fontFamily: "'Space Grotesk', sans-serif",
+      fontSize: 11,
+      fontWeight: 800,
+      textTransform: 'uppercase',
+      letterSpacing: 0,
+      padding: '8px 10px',
+      cursor: 'pointer',
+    },
+  };
+
+  const currentGate = run ? game.MAZE_GATES[Math.min(run.gateIndex, TOTAL_GATES - 1)] : null;
+
+  return React.createElement('div', {style: appStyles.container},
+    toast && React.createElement('div', {key: toastKey, className: 'toast'}, toast),
+    React.createElement('div', {style: appStyles.shellControls},
+      React.createElement('button', {
+        type: 'button',
+        style: appStyles.shellBtn,
+        onClick: () => setReducedMotion(v => !v),
+      }, reducedMotion ? 'Motion Low' : 'Motion Full')
+    ),
+
+    screen === 'landing' && React.createElement('div', {key: 'landing', className: 'screen-wrap'},
+      React.createElement(Landing, {onStart: handleStart, musicOn, setMusicOn})
+    ),
+
+    screen === 'flash' && run && React.createElement('div', {key: `flash-${flashKey}`, className: 'screen-wrap'},
+      React.createElement(SeedFlash, {seedMeme: run.seedMeme, onDone: handleFlashDone, reducedMotion})
+    ),
+
+    screen === 'gate' && run && currentGate && React.createElement('div', {key: `gate-${run.gateIndex}`, className: 'screen-wrap'},
+      React.createElement(MazeGate, {
+        gate: currentGate,
+        gateIndex: run.gateIndex,
+        totalGates: TOTAL_GATES,
+        onAnswer: handleAnswer,
+        onReplay: handleReplay,
+        onToast: showToast,
+        run,
+        reducedMotion,
+      })
+    ),
+
+    screen === 'era' && run && React.createElement('div', {key: 'era', className: 'screen-wrap'},
+      React.createElement(EraRoom, {run, onContinue: handleContinue, reducedMotion})
+    ),
+
+    screen === 'report' && run && React.createElement('div', {key: 'report', className: 'screen-wrap'},
+      React.createElement(VibeReport, {
+        run,
+        onRunAgain: handleRunAgain,
+        reducedMotion,
+      })
+    ),
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(App));
+</script>
+</body>
+</html>

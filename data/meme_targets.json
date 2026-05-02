@@ -1,0 +1,522 @@
+{
+  "memes": [
+    {
+      "id": "dancing_baby",
+      "canonical": "Dancing baby",
+      "era": "boomer",
+      "axes": { "rizz": 1, "aura": 2, "sigma": 0 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "wikimedia_search", "query": "Dancing Baby meme" },
+        { "type": "tinyfish_search", "query": "Dancing Baby meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "hampster_dance",
+      "canonical": "Hampster Dance",
+      "era": "boomer",
+      "axes": { "rizz": 0, "aura": 2, "sigma": 1 },
+      "difficulty": 3,
+      "sources": [
+        { "type": "wikimedia_search", "query": "Hampster Dance" },
+        { "type": "tinyfish_search", "query": "Hampster Dance meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "all_your_base",
+      "canonical": "All Your Base Are Belong To Us",
+      "era": "boomer",
+      "axes": { "rizz": 0, "aura": 1, "sigma": 3 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "wikimedia_search", "query": "All your base are belong to us" },
+        { "type": "tinyfish_search", "query": "All Your Base Are Belong To Us meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "star_wars_kid",
+      "canonical": "Star Wars Kid",
+      "era": "boomer",
+      "axes": { "rizz": 0, "aura": 3, "sigma": 1 },
+      "difficulty": 3,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Star Wars Kid meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "dial_up_modem",
+      "canonical": "Dial-up modem",
+      "era": "boomer",
+      "axes": { "rizz": 0, "aura": 1, "sigma": 3 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "wikimedia_search", "query": "Dial-up modem" },
+        { "type": "tinyfish_search", "query": "dial up modem meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "rickroll",
+      "canonical": "Rickroll",
+      "era": "millennial",
+      "axes": { "rizz": 2, "aura": 2, "sigma": 1 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "wikimedia_search", "query": "Rick Astley Never Gonna Give You Up" },
+        { "type": "tinyfish_search", "query": "Rickroll meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "leeroy_jenkins",
+      "canonical": "Leeroy Jenkins",
+      "era": "millennial",
+      "axes": { "rizz": 1, "aura": 2, "sigma": 3 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Leeroy Jenkins meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "lolcats",
+      "canonical": "LOLcats",
+      "era": "millennial",
+      "axes": { "rizz": 1, "aura": 3, "sigma": 0 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "I can has cheezburger LOLcat meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "numa_numa",
+      "canonical": "Numa Numa",
+      "era": "millennial",
+      "axes": { "rizz": 2, "aura": 2, "sigma": 0 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "wikimedia_search", "query": "Numa Numa" },
+        { "type": "tinyfish_search", "query": "Numa Numa meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "trollface",
+      "canonical": "Trollface",
+      "era": "millennial",
+      "axes": { "rizz": 1, "aura": 1, "sigma": 3 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Troll Face" },
+        { "type": "tinyfish_search", "query": "Trollface meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "bad_luck_brian",
+      "canonical": "Bad Luck Brian",
+      "era": "millennial",
+      "axes": { "rizz": 0, "aura": 2, "sigma": 1 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Bad Luck Brian" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "success_kid",
+      "canonical": "Success Kid",
+      "era": "millennial",
+      "axes": { "rizz": 2, "aura": 2, "sigma": 2 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Success Kid" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "philosoraptor",
+      "canonical": "Philosoraptor",
+      "era": "millennial",
+      "axes": { "rizz": 0, "aura": 1, "sigma": 3 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Philosoraptor" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "doge",
+      "canonical": "Doge",
+      "era": "older_genz",
+      "axes": { "rizz": 1, "aura": 3, "sigma": 1 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Doge" },
+        { "type": "wikimedia_search", "query": "Doge meme" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "pepe",
+      "canonical": "Pepe the Frog",
+      "era": "older_genz",
+      "axes": { "rizz": 0, "aura": 2, "sigma": 3 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "imgflip_template", "name": "Sad Pepe" },
+        { "type": "tinyfish_search", "query": "Pepe the Frog meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "harambe",
+      "canonical": "Harambe",
+      "era": "older_genz",
+      "axes": { "rizz": 0, "aura": 3, "sigma": 2 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "wikimedia_search", "query": "Harambe" },
+        { "type": "tinyfish_search", "query": "Harambe meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "dat_boi",
+      "canonical": "Dat Boi",
+      "era": "older_genz",
+      "axes": { "rizz": 1, "aura": 3, "sigma": 1 },
+      "difficulty": 3,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Dat Boi meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "salt_bae",
+      "canonical": "Salt Bae",
+      "era": "older_genz",
+      "axes": { "rizz": 3, "aura": 2, "sigma": 1 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Salt Bae meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "distracted_boyfriend",
+      "canonical": "Distracted Boyfriend",
+      "era": "older_genz",
+      "axes": { "rizz": 2, "aura": 1, "sigma": 0 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Distracted Boyfriend" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "mocking_spongebob",
+      "canonical": "Mocking Spongebob",
+      "era": "older_genz",
+      "axes": { "rizz": 1, "aura": 1, "sigma": 2 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Mocking Spongebob" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "roll_safe",
+      "canonical": "Roll Safe",
+      "era": "older_genz",
+      "axes": { "rizz": 3, "aura": 1, "sigma": 2 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Roll Safe Think About It" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "evil_kermit",
+      "canonical": "Evil Kermit",
+      "era": "older_genz",
+      "axes": { "rizz": 0, "aura": 1, "sigma": 3 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Evil Kermit" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "drake_hotline_bling",
+      "canonical": "Drake Hotline Bling",
+      "era": "older_genz",
+      "axes": { "rizz": 3, "aura": 1, "sigma": 1 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Drake Hotline Bling" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "left_exit_12",
+      "canonical": "Left Exit 12",
+      "era": "older_genz",
+      "axes": { "rizz": 1, "aura": 1, "sigma": 2 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Left Exit 12 Off Ramp" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "we_are_number_one",
+      "canonical": "We Are Number One",
+      "era": "older_genz",
+      "axes": { "rizz": 2, "aura": 3, "sigma": 0 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "tinyfish_search", "query": "We Are Number One meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "stonks",
+      "canonical": "Stonks",
+      "era": "genz_core",
+      "axes": { "rizz": 0, "aura": 1, "sigma": 3 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Stonks" },
+        { "type": "tinyfish_search", "query": "Stonks meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "woman_yelling_cat",
+      "canonical": "Woman Yelling at Cat",
+      "era": "genz_core",
+      "axes": { "rizz": 1, "aura": 2, "sigma": 1 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Woman Yelling At Cat" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "ok_boomer",
+      "canonical": "OK Boomer",
+      "era": "genz_core",
+      "axes": { "rizz": 1, "aura": 1, "sigma": 3 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "tinyfish_search", "query": "OK Boomer meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "big_chungus",
+      "canonical": "Big Chungus",
+      "era": "genz_core",
+      "axes": { "rizz": 1, "aura": 3, "sigma": 1 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Big Chungus meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "baby_yoda",
+      "canonical": "Baby Yoda",
+      "era": "genz_core",
+      "axes": { "rizz": 2, "aura": 3, "sigma": 0 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Baby Yoda meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "bernie_chair",
+      "canonical": "Bernie sitting in chair",
+      "era": "genz_core",
+      "axes": { "rizz": 0, "aura": 2, "sigma": 3 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "imgflip_template", "name": "Bernie I Am Once Again Asking For Your Support" },
+        { "type": "tinyfish_search", "query": "Bernie sitting chair meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "surgery_grape",
+      "canonical": "They did surgery on a grape",
+      "era": "genz_core",
+      "axes": { "rizz": 0, "aura": 3, "sigma": 2 },
+      "difficulty": 3,
+      "sources": [
+        { "type": "tinyfish_search", "query": "they did surgery on a grape meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "among_us",
+      "canonical": "Among Us sus",
+      "era": "genz_core",
+      "axes": { "rizz": 1, "aura": 2, "sigma": 2 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Among Us sus meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "vine_boom",
+      "canonical": "Vine boom",
+      "era": "genz_core",
+      "axes": { "rizz": 0, "aura": 3, "sigma": 2 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Vine boom meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "to_be_continued",
+      "canonical": "To be continued",
+      "era": "genz_core",
+      "axes": { "rizz": 1, "aura": 3, "sigma": 1 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "tinyfish_search", "query": "to be continued meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "skibidi_toilet",
+      "canonical": "Skibidi Toilet",
+      "era": "genalpha",
+      "axes": { "rizz": 3, "aura": 3, "sigma": 1 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Skibidi Toilet meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "rizz",
+      "canonical": "Rizz",
+      "era": "genalpha",
+      "axes": { "rizz": 3, "aura": 1, "sigma": 0 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Rizz meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "aura_farming",
+      "canonical": "Aura farming",
+      "era": "genalpha",
+      "axes": { "rizz": 1, "aura": 3, "sigma": 1 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "tinyfish_search", "query": "aura farming meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "what_the_sigma",
+      "canonical": "Erm what the sigma",
+      "era": "genalpha",
+      "axes": { "rizz": 1, "aura": 1, "sigma": 3 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "erm what the sigma meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "gyatt",
+      "canonical": "Gyatt",
+      "era": "genalpha",
+      "axes": { "rizz": 3, "aura": 1, "sigma": 0 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "gyatt meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "fanum_tax",
+      "canonical": "Fanum Tax",
+      "era": "genalpha",
+      "axes": { "rizz": 1, "aura": 1, "sigma": 3 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Fanum Tax meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "ohio",
+      "canonical": "Ohio",
+      "era": "genalpha",
+      "axes": { "rizz": 1, "aura": 2, "sigma": 3 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "Only in Ohio meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "mewing",
+      "canonical": "Mewing",
+      "era": "genalpha",
+      "axes": { "rizz": 2, "aura": 2, "sigma": 2 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "tinyfish_search", "query": "mewing meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "low_taper_fade",
+      "canonical": "Low taper fade",
+      "era": "genalpha",
+      "axes": { "rizz": 2, "aura": 2, "sigma": 1 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "low taper fade meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "six_seven",
+      "canonical": "6 7",
+      "era": "genalpha",
+      "axes": { "rizz": 2, "aura": 3, "sigma": 1 },
+      "difficulty": 1,
+      "sources": [
+        { "type": "tinyfish_search", "query": "6 7 meme image" },
+        { "type": "generated_card" }
+      ]
+    },
+    {
+      "id": "pizza_here",
+      "canonical": "AYO THE PIZZA HERE",
+      "era": "genalpha",
+      "axes": { "rizz": 2, "aura": 3, "sigma": 0 },
+      "difficulty": 2,
+      "sources": [
+        { "type": "tinyfish_search", "query": "AYO THE PIZZA HERE meme image" },
+        { "type": "generated_card" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { background: var(--void); padding: 24px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .portal-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .portal-label { font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--dim); }
+
+  .portal-idle {
+    width: 64px; height: 64px; border-radius: 50%;
+    border: 2px solid rgba(0,240,255,.3);
+    box-shadow: 0 0 10px rgba(0,240,255,.15);
+    background: radial-gradient(circle, rgba(0,240,255,.05) 0%, transparent 70%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-body); font-size: 11px; color: rgba(0,240,255,.4);
+  }
+  .portal-current {
+    width: 72px; height: 72px; border-radius: 50%;
+    border: 2px solid var(--electric-blue);
+    box-shadow: 0 0 24px rgba(0,240,255,.55), 0 0 60px rgba(0,240,255,.2);
+    background: radial-gradient(circle, rgba(0,240,255,.18) 0%, transparent 70%);
+    display: flex; align-items: center; justify-content: center;
+    animation: portal-pulse 2s ease-in-out infinite;
+  }
+  .portal-done {
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 2px solid rgba(255,43,214,.5);
+    box-shadow: 0 0 12px rgba(255,43,214,.3);
+    background: radial-gradient(circle, rgba(255,43,214,.12) 0%, transparent 70%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .portal-next {
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 2px dashed rgba(0,240,255,.2);
+    background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0.5;
+  }
+  @keyframes portal-pulse {
+    0%,100% { box-shadow: 0 0 20px rgba(0,240,255,.5), 0 0 50px rgba(0,240,255,.15); }
+    50%      { box-shadow: 0 0 36px rgba(0,240,255,.8), 0 0 80px rgba(0,240,255,.3); }
+  }
+  .inner-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--electric-blue); box-shadow: 0 0 8px var(--electric-blue); }
+</style>
+</head>
+<body>
+  <div class="portal-wrap">
+    <div class="portal-done">✓</div>
+    <div class="portal-label">Done</div>
+  </div>
+  <div class="portal-wrap">
+    <div class="portal-current"><div class="inner-dot"></div></div>
+    <div class="portal-label">Active</div>
+  </div>
+  <div class="portal-wrap">
+    <div class="portal-idle">?</div>
+    <div class="portal-label">Idle</div>
+  </div>
+  <div class="portal-wrap">
+    <div class="portal-next"></div>
+    <div class="portal-label">Next</div>
+  </div>
+</body>
+</html>

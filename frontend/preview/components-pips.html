@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { background: var(--void); padding: 28px 32px; display: flex; flex-direction: column; gap: 24px; }
+  .pip-row { display: flex; gap: 8px; align-items: center; }
+  .label { font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
+  .pip-corrupted {
+    width: 10px; height: 10px; border-radius: 2px;
+    border: 1.5px solid var(--dim); background: transparent;
+    position: relative;
+  }
+  .pip-corrupted.done {
+    background: var(--hot-magenta); border-color: var(--hot-magenta);
+    box-shadow: 0 0 6px rgba(255,43,214,.6);
+  }
+  .pip-corrupted.current {
+    background: var(--electric-blue); border-color: var(--electric-blue);
+    box-shadow: 0 0 8px rgba(0,240,255,.7);
+    animation: blink 0.8s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+</style>
+</head>
+<body>
+  <div>
+    <div class="label">Gate 1 of 7</div>
+    <div class="pip-row">
+      <div class="pip-corrupted current"></div>
+      <div class="pip-corrupted"></div>
+      <div class="pip-corrupted"></div>
+      <div class="pip-corrupted"></div>
+      <div class="pip-corrupted"></div>
+      <div class="pip-corrupted"></div>
+      <div class="pip-corrupted"></div>
+    </div>
+  </div>
+  <div>
+    <div class="label">Gate 4 of 7</div>
+    <div class="pip-row">
+      <div class="pip-corrupted done"></div>
+      <div class="pip-corrupted done"></div>
+      <div class="pip-corrupted done"></div>
+      <div class="pip-corrupted current"></div>
+      <div class="pip-corrupted"></div>
+      <div class="pip-corrupted"></div>
+      <div class="pip-corrupted"></div>
+    </div>
+  </div>
+  <div>
+    <div class="label">Gate 7 — Final Gate</div>
+    <div class="pip-row">
+      <div class="pip-corrupted done"></div>
+      <div class="pip-corrupted done"></div>
+      <div class="pip-corrupted done"></div>
+      <div class="pip-corrupted done"></div>
+      <div class="pip-corrupted done"></div>
+      <div class="pip-corrupted done"></div>
+      <div class="pip-corrupted current"></div>
+    </div>
+  </div>
+</body>
+</html>

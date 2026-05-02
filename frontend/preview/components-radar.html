@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { background: var(--void); padding: 20px; display: flex; gap: 32px; align-items: center; }
+  svg text { font-family: var(--font-body); }
+  .axis-labels { display: flex; flex-direction: column; gap: 10px; }
+  .axis-row { display: flex; align-items: center; gap: 10px; }
+  .axis-name { font-family: var(--font-body); font-size: 13px; font-weight: 700; color: var(--off-white); width: 44px; }
+  .axis-bar-bg { width: 100px; height: 8px; background: var(--ink-light); border-radius: 4px; }
+  .axis-bar-fill { height: 8px; border-radius: 4px; }
+  .axis-val { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--dim); }
+</style>
+</head>
+<body>
+  <svg width="200" height="200" viewBox="-110 -110 220 220">
+    <defs>
+      <radialGradient id="radarFill" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ff2bd6" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.05"/>
+      </radialGradient>
+    </defs>
+    <!-- Grid rings -->
+    <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40" fill="none" stroke="rgba(185,174,232,.1)" stroke-width="1"/>
+    <polygon points="0,-60 52,-30 52,30 0,60 -52,30 -52,-30" fill="none" stroke="rgba(185,174,232,.1)" stroke-width="1"/>
+    <polygon points="0,-40 35,-20 35,20 0,40 -35,20 -35,-20" fill="none" stroke="rgba(185,174,232,.1)" stroke-width="1"/>
+    <polygon points="0,-20 17,-10 17,10 0,20 -17,10 -17,-10" fill="none" stroke="rgba(185,174,232,.08)" stroke-width="1"/>
+    <!-- Axes -->
+    <line x1="0" y1="0" x2="0" y2="-80" stroke="rgba(185,174,232,.2)" stroke-width="1"/>
+    <line x1="0" y1="0" x2="69" y2="-40" stroke="rgba(185,174,232,.2)" stroke-width="1"/>
+    <line x1="0" y1="0" x2="69" y2="40" stroke="rgba(185,174,232,.2)" stroke-width="1"/>
+    <line x1="0" y1="0" x2="0" y2="80" stroke="rgba(185,174,232,.2)" stroke-width="1"/>
+    <!-- Data polygon -->
+    <polygon points="0,-72 55,-20 42,38 0,40" fill="url(#radarFill)" stroke="#ff2bd6" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Labels -->
+    <text x="0" y="-88" text-anchor="middle" fill="#ff2bd6" font-size="11" font-weight="700">RIZZ</text>
+    <text x="78" y="-38" text-anchor="start" fill="#00f0ff" font-size="11" font-weight="700">AURA</text>
+    <text x="78" y="46" text-anchor="start" fill="#39ff14" font-size="11" font-weight="700">SIGMA</text>
+    <text x="0" y="96" text-anchor="middle" fill="#ff9f1c" font-size="11" font-weight="700">ERA</text>
+    <!-- Dots -->
+    <circle cx="0" cy="-72" r="4" fill="#ff2bd6" filter="url(#g)"/>
+    <circle cx="55" cy="-20" r="4" fill="#00f0ff"/>
+    <circle cx="42" cy="38" r="4" fill="#39ff14"/>
+    <circle cx="0" cy="40" r="4" fill="#ff9f1c"/>
+  </svg>
+  <div class="axis-labels">
+    <div class="axis-row"><div class="axis-name">Rizz</div><div class="axis-bar-bg"><div class="axis-bar-fill" style="width:90%;background:var(--hot-magenta);box-shadow:0 0 6px rgba(255,43,214,.5)"></div></div><div class="axis-val">90</div></div>
+    <div class="axis-row"><div class="axis-name">Aura</div><div class="axis-bar-bg"><div class="axis-bar-fill" style="width:68%;background:var(--electric-blue);box-shadow:0 0 6px rgba(0,240,255,.4)"></div></div><div class="axis-val">68</div></div>
+    <div class="axis-row"><div class="axis-name">Sigma</div><div class="axis-bar-bg"><div class="axis-bar-fill" style="width:52%;background:var(--acid-green);box-shadow:0 0 6px rgba(57,255,20,.4)"></div></div><div class="axis-val">52</div></div>
+    <div class="axis-row"><div class="axis-name">Era</div><div class="axis-bar-bg"><div class="axis-bar-fill" style="width:44%;background:var(--warning-orange);box-shadow:0 0 6px rgba(255,159,28,.4)"></div></div><div class="axis-val">44</div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,406 @@
+{
+  "generatedAt": "2026-05-02T04:42:59.552Z",
+  "clips": [
+    {
+      "id": "dial_up_modem",
+      "status": "fetched",
+      "output": "/audio/dial_up_modem.mp3",
+      "bytes": 36720,
+      "winner": {
+        "title": "snd - Dial Up Modem",
+        "url": "https://www.myinstants.com/media/sounds/snd-dialup-modem.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/snd-dial-up-modem-37430/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=dial%20up%20modem"
+      },
+      "failures": []
+    },
+    {
+      "id": "youve_got_mail",
+      "status": "fetched",
+      "output": "/audio/youve_got_mail.mp3",
+      "bytes": 11643,
+      "winner": {
+        "title": "you've got mail",
+        "url": "https://www.myinstants.com/media/sounds/yougotmail.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/youve-got-mail/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=you've%20got%20mail"
+      },
+      "failures": []
+    },
+    {
+      "id": "lightsaber_whoosh",
+      "status": "fetched",
+      "output": "/audio/lightsaber_whoosh.mp3",
+      "bytes": 13359,
+      "winner": {
+        "title": "Lightsaber Whoosh 04",
+        "url": "https://www.myinstants.com/media/sounds/lightsaber-whoosh-04.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/lightsaber-whoosh-04-41121/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=lightsaber%20whoosh"
+      },
+      "failures": []
+    },
+    {
+      "id": "rickroll_intro",
+      "status": "fetched",
+      "output": "/audio/rickroll_intro.mp3",
+      "bytes": 36720,
+      "winner": {
+        "title": "rick roll synthwave",
+        "url": "https://www.myinstants.com/media/sounds/rick-roll-synthwave.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/rick-roll-synthwave-79966/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=rickroll"
+      },
+      "failures": []
+    },
+    {
+      "id": "leeroy_jenkins",
+      "status": "fetched",
+      "output": "/audio/leeroy_jenkins.mp3",
+      "bytes": 36407,
+      "winner": {
+        "title": "Leeroy Jenkins",
+        "url": "https://www.myinstants.com/media/sounds/leroy.swf.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/leeroy-jenkins/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=leeroy%20jenkins"
+      },
+      "failures": []
+    },
+    {
+      "id": "numa_numa",
+      "status": "fetched",
+      "output": "/audio/numa_numa.mp3",
+      "bytes": 36720,
+      "winner": {
+        "title": "Numa Numa",
+        "url": "https://www.myinstants.com/media/sounds/numa_numa_1.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/numa-numa/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=numa%20numa"
+      },
+      "failures": []
+    },
+    {
+      "id": "trollface_laugh",
+      "status": "fetched",
+      "output": "/audio/trollface_laugh.mp3",
+      "bytes": 24904,
+      "winner": {
+        "title": "troll laugh",
+        "url": "https://www.myinstants.com/media/sounds/troll-laugh.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/troll-laugh/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=troll%20laugh"
+      },
+      "failures": []
+    },
+    {
+      "id": "nyan_cat",
+      "status": "fetched",
+      "output": "/audio/nyan_cat.mp3",
+      "bytes": 36741,
+      "winner": {
+        "title": "Nyan cat",
+        "url": "https://www.myinstants.com/media/sounds/nyan-cat_1.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/nyan-cat/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=nyan%20cat"
+      },
+      "failures": []
+    },
+    {
+      "id": "doge_such_wow",
+      "status": "fetched",
+      "output": "/audio/doge_such_wow.mp3",
+      "bytes": 24809,
+      "winner": {
+        "title": "Ihr sucht doch etwas WoW",
+        "url": "https://www.myinstants.com/media/sounds/ihr-sucht-doch-etwas-wow.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/ihr-sucht-doch-etwas-wow-90966/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=such%20wow"
+      },
+      "failures": []
+    },
+    {
+      "id": "harambe",
+      "status": "fetched",
+      "output": "/audio/harambe.mp3",
+      "bytes": 36197,
+      "winner": {
+        "title": "harambe again",
+        "url": "https://www.myinstants.com/media/sounds/do4harmbe_OUMWMxA.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/harambe-again-14999/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=harambe"
+      },
+      "failures": []
+    },
+    {
+      "id": "wednesday_my_dudes",
+      "status": "fetched",
+      "output": "/audio/wednesday_my_dudes.mp3",
+      "bytes": 21691,
+      "winner": {
+        "title": "It's Wednesday My Dudes",
+        "url": "https://www.myinstants.com/media/sounds/its-wednesday-my-dudes.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/its-wednesday-my-dudes/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=it's%20wednesday%20my%20dudes"
+      },
+      "failures": []
+    },
+    {
+      "id": "we_are_number_one",
+      "status": "fetched",
+      "output": "/audio/we_are_number_one.mp3",
+      "bytes": 36880,
+      "winner": {
+        "title": "We are number one but",
+        "url": "https://www.myinstants.com/media/sounds/lazytown-we-are-number-one-music-video.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/we-are-number-one-but-42752/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=we%20are%20number%20one"
+      },
+      "failures": []
+    },
+    {
+      "id": "vine_boom",
+      "status": "fetched",
+      "output": "/audio/vine_boom.mp3",
+      "bytes": 16111,
+      "winner": {
+        "title": "VINE BOOM SOUND",
+        "url": "https://www.myinstants.com/media/sounds/vine-boom.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/vine-boom-sound-70972/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=vine%20boom"
+      },
+      "failures": []
+    },
+    {
+      "id": "and_i_oop",
+      "status": "fetched",
+      "output": "/audio/and_i_oop.mp3",
+      "bytes": 24902,
+      "winner": {
+        "title": "and i oop",
+        "url": "https://www.myinstants.com/media/sounds/and-i-oop.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/and-i-oop-13899/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=and%20i%20oop"
+      },
+      "failures": []
+    },
+    {
+      "id": "ok_boomer",
+      "status": "fetched",
+      "output": "/audio/ok_boomer.mp3",
+      "bytes": 12363,
+      "winner": {
+        "title": "ok boomer",
+        "url": "https://www.myinstants.com/media/sounds/peter-kuli-jedwill-ok-boomer-official-music-video-mp3cut.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/ok-boomer-64055/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=ok%20boomer"
+      },
+      "failures": []
+    },
+    {
+      "id": "among_us_kill",
+      "status": "fetched",
+      "output": "/audio/among_us_kill.mp3",
+      "bytes": 7881,
+      "winner": {
+        "title": "among us kill sound effect",
+        "url": "https://www.myinstants.com/media/sounds/record-online-voice-recorder_kBMwrBe.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/among-us-kill-sound-effect-38546/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=among%20us%20kill%20sound"
+      },
+      "failures": []
+    },
+    {
+      "id": "to_be_continued",
+      "status": "fetched",
+      "output": "/audio/to_be_continued.mp3",
+      "bytes": 36737,
+      "winner": {
+        "title": "To be Continued (jojo)",
+        "url": "https://www.myinstants.com/media/sounds/untitled_1071.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/to-be-continued-jojo/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=to%20be%20continued"
+      },
+      "failures": []
+    },
+    {
+      "id": "windows_xp_error",
+      "status": "fetched",
+      "output": "/audio/windows_xp_error.mp3",
+      "bytes": 12583,
+      "winner": {
+        "title": "Windows XP Error",
+        "url": "https://www.myinstants.com/media/sounds/erro.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/windows-xp-error/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=windows%20xp%20error"
+      },
+      "failures": []
+    },
+    {
+      "id": "sad_trombone",
+      "status": "fetched",
+      "output": "/audio/sad_trombone.mp3",
+      "bytes": 36094,
+      "winner": {
+        "title": "Sad Trombone",
+        "url": "https://www.myinstants.com/media/sounds/sadtrombone.swf.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/sad-trombone/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=sad%20trombone"
+      },
+      "failures": []
+    },
+    {
+      "id": "airhorn",
+      "status": "fetched",
+      "output": "/audio/airhorn.mp3",
+      "bytes": 24902,
+      "winner": {
+        "title": "DJ Airhorn",
+        "url": "https://www.myinstants.com/media/sounds/dj-airhorn-sound-effect-kingbeatz_1.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/dj-airhorn/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=airhorn"
+      },
+      "failures": []
+    },
+    {
+      "id": "skibidi_toilet",
+      "status": "fetched",
+      "output": "/audio/skibidi_toilet.mp3",
+      "bytes": 38148,
+      "winner": {
+        "title": "skibidi toilet",
+        "url": "https://www.myinstants.com/media/sounds/skibidi-toilet.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/skibidi-toilet-69886/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=skibidi%20toilet"
+      },
+      "failures": []
+    },
+    {
+      "id": "what_the_sigma",
+      "status": "fetched",
+      "output": "/audio/what_the_sigma.mp3",
+      "bytes": 17599,
+      "winner": {
+        "title": "erm what the sigma",
+        "url": "https://www.myinstants.com/media/sounds/erm-what-the-sigma_su7GnzC.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/erm-what-the-sigma-51754/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=what%20the%20sigma"
+      },
+      "failures": []
+    },
+    {
+      "id": "ayo_pizza_here",
+      "status": "fetched",
+      "output": "/audio/ayo_pizza_here.mp3",
+      "bytes": 16436,
+      "winner": {
+        "title": "ayo the pizza here",
+        "url": "https://www.myinstants.com/media/sounds/ayo_BLluQdm.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/ayo-the-pizza-here-71624/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=ayo%20the%20pizza%20here"
+      },
+      "failures": []
+    },
+    {
+      "id": "low_taper_fade",
+      "status": "fetched",
+      "output": "/audio/low_taper_fade.mp3",
+      "bytes": 36720,
+      "winner": {
+        "title": "imagine if ninja got a low taper fade",
+        "url": "https://www.myinstants.com/media/sounds/imagine-if-ninja-got-a-low-taper-fade.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/imagine-if-ninja-got-a-low-taper-fade-83129/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=low%20taper%20fade"
+      },
+      "failures": []
+    },
+    {
+      "id": "six_seven",
+      "status": "fetched",
+      "output": "/audio/six_seven.mp3",
+      "bytes": 21674,
+      "winner": {
+        "title": "Life360 SIX SEVEN",
+        "url": "https://www.myinstants.com/media/sounds/life360-six-seven.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/life360-six-seven-29455/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=six%20seven%20meme"
+      },
+      "failures": []
+    },
+    {
+      "id": "ohio_final_boss",
+      "status": "fetched",
+      "output": "/audio/ohio_final_boss.mp3",
+      "bytes": 36197,
+      "winner": {
+        "title": "Only in ohio",
+        "url": "https://www.myinstants.com/media/sounds/only-in-ohio.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/only-in-ohio-68247/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=only%20in%20ohio"
+      },
+      "failures": [
+        {
+          "source": {
+            "type": "myinstants_search",
+            "query": "ohio final boss",
+            "preferTitle": "ohio"
+          },
+          "error": "Command failed: curl -LfsS --max-time 45 -A BRAINROT-MAZE asset fetcher; hackathon prototype -H accept: */* https://www.myinstants.com/en/search/?name=ohio%20final%20boss\ncurl: (56) The requested URL returned error: 404\n"
+        }
+      ]
+    },
+    {
+      "id": "fanum_tax",
+      "status": "fetched",
+      "output": "/audio/fanum_tax.mp3",
+      "bytes": 25121,
+      "winner": {
+        "title": "skibidi toilet sigma fanum tax only in ohio",
+        "url": "https://www.myinstants.com/media/sounds/skibidi-toilet-sigma-fanum-tax-only-in-ohio.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/skibidi-toilet-sigma-fanum-tax-only-in-ohio-64631/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=fanum%20tax"
+      },
+      "failures": []
+    },
+    {
+      "id": "gyatt",
+      "status": "fetched",
+      "output": "/audio/gyatt.mp3",
+      "bytes": 25127,
+      "winner": {
+        "title": "Gyatt",
+        "url": "https://www.myinstants.com/media/sounds/gyatt.mp3",
+        "pageUrl": "https://www.myinstants.com/en/instant/gyatt-28402/",
+        "source": "myinstants",
+        "searchUrl": "https://www.myinstants.com/en/search/?name=gyatt"
+      },
+      "failures": []
+    }
+  ]
+}

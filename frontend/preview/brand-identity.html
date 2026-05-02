@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { background: var(--void); padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+
+  /* Main wordmark */
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 52px;
+    color: var(--off-white);
+    text-shadow: 0 0 30px rgba(255,43,214,.5), 0 0 60px rgba(255,43,214,.2);
+    letter-spacing: -.01em;
+    line-height: 1;
+    text-align: center;
+  }
+  .wordmark span { color: var(--hot-magenta); }
+
+  /* Badge version */
+  .badge {
+    background: var(--ink);
+    border: 2px solid var(--hot-magenta);
+    box-shadow: 0 0 18px rgba(255,43,214,.4);
+    border-radius: 12px;
+    padding: 12px 20px;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+  }
+  .badge-title { font-family: var(--font-display); font-size: 22px; color: var(--hot-magenta); line-height: 1; }
+  .badge-sub { font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-lavender); }
+
+  /* Tagline */
+  .tagline { font-family: var(--font-punchline); font-size: 15px; color: var(--muted-lavender); font-weight: 700; }
+  .question { font-family: var(--font-display); font-size: 20px; color: var(--electric-blue); text-shadow: 0 0 12px rgba(0,240,255,.4); }
+
+  .divider { width: 80px; height: 1px; background: rgba(185,174,232,.15); }
+</style>
+</head>
+<body>
+  <div class="wordmark">BRAINROT<br><span>MAZE</span></div>
+  <div class="divider"></div>
+  <div class="question">How brainrotted are you?</div>
+  <div class="divider"></div>
+  <div class="badge">
+    <div class="badge-title">BRAINROT MAZE</div>
+    <div class="badge-sub">wlyo · who let you online?</div>
+  </div>
+  <div class="tagline">Skibidi Ohio Rizz, Sigma Fanum Tax Mewing Bop</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { background: var(--void); padding: 24px; display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+  .glow-demo { width: 120px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .glow-box { width: 72px; height: 44px; border-radius: 10px; background: var(--ink); border: 1.5px solid; }
+  .glow-label { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--dim); text-align: center; }
+</style>
+</head>
+<body>
+  <div class="glow-demo">
+    <div class="glow-box" style="border-color:var(--hot-magenta); box-shadow: 0 0 8px rgba(255,43,214,.45)"></div>
+    <div class="glow-label">glow-magenta-sm</div>
+  </div>
+  <div class="glow-demo">
+    <div class="glow-box" style="border-color:var(--hot-magenta); box-shadow: 0 0 18px rgba(255,43,214,.45)"></div>
+    <div class="glow-label">glow-magenta-md</div>
+  </div>
+  <div class="glow-demo">
+    <div class="glow-box" style="border-color:var(--hot-magenta); box-shadow: 0 0 40px rgba(255,43,214,.45)"></div>
+    <div class="glow-label">glow-magenta-lg</div>
+  </div>
+  <div class="glow-demo">
+    <div class="glow-box" style="border-color:var(--electric-blue); box-shadow: 0 0 18px rgba(0,240,255,.45)"></div>
+    <div class="glow-label">glow-blue-md</div>
+  </div>
+  <div class="glow-demo">
+    <div class="glow-box" style="border-color:var(--acid-green); box-shadow: 0 0 18px rgba(57,255,20,.45)"></div>
+    <div class="glow-label">glow-green-md</div>
+  </div>
+  <div class="glow-demo">
+    <div class="glow-box" style="border-color:var(--warning-orange); box-shadow: 0 0 18px rgba(255,159,28,.45)"></div>
+    <div class="glow-label">glow-orange-md</div>
+  </div>
+  <div class="glow-demo">
+    <div class="glow-box" style="border-color:var(--electric-blue); box-shadow: 0 0 40px rgba(0,240,255,.45)"></div>
+    <div class="glow-label">glow-blue-lg (portal)</div>
+  </div>
+</body>
+</html>

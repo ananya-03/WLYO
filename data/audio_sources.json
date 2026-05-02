@@ -1,0 +1,280 @@
+{
+  "clips": [
+    {
+      "id": "dial_up_modem",
+      "canonical": "Dial-up modem handshake",
+      "era": "boomer",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "dial up modem", "preferTitle": "dial up" },
+        { "type": "myinstants_search", "query": "internet dial up sound", "preferTitle": "modem" }
+      ]
+    },
+    {
+      "id": "youve_got_mail",
+      "canonical": "You've got mail",
+      "era": "boomer",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "you've got mail", "preferTitle": "you've got mail" },
+        { "type": "tts_say", "text": "You've got mail", "voice": "Alex" }
+      ]
+    },
+    {
+      "id": "lightsaber_whoosh",
+      "canonical": "Star Wars Kid lightsaber whoosh",
+      "era": "boomer",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "lightsaber whoosh", "preferTitle": "lightsaber" },
+        { "type": "myinstants_search", "query": "star wars lightsaber", "preferTitle": "lightsaber" }
+      ]
+    },
+    {
+      "id": "rickroll_intro",
+      "canonical": "Rickroll intro",
+      "era": "millennial",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "rickroll", "preferTitle": "rick roll" },
+        { "type": "myinstants_search", "query": "never gonna give you up", "preferTitle": "never gonna give" }
+      ]
+    },
+    {
+      "id": "leeroy_jenkins",
+      "canonical": "Leeroy Jenkins yell",
+      "era": "millennial",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "leeroy jenkins", "preferTitle": "leeroy jenkins" },
+        { "type": "tts_say", "text": "Leeeroy Jenkins", "voice": "Fred" }
+      ]
+    },
+    {
+      "id": "numa_numa",
+      "canonical": "Numa Numa hook",
+      "era": "millennial",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "numa numa", "preferTitle": "numa numa" },
+        { "type": "myinstants_search", "query": "dragostea din tei", "preferTitle": "dragostea" }
+      ]
+    },
+    {
+      "id": "trollface_laugh",
+      "canonical": "Trollface laugh",
+      "era": "millennial",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "troll laugh", "preferTitle": "troll" },
+        { "type": "tts_say", "text": "trollolol", "voice": "Bad News" }
+      ]
+    },
+    {
+      "id": "nyan_cat",
+      "canonical": "Nyan Cat",
+      "era": "millennial",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "nyan cat", "preferTitle": "nyan cat" }
+      ]
+    },
+    {
+      "id": "doge_such_wow",
+      "canonical": "Doge such wow",
+      "era": "older_genz",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "such wow", "preferTitle": "wow" },
+        { "type": "tts_say", "text": "Such wow. Very meme.", "voice": "Alex" }
+      ]
+    },
+    {
+      "id": "harambe",
+      "canonical": "Harambe",
+      "era": "older_genz",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "harambe", "preferTitle": "harambe" }
+      ]
+    },
+    {
+      "id": "wednesday_my_dudes",
+      "canonical": "It's Wednesday my dudes",
+      "era": "older_genz",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "it's wednesday my dudes", "preferTitle": "wednesday" },
+        { "type": "tts_say", "text": "It is Wednesday my dudes", "voice": "Fred" }
+      ]
+    },
+    {
+      "id": "we_are_number_one",
+      "canonical": "We Are Number One",
+      "era": "older_genz",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "we are number one", "preferTitle": "number one" }
+      ]
+    },
+    {
+      "id": "vine_boom",
+      "canonical": "Vine boom",
+      "era": "genz_core",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "vine boom", "preferTitle": "vine boom" },
+        { "type": "myinstants_search", "query": "boom sound effect", "preferTitle": "boom" }
+      ]
+    },
+    {
+      "id": "and_i_oop",
+      "canonical": "And I oop",
+      "era": "genz_core",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "and i oop", "preferTitle": "and i oop" },
+        { "type": "tts_say", "text": "And I oop", "voice": "Samantha" }
+      ]
+    },
+    {
+      "id": "ok_boomer",
+      "canonical": "OK Boomer",
+      "era": "genz_core",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "ok boomer", "preferTitle": "ok boomer" },
+        { "type": "tts_say", "text": "Okay boomer", "voice": "Samantha" }
+      ]
+    },
+    {
+      "id": "among_us_kill",
+      "canonical": "Among Us kill sound",
+      "era": "genz_core",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "among us kill sound", "preferTitle": "among us" },
+        { "type": "myinstants_search", "query": "among us", "preferTitle": "kill" }
+      ]
+    },
+    {
+      "id": "to_be_continued",
+      "canonical": "To be continued",
+      "era": "genz_core",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "to be continued", "preferTitle": "continued" }
+      ]
+    },
+    {
+      "id": "windows_xp_error",
+      "canonical": "Windows XP error",
+      "era": "genz_core",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "windows xp error", "preferTitle": "windows xp" },
+        { "type": "myinstants_search", "query": "windows error", "preferTitle": "error" }
+      ]
+    },
+    {
+      "id": "sad_trombone",
+      "canonical": "Sad trombone",
+      "era": "genz_core",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "sad trombone", "preferTitle": "sad trombone" }
+      ]
+    },
+    {
+      "id": "airhorn",
+      "canonical": "Airhorn",
+      "era": "genz_core",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "airhorn", "preferTitle": "airhorn" },
+        { "type": "myinstants_search", "query": "mlg airhorn", "preferTitle": "airhorn" }
+      ]
+    },
+    {
+      "id": "skibidi_toilet",
+      "canonical": "Skibidi Toilet",
+      "era": "genalpha",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "skibidi toilet", "preferTitle": "skibidi" },
+        { "type": "myinstants_search", "query": "skibidi dop dop yes yes", "preferTitle": "skibidi" }
+      ]
+    },
+    {
+      "id": "what_the_sigma",
+      "canonical": "Erm what the sigma",
+      "era": "genalpha",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "what the sigma", "preferTitle": "sigma" },
+        { "type": "tts_say", "text": "Erm, what the sigma", "voice": "Samantha" }
+      ]
+    },
+    {
+      "id": "ayo_pizza_here",
+      "canonical": "AYO THE PIZZA HERE",
+      "era": "genalpha",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "ayo the pizza here", "preferTitle": "pizza" },
+        { "type": "tts_say", "text": "Ayo, the pizza here", "voice": "Fred" }
+      ]
+    },
+    {
+      "id": "low_taper_fade",
+      "canonical": "Low taper fade",
+      "era": "genalpha",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "low taper fade", "preferTitle": "low taper fade" },
+        { "type": "tts_say", "text": "Imagine if Ninja got a low taper fade", "voice": "Alex" }
+      ]
+    },
+    {
+      "id": "six_seven",
+      "canonical": "6 7 chant",
+      "era": "genalpha",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "six seven meme", "preferTitle": "six seven" },
+        { "type": "myinstants_search", "query": "6 7 meme", "preferTitle": "6 7" },
+        { "type": "tts_say", "text": "six seven", "voice": "Fred" }
+      ]
+    },
+    {
+      "id": "ohio_final_boss",
+      "canonical": "Ohio final boss",
+      "era": "genalpha",
+      "maxDurationSeconds": 3,
+      "sources": [
+        { "type": "myinstants_search", "query": "ohio final boss", "preferTitle": "ohio" },
+        { "type": "myinstants_search", "query": "only in ohio", "preferTitle": "ohio" }
+      ]
+    },
+    {
+      "id": "fanum_tax",
+      "canonical": "Fanum Tax",
+      "era": "genalpha",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "fanum tax", "preferTitle": "fanum tax" },
+        { "type": "tts_say", "text": "Fanum tax", "voice": "Fred" }
+      ]
+    },
+    {
+      "id": "gyatt",
+      "canonical": "Gyatt",
+      "era": "genalpha",
+      "maxDurationSeconds": 2,
+      "sources": [
+        { "type": "myinstants_search", "query": "gyatt", "preferTitle": "gyatt" },
+        { "type": "tts_say", "text": "gyatt", "voice": "Fred" }
+      ]
+    }
+  ]
+}

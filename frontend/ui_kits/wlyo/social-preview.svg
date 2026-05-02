@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#08070f"/>
+  <circle cx="950" cy="145" r="280" fill="#ff2bd6" opacity="0.18"/>
+  <circle cx="250" cy="520" r="230" fill="#00f0ff" opacity="0.14"/>
+  <rect x="54" y="54" width="1092" height="522" rx="24" fill="#151124" stroke="#ff2bd6" stroke-width="4"/>
+  <text x="92" y="148" fill="#ff9f1c" font-family="Space Grotesk, Arial, sans-serif" font-size="32" font-weight="900">BRAINROT MAZE</text>
+  <text x="92" y="262" fill="#f7f0ff" font-family="Arial Black, Impact, sans-serif" font-size="86" font-weight="900">HOW BRAINROTTED</text>
+  <text x="92" y="358" fill="#f7f0ff" font-family="Arial Black, Impact, sans-serif" font-size="86" font-weight="900">ARE YOU?</text>
+  <text x="96" y="448" fill="#00f0ff" font-family="Space Grotesk, Arial, sans-serif" font-size="34" font-weight="800">Seed Flash. Maze Gates. Era Room. Vibe Report.</text>
+  <rect x="92" y="490" width="254" height="62" rx="12" fill="#39ff14"/>
+  <text x="219" y="532" text-anchor="middle" fill="#08070f" font-family="Space Grotesk, Arial, sans-serif" font-size="24" font-weight="900">ENTER MAZE</text>
+  <path d="M866 150c98 0 178 80 178 178s-80 178-178 178-178-80-178-178 80-178 178-178zm0 52c-69 0-126 57-126 126s57 126 126 126 126-57 126-126-57-126-126-126z" fill="#00f0ff" opacity="0.9"/>
+  <path d="M866 246l76 82-76 82-76-82 76-82z" fill="#ff2bd6"/>
+</svg>

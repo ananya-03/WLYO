@@ -1,0 +1,170 @@
+[
+  {
+    "id": "dial_up_modem",
+    "canonical": "Dial-up modem handshake",
+    "era": "boomer",
+    "audio": "/audio/dial_up_modem.mp3"
+  },
+  {
+    "id": "youve_got_mail",
+    "canonical": "You've got mail",
+    "era": "boomer",
+    "audio": "/audio/youve_got_mail.mp3"
+  },
+  {
+    "id": "lightsaber_whoosh",
+    "canonical": "Star Wars Kid lightsaber whoosh",
+    "era": "boomer",
+    "audio": "/audio/lightsaber_whoosh.mp3"
+  },
+  {
+    "id": "rickroll_intro",
+    "canonical": "Rickroll intro",
+    "era": "millennial",
+    "audio": "/audio/rickroll_intro.mp3"
+  },
+  {
+    "id": "leeroy_jenkins",
+    "canonical": "Leeroy Jenkins yell",
+    "era": "millennial",
+    "audio": "/audio/leeroy_jenkins.mp3"
+  },
+  {
+    "id": "numa_numa",
+    "canonical": "Numa Numa hook",
+    "era": "millennial",
+    "audio": "/audio/numa_numa.mp3"
+  },
+  {
+    "id": "trollface_laugh",
+    "canonical": "Trollface laugh",
+    "era": "millennial",
+    "audio": "/audio/trollface_laugh.mp3"
+  },
+  {
+    "id": "nyan_cat",
+    "canonical": "Nyan Cat",
+    "era": "millennial",
+    "audio": "/audio/nyan_cat.mp3"
+  },
+  {
+    "id": "doge_such_wow",
+    "canonical": "Doge such wow",
+    "era": "older_genz",
+    "audio": "/audio/doge_such_wow.mp3"
+  },
+  {
+    "id": "harambe",
+    "canonical": "Harambe",
+    "era": "older_genz",
+    "audio": "/audio/harambe.mp3"
+  },
+  {
+    "id": "wednesday_my_dudes",
+    "canonical": "It's Wednesday my dudes",
+    "era": "older_genz",
+    "audio": "/audio/wednesday_my_dudes.mp3"
+  },
+  {
+    "id": "we_are_number_one",
+    "canonical": "We Are Number One",
+    "era": "older_genz",
+    "audio": "/audio/we_are_number_one.mp3"
+  },
+  {
+    "id": "vine_boom",
+    "canonical": "Vine boom",
+    "era": "genz_core",
+    "audio": "/audio/vine_boom.mp3"
+  },
+  {
+    "id": "and_i_oop",
+    "canonical": "And I oop",
+    "era": "genz_core",
+    "audio": "/audio/and_i_oop.mp3"
+  },
+  {
+    "id": "ok_boomer",
+    "canonical": "OK Boomer",
+    "era": "genz_core",
+    "audio": "/audio/ok_boomer.mp3"
+  },
+  {
+    "id": "among_us_kill",
+    "canonical": "Among Us kill sound",
+    "era": "genz_core",
+    "audio": "/audio/among_us_kill.mp3"
+  },
+  {
+    "id": "to_be_continued",
+    "canonical": "To be continued",
+    "era": "genz_core",
+    "audio": "/audio/to_be_continued.mp3"
+  },
+  {
+    "id": "windows_xp_error",
+    "canonical": "Windows XP error",
+    "era": "genz_core",
+    "audio": "/audio/windows_xp_error.mp3"
+  },
+  {
+    "id": "sad_trombone",
+    "canonical": "Sad trombone",
+    "era": "genz_core",
+    "audio": "/audio/sad_trombone.mp3"
+  },
+  {
+    "id": "airhorn",
+    "canonical": "Airhorn",
+    "era": "genz_core",
+    "audio": "/audio/airhorn.mp3"
+  },
+  {
+    "id": "skibidi_toilet",
+    "canonical": "Skibidi Toilet",
+    "era": "genalpha",
+    "audio": "/audio/skibidi_toilet.mp3"
+  },
+  {
+    "id": "what_the_sigma",
+    "canonical": "Erm what the sigma",
+    "era": "genalpha",
+    "audio": "/audio/what_the_sigma.mp3"
+  },
+  {
+    "id": "ayo_pizza_here",
+    "canonical": "AYO THE PIZZA HERE",
+    "era": "genalpha",
+    "audio": "/audio/ayo_pizza_here.mp3"
+  },
+  {
+    "id": "low_taper_fade",
+    "canonical": "Low taper fade",
+    "era": "genalpha",
+    "audio": "/audio/low_taper_fade.mp3"
+  },
+  {
+    "id": "six_seven",
+    "canonical": "6 7 chant",
+    "era": "genalpha",
+    "audio": "/audio/six_seven.mp3"
+  },
+  {
+    "id": "ohio_final_boss",
+    "canonical": "Ohio final boss",
+    "era": "genalpha",
+    "audio": "/audio/ohio_final_boss.mp3"
+  },
+  {
+    "id": "fanum_tax",
+    "canonical": "Fanum Tax",
+    "era": "genalpha",
+    "audio": "/audio/fanum_tax.mp3"
+  },
+  {
+    "id": "gyatt",
+    "canonical": "Gyatt",
+    "era": "genalpha",
+    "audio": "/audio/gyatt.mp3"
+  }
+]
