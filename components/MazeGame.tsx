@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef, useLayoutEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Era, GeneratedGate, GeneratedRun, Position, SelectedAnswer, TextAnswerOption } from "@/lib/game-store";
 
@@ -23,6 +23,7 @@ const TILE_SIZE = 40;
 const PLAYER_SIZE = 28;
 const JUDGMENT_SOUND = "/audio/windows_xp_error.mp3";
 const JUDGMENT_MEME = "/memes/trollface.webp";
+const TOTAL_GATES = 7;
 
 function buildGateInstances(run: GeneratedRun): Gate[] {
   return run.maze.gatePositions.map((pos, index) => ({
@@ -58,6 +59,23 @@ function answerPayload(gate: GeneratedGate, option: TextAnswerOption): SelectedA
   };
 }
 
+function judgmentCopy(misses: number): string {
+  if (misses <= 1) return "wrong timeline. keep moving";
+  if (misses === 2) return "second miss logged. the maze is watching";
+  if (misses === 3) return "third miss. no reset, just receipts";
+  if (misses === 4) return "four misses. dial-up aura detected";
+  if (misses === 5) return "five misses. browser history is in ruins";
+  if (misses === 6) return "six misses. meme age rising fast";
+  return "seven misses. fossil timeline confirmed";
+}
+
+function heatLabel(misses: number): string {
+  if (misses < 3) return "memory stable";
+  if (misses < 5) return "humiliation online";
+  if (misses < 7) return "timeline collapse";
+  return "fossil mode";
+}
+
 export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameProps) {
   const maze = useMemo(() => parseMaze(run.maze.layout), [run.maze.layout]);
   const [playerPos, setPlayerPos] = useState<Position>(run.maze.start);
@@ -73,20 +91,33 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
   const [audioUnavailable, setAudioUnavailable] = useState(false);
   const [strikes, setStrikes] = useState(0);
   const [judgment, setJudgment] = useState<string | null>(null);
-  const [restartRequired, setRestartRequired] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const touchStartRef = useRef<Position | null>(null);
+  const timersRef = useRef<number[]>([]);
+  const firstAnswerButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  const schedule = useCallback((callback: () => void, delay: number) => {
+    const timer = window.setTimeout(() => {
+      timersRef.current = timersRef.current.filter((item) => item !== timer);
+      callback();
+    }, delay);
+    timersRef.current.push(timer);
+  }, []);
 
   useEffect(() => {
     return () => {
       audioRef.current?.pause();
       audioRef.current = null;
+      timersRef.current.forEach((timer) => window.clearTimeout(timer));
+      timersRef.current = [];
     };
   }, []);
 
   useEffect(() => {
     audioRef.current?.pause();
     audioRef.current = null;
+    timersRef.current.forEach((timer) => window.clearTimeout(timer));
+    timersRef.current = [];
     setPlayerPos(run.maze.start);
     setDirection("down");
     setIsMoving(false);
@@ -100,8 +131,14 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
     setAudioUnavailable(false);
     setStrikes(0);
     setJudgment(null);
-    setRestartRequired(false);
-  }, [run]);
+  }, [run, schedule]);
+
+  // Move focus into the gate modal when the question appears so keyboard users can answer
+  useLayoutEffect(() => {
+    if (showQuestion && firstAnswerButtonRef.current) {
+      firstAnswerButtonRef.current.focus();
+    }
+  }, [showQuestion]);
 
   const playClip = useCallback(async (clipUrl?: string, options: { affectsGateAudio?: boolean } = {}): Promise<boolean> => {
     const affectsGateAudio = options.affectsGateAudio ?? true;
@@ -150,7 +187,7 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
   }, []);
 
   const movePlayer = useCallback((dx: number, dy: number) => {
-    if (activeGate || gameCompleted || restartRequired) return;
+    if (activeGate || gameCompleted) return;
 
     const newX = playerPos.x + dx;
     const newY = playerPos.y + dy;
@@ -162,12 +199,12 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
 
     const gateAtNewPos = gates.find((gate) => gate.position.x === newX && gate.position.y === newY && !gate.isOpen);
     if (gateAtNewPos) {
-      setActiveGate(gateAtNewPos);
-      setAudioUnavailable(false);
-      setJudgment(null);
-      if (gateAtNewPos.gateData.type === "image") {
-        setShowStimulus(true);
-        setTimeout(() => {
+          setActiveGate(gateAtNewPos);
+          setAudioUnavailable(false);
+          setJudgment(null);
+          if (gateAtNewPos.gateData.type === "image") {
+            setShowStimulus(true);
+        schedule(() => {
           setShowStimulus(false);
           setShowQuestion(true);
         }, 700);
@@ -180,7 +217,7 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
     if (maze[newY]?.[newX] === "exit") {
       if (gates.every((gate) => gate.isOpen)) {
         setGameCompleted(true);
-        setTimeout(() => onComplete(answers), 500);
+        schedule(() => onComplete(answers), 500);
         return;
       }
     }
@@ -188,9 +225,9 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
     if (canMoveTo(newX, newY)) {
       setIsMoving(true);
       setPlayerPos({ x: newX, y: newY });
-      setTimeout(() => setIsMoving(false), 150);
+      schedule(() => setIsMoving(false), 150);
     }
-  }, [activeGate, answers, canMoveTo, gameCompleted, gates, maze, onComplete, playerPos, restartRequired]);
+  }, [activeGate, answers, canMoveTo, gameCompleted, gates, maze, onComplete, playerPos, schedule]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -256,20 +293,15 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
 
     if (option.isCorrect) {
       setJudgment("memory accepted");
-      setTimeout(() => openGate(activeGate), 650);
+      schedule(() => openGate(activeGate), 650);
       return;
     }
 
     const nextStrikes = strikes + 1;
     setStrikes(nextStrikes);
-    setJudgment(nextStrikes >= 3 ? "three strikes. the maze has judged you" : "wrong timeline. judgment issued");
+    setJudgment(judgmentCopy(nextStrikes));
     void playClip(JUDGMENT_SOUND, { affectsGateAudio: false });
-
-    if (nextStrikes >= 3) {
-      setTimeout(() => setRestartRequired(true), 900);
-    } else {
-      setTimeout(() => openGate(activeGate), 900);
-    }
+    schedule(() => openGate(activeGate), Math.min(1200, 750 + nextStrikes * 90));
   };
 
   const mazeWidth = maze[0].length * TILE_SIZE;
@@ -283,6 +315,9 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
   const fallbackStimulus = activeGate?.gateData.fallbackStimulus;
   const flashImage = activeStimulus?.kind === "image" ? activeStimulus.imageUrl : null;
   const fallbackImage = audioUnavailable && fallbackStimulus?.kind === "image" ? fallbackStimulus.imageUrl : null;
+  const heat = Math.min(100, Math.round((strikes / TOTAL_GATES) * 100));
+  const heatCopy = heatLabel(strikes);
+  const currentCheckpoint = Math.min(gates.filter((gate) => gate.isOpen).length + 1, TOTAL_GATES);
 
   return (
     <div
@@ -302,7 +337,15 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
               />
             ))}
           </div>
-          <div className="font-mono text-xs text-warning">STRIKES {strikes}/3</div>
+          <div className="font-mono text-xs text-warning">MISFIRES {strikes}/{TOTAL_GATES}</div>
+          <div className="mt-1 h-1.5 w-32 overflow-hidden rounded-full bg-ink">
+            <motion.div
+              className="h-full rounded-full bg-warning"
+              animate={{ width: `${heat}%` }}
+              transition={{ type: "spring", stiffness: 180, damping: 24 }}
+            />
+          </div>
+          <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-lavender/50">{heatCopy}</div>
         </div>
         <div className="text-right font-mono text-sm text-lavender">
           GATES {gates.filter((gate) => gate.isOpen).length}/{gates.length}
@@ -413,23 +456,52 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
             {showQuestion && (
               <motion.div
                 initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                className="max-h-[calc(100dvh-2rem)] overflow-y-auto w-full max-w-2xl rounded-lg border-2 border-lavender/30 bg-ink p-4 md:max-h-[calc(100dvh-3rem)] md:p-5"
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                  rotate: strikes >= 5 ? [-0.35, 0.35, -0.15, 0] : 0,
+                  boxShadow: strikes >= 3
+                    ? "0 0 0 1px rgba(255,159,28,0.45), 0 0 36px rgba(255,159,28,0.24)"
+                    : "0 0 0 1px rgba(186,169,255,0.18)",
+                }}
+                transition={{ type: "spring", stiffness: 190, damping: 24 }}
+                className="relative max-h-[calc(100dvh-2rem)] w-full max-w-2xl overflow-y-auto overflow-x-hidden rounded-lg border-2 border-lavender/30 bg-ink p-4 md:max-h-[calc(100dvh-3rem)] md:p-5"
               >
+                <div className="mb-4 flex min-w-0 items-center justify-between gap-3 border-b border-lavender/15 pb-3">
+                  <div className="min-w-0">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-lavender/55">Checkpoint {currentCheckpoint}/{TOTAL_GATES}</p>
+                    <p className="truncate font-mono text-xs uppercase text-warning">{heatCopy}</p>
+                  </div>
+                  <div className="w-28 shrink-0">
+                    <div className="mb-1 flex justify-between font-mono text-[10px] text-lavender/50">
+                      <span>miss</span>
+                      <span>{strikes}</span>
+                    </div>
+                    <div className="h-1.5 overflow-hidden rounded-full bg-void">
+                      <motion.div
+                        className="h-full rounded-full bg-warning"
+                        animate={{ width: `${heat}%` }}
+                        transition={{ type: "spring", stiffness: 180, damping: 24 }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 {activeGate.gateData.type === "audio" && activeStimulus?.kind === "audio" && (
                   <div className="mb-4 sm:mb-6">
                     <button
                       type="button"
+                      aria-label="Play audio clue"
                       onClick={() => void playClip(activeStimulus.audioUrl)}
-                      className="flex w-full items-center justify-center gap-3 rounded-lg border-2 border-electric bg-electric/20 py-3 font-bold text-electric transition-colors hover:bg-electric/30 sm:py-4"
+                      className="flex min-w-0 w-full items-center justify-center gap-3 rounded-lg border-2 border-electric bg-electric/20 px-3 py-3 font-bold text-electric transition-colors hover:bg-electric/30 focus:outline-none focus:ring-2 focus:ring-electric focus:ring-offset-2 focus:ring-offset-void sm:py-4"
                     >
                       <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
-                      TAP TO PLAY AUDIO
+                      <span className="min-w-0 break-words">Play Audio Clue</span>
                     </button>
                     <p className="mt-2 text-center text-sm text-lavender/60">
-                      {audioUnavailable ? activeGate.gateData.fallbackPrompt : "listen once. choose the text that matches"}
+                      {audioUnavailable ? activeGate.gateData.fallbackPrompt : "Listen, then choose the matching text."}
                     </p>
                   </div>
                 )}
@@ -445,7 +517,7 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
                 </h3>
 
                 <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3">
-                  {activeGate.gateData.options.map((option) => {
+                  {activeGate.gateData.options.map((option, optionIndex) => {
                     const optionStateClass = selectedOption === option.id
                       ? option.isCorrect
                         ? "border-acid bg-acid/30 text-acid"
@@ -457,46 +529,33 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
                     return (
                       <button
                         key={option.id}
+                        ref={optionIndex === 0 ? firstAnswerButtonRef : undefined}
                         type="button"
                         onClick={() => handleAnswer(option)}
                         disabled={!!selectedOption}
-                        className={`block min-h-24 w-full rounded-lg border-2 p-4 text-left text-sm font-bold transition-all focus:outline-none focus:ring-2 focus:ring-electric focus:ring-offset-2 focus:ring-offset-void disabled:cursor-default md:min-h-28 md:text-base ${optionStateClass}`}
+                        className={`block min-h-24 w-full min-w-0 overflow-hidden rounded-lg border-2 p-4 text-left text-sm font-bold leading-snug transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-void disabled:cursor-default md:min-h-28 md:text-base ${optionStateClass}`}
                       >
-                        {option.text}
+                        <span className="block whitespace-normal break-words">{option.text}</span>
                       </button>
                     );
                   })}
                 </div>
 
                 {judgment && (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-4 flex items-center justify-center gap-3 text-center text-lavender">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    className="mt-4 flex min-w-0 items-center justify-center gap-3 text-center text-lavender"
+                    aria-live="polite"
+                  >
                     {!activeGate.gateData.options.find((option) => option.id === selectedOption)?.isCorrect && (
-                      <img src={JUDGMENT_MEME} alt="" className="h-12 w-12 rounded border border-warning/40 object-cover" />
+                      <img src={JUDGMENT_MEME} alt="trollface judges your answer" className="h-12 w-12 rounded border border-warning/40 object-cover" />
                     )}
-                    <span>{judgment}</span>
+                    <span className="min-w-0 break-words">{judgment}</span>
                   </motion.div>
                 )}
               </motion.div>
             )}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {restartRequired && strikes >= 3 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-50 flex items-center justify-center bg-void p-6">
-            <div className="max-w-md text-center">
-              <img src={JUDGMENT_MEME} alt="" className="mx-auto mb-5 h-32 w-32 rounded-lg border-2 border-warning object-cover" />
-              <h2 className="mb-3 font-display text-4xl text-warning">JUDGED</h2>
-              <p className="mb-6 text-lavender">three wrong answers. the maze demands a fresh timeline</p>
-              <button
-                type="button"
-                onClick={onRestart}
-                className="rounded-lg border-2 border-electric bg-electric/20 px-6 py-3 font-bold text-electric hover:bg-electric/30"
-              >
-                RUN IT BACK
-              </button>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -512,29 +571,29 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
         )}
       </AnimatePresence>
 
-      <div className="absolute bottom-20 right-4 z-20 md:hidden">
+      <div className="absolute bottom-20 right-4 z-20 md:hidden" aria-label="D-pad controls" role="group">
         <div className="grid h-32 w-32 grid-cols-3 gap-1">
           <div />
-          <button type="button" onTouchStart={() => movePlayer(0, -1)} className="flex items-center justify-center rounded-lg border border-lavender/30 bg-ink/80 active:bg-magenta/50">
-            <svg className="h-6 w-6 text-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button type="button" aria-label="Move up" onTouchStart={() => movePlayer(0, -1)} className="flex items-center justify-center rounded-lg border border-lavender/30 bg-ink/80 active:bg-magenta/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-1 focus-visible:ring-offset-void">
+            <svg className="h-6 w-6 text-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
             </svg>
           </button>
           <div />
-          <button type="button" onTouchStart={() => movePlayer(-1, 0)} className="flex items-center justify-center rounded-lg border border-lavender/30 bg-ink/80 active:bg-magenta/50">
-            <svg className="h-6 w-6 text-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button type="button" aria-label="Move left" onTouchStart={() => movePlayer(-1, 0)} className="flex items-center justify-center rounded-lg border border-lavender/30 bg-ink/80 active:bg-magenta/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-1 focus-visible:ring-offset-void">
+            <svg className="h-6 w-6 text-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <div className="rounded-lg border border-lavender/20 bg-ink/40" />
-          <button type="button" onTouchStart={() => movePlayer(1, 0)} className="flex items-center justify-center rounded-lg border border-lavender/30 bg-ink/80 active:bg-magenta/50">
-            <svg className="h-6 w-6 text-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button type="button" aria-label="Move right" onTouchStart={() => movePlayer(1, 0)} className="flex items-center justify-center rounded-lg border border-lavender/30 bg-ink/80 active:bg-magenta/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-1 focus-visible:ring-offset-void">
+            <svg className="h-6 w-6 text-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
           <div />
-          <button type="button" onTouchStart={() => movePlayer(0, 1)} className="flex items-center justify-center rounded-lg border border-lavender/30 bg-ink/80 active:bg-magenta/50">
-            <svg className="h-6 w-6 text-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button type="button" aria-label="Move down" onTouchStart={() => movePlayer(0, 1)} className="flex items-center justify-center rounded-lg border border-lavender/30 bg-ink/80 active:bg-magenta/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-1 focus-visible:ring-offset-void">
+            <svg className="h-6 w-6 text-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </button>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Space+Grotesk:wght@300;400;500;600;700&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -11,7 +12,7 @@
   --offwhite: #f7f0ff;
   --lavender: #b9aee8;
   --font-inter: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-anton: Impact, "Arial Black", ui-sans-serif, sans-serif;
+  --font-anton: "Bagel Fat One", Impact, "Arial Black", ui-sans-serif, sans-serif;
   
   /* Semantic tokens */
   --background: var(--void);
@@ -40,7 +41,7 @@
   
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-anton), Impact, sans-serif;
-  --font-comic: "Comic Sans MS", cursive, sans-serif;
+  --font-comic: "Comic Neue", "Comic Sans MS", cursive, sans-serif;
 }
 
 * {

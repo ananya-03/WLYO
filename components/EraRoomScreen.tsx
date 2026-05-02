@@ -12,6 +12,31 @@ interface EraRoomScreenProps {
   onContinue: () => void;
 }
 
+// Stable random positions — computed once at module load, never on render
+const OLDER_GENZ_PARTICLES = Array.from({ length: 12 }, () => ({
+  left: 10 + Math.random() * 80,
+  top: 10 + Math.random() * 80,
+  dur: 2 + Math.random() * 2,
+}));
+
+const GENZ_CORE_FLOATERS = Array.from({ length: 15 }, (_, i) => ({
+  left: Math.random() * 90,
+  top: Math.random() * 90,
+  dur: 2 + Math.random(),
+  label: (["?", "!", "SUS", "W", "L", "$"] as const)[i % 6],
+  color: (["var(--magenta)", "var(--acid)", "var(--electric)"] as const)[i % 3],
+}));
+
+const GEN_ALPHA_STICKERS = Array.from({ length: 20 }, (_, i) => ({
+  left: Math.random() * 90,
+  top: Math.random() * 90,
+  dur: 1 + Math.random(),
+  rotateTarget: Math.random() * 360,
+  dx: Math.random() * 20 - 10,
+  color: (["var(--magenta)", "var(--acid)", "var(--electric)", "var(--warning)", "var(--lavender)"] as const)[i % 5],
+  label: (["RIZZ", "GYATT", "OHIO", "SIGMA", "W", "SKIBIDI", "MEWING", "FR FR"] as const)[i % 8],
+}));
+
 export function EraRoomScreen({ era, title, estimatedAge, roast, onContinue }: EraRoomScreenProps) {
   const [phase, setPhase] = useState<"blackout" | "title" | "age" | "roast" | "ready">("blackout");
   const config = eraConfig[era];
@@ -26,7 +51,7 @@ export function EraRoomScreen({ era, title, estimatedAge, roast, onContinue }: E
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  // Era-specific background chaos
+  // Era-specific background chaos — uses module-level stable constants to avoid rerenders
   const getEraBackground = () => {
     const baseElements = (
       <motion.div
@@ -34,10 +59,8 @@ export function EraRoomScreen({ era, title, estimatedAge, roast, onContinue }: E
         style={{
           background: `radial-gradient(ellipse at center, ${config.color}20 0%, transparent 60%)`,
         }}
-        animate={{
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 2, repeat: Infinity }}
+        animate={{ opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 2, repeat: Infinity, ease: [0.22, 1, 0.36, 1] }}
       />
     );
 
@@ -46,12 +69,11 @@ export function EraRoomScreen({ era, title, estimatedAge, roast, onContinue }: E
         return (
           <>
             {baseElements}
-            {/* Dial-up / CRT aesthetic */}
             <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent,transparent_3px,rgba(255,159,28,0.03)_3px,rgba(255,159,28,0.03)_6px)]" />
             <motion.div
               className="absolute inset-0 bg-gradient-to-b from-warning/10 to-transparent"
               animate={{ opacity: [0.1, 0.2, 0.1] }}
-              transition={{ duration: 3, repeat: Infinity }}
+              transition={{ duration: 3, repeat: Infinity, ease: [0.22, 1, 0.36, 1] }}
             />
           </>
         );
@@ -59,7 +81,6 @@ export function EraRoomScreen({ era, title, estimatedAge, roast, onContinue }: E
         return (
           <>
             {baseElements}
-            {/* Nyan rainbow trails */}
             {[...Array(6)].map((_, i) => (
               <motion.div
                 key={i}
@@ -71,7 +92,7 @@ export function EraRoomScreen({ era, title, estimatedAge, roast, onContinue }: E
                   }, transparent)`,
                 }}
                 animate={{ x: ["-100%", "200%"] }}
-                transition={{ duration: 4, repeat: Infinity, delay: i * 0.2 }}
+                transition={{ duration: 4, repeat: Infinity, delay: i * 0.2, ease: "linear" }}
               />
             ))}
           </>
@@ -80,23 +101,18 @@ export function EraRoomScreen({ era, title, estimatedAge, roast, onContinue }: E
         return (
           <>
             {baseElements}
-            {/* Floating RIP/memorial shapes */}
-            {[...Array(12)].map((_, i) => (
+            {OLDER_GENZ_PARTICLES.map((p, i) => (
               <motion.div
                 key={i}
                 className="absolute w-3 h-3 sm:w-4 sm:h-4 rounded-full"
                 style={{
-                  left: `${10 + Math.random() * 80}%`,
-                  top: `${10 + Math.random() * 80}%`,
+                  left: `${p.left}%`,
+                  top: `${p.top}%`,
                   backgroundColor: "var(--acid)",
                   opacity: 0.3,
                 }}
-                animate={{
-                  y: [0, -30, 0],
-                  opacity: [0.2, 0.5, 0.2],
-                  scale: [1, 1.3, 1],
-                }}
-                transition={{ duration: 2 + Math.random() * 2, repeat: Infinity, delay: i * 0.15 }}
+                animate={{ y: [0, -30, 0], opacity: [0.2, 0.5, 0.2], scale: [1, 1.3, 1] }}
+                transition={{ duration: p.dur, repeat: Infinity, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
               />
             ))}
           </>
@@ -105,24 +121,15 @@ export function EraRoomScreen({ era, title, estimatedAge, roast, onContinue }: E
         return (
           <>
             {baseElements}
-            {/* Sus/stonks floating indicators */}
-            {[...Array(15)].map((_, i) => (
+            {GENZ_CORE_FLOATERS.map((p, i) => (
               <motion.div
                 key={i}
                 className="absolute text-lg sm:text-xl font-bold opacity-30"
-                style={{
-                  left: `${Math.random() * 90}%`,
-                  top: `${Math.random() * 90}%`,
-                  color: ["var(--magenta)", "var(--acid)", "var(--electric)"][i % 3],
-                }}
-                animate={{
-                  y: [0, -20, 0],
-                  rotate: [0, 10, -10, 0],
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{ duration: 2 + Math.random(), repeat: Infinity, delay: i * 0.1 }}
+                style={{ left: `${p.left}%`, top: `${p.top}%`, color: p.color }}
+                animate={{ y: [0, -20, 0], rotate: [0, 10, -10, 0], scale: [1, 1.2, 1] }}
+                transition={{ duration: p.dur, repeat: Infinity, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               >
-                {["?", "!", "SUS", "W", "L", "$"][i % 6]}
+                {p.label}
               </motion.div>
             ))}
           </>
@@ -131,25 +138,15 @@ export function EraRoomScreen({ era, title, estimatedAge, roast, onContinue }: E
         return (
           <>
             {baseElements}
-            {/* Chaotic brainrot stickers */}
-            {[...Array(20)].map((_, i) => (
+            {GEN_ALPHA_STICKERS.map((p, i) => (
               <motion.div
                 key={i}
                 className="absolute text-xs sm:text-sm font-comic font-bold opacity-40"
-                style={{
-                  left: `${Math.random() * 90}%`,
-                  top: `${Math.random() * 90}%`,
-                  color: ["var(--magenta)", "var(--acid)", "var(--electric)", "var(--warning)", "var(--lavender)"][i % 5],
-                }}
-                animate={{
-                  y: [0, -40, 0],
-                  x: [0, Math.random() * 20 - 10, 0],
-                  rotate: [0, Math.random() * 360],
-                  scale: [1, 1.5, 1],
-                }}
-                transition={{ duration: 1 + Math.random(), repeat: Infinity, delay: i * 0.08 }}
+                style={{ left: `${p.left}%`, top: `${p.top}%`, color: p.color }}
+                animate={{ y: [0, -40, 0], x: [0, p.dx, 0], rotate: [0, p.rotateTarget], scale: [1, 1.5, 1] }}
+                transition={{ duration: p.dur, repeat: Infinity, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
-                {["RIZZ", "GYATT", "OHIO", "SIGMA", "W", "SKIBIDI", "MEWING", "FR FR"][i % 8]}
+                {p.label}
               </motion.div>
             ))}
           </>
@@ -302,6 +299,7 @@ export function EraRoomScreen({ era, title, estimatedAge, roast, onContinue }: E
       {phase === "title" && (
         <motion.div
           className="fixed inset-0 pointer-events-none"
+          aria-hidden="true"
           animate={{
             x: [0, -5, 5, -3, 3, 0],
             y: [0, 3, -3, 2, -2, 0],

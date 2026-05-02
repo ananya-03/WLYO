@@ -58,10 +58,22 @@ assert.match(
   "judgment audio should not mark gate audio as unavailable"
 );
 
+assert.doesNotMatch(
+  source,
+  /restartRequired|three wrong answers|RUN IT BACK/,
+  "wrong answers should not block maze completion after the third miss"
+);
+
 assert.match(
   source,
-  /strikes\s*>=\s*3/,
-  "wrong answers should trigger a three-strike restart flow"
+  /MISFIRES\s+\{strikes\}\/\{TOTAL_GATES\}/,
+  "miss count should continue through all seven checkpoints"
+);
+
+assert.match(
+  source,
+  /aria-live="polite"/,
+  "judgment feedback should be announced without stealing focus"
 );
 
 assert.match(

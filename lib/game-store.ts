@@ -656,26 +656,36 @@ export function calculateResults(answers: SelectedAnswer[]): {
     (acc, answer) => {
       const deltas = answer.axisDeltas ?? { rizz: 0, aura: 0, sigma: 0 };
       const pull = answer.eraPull ?? eraPull[answer.era] ?? 0;
-      acc.eraPull += pull;
-      acc.rizz += deltas.rizz;
-      acc.aura += deltas.aura;
-      acc.sigma += deltas.sigma;
-      acc.correct += answer.isCorrect ? 1 : 0;
+      if (answer.isCorrect) {
+        acc.eraPull += pull;
+        acc.rizz += deltas.rizz;
+        acc.aura += deltas.aura;
+        acc.sigma += deltas.sigma;
+        acc.correct += 1;
+      } else {
+        acc.eraPull -= 2;
+        acc.rizz -= 1;
+        acc.aura -= 1;
+        acc.sigma += 1;
+        acc.incorrect += 1;
+      }
       return acc;
     },
-    { eraPull: 0, rizz: 0, aura: 0, sigma: 0, correct: 0 }
+    { eraPull: 0, rizz: 0, aura: 0, sigma: 0, correct: 0, incorrect: 0 }
   );
 
   const finalEra = scoreToEra(totals.eraPull);
-  const accuracy = answers.length ? totals.correct / answers.length : 0;
+  const answeredCount = Math.max(answers.length, 1);
+  const accuracy = totals.correct / answeredCount;
+  const missRate = totals.incorrect / answeredCount;
   const scores = {
-    rizz: clamp(Math.round(18 + totals.rizz * 8 + accuracy * 12), 10, 100),
-    aura: clamp(Math.round(18 + totals.aura * 8 + accuracy * 12), 10, 100),
-    sigma: clamp(Math.round(18 + totals.sigma * 8 + accuracy * 10), 10, 100),
+    rizz: clamp(Math.round(18 + totals.rizz * 8 + accuracy * 18 - missRate * 24), 10, 100),
+    aura: clamp(Math.round(18 + totals.aura * 8 + accuracy * 18 - missRate * 22), 10, 100),
+    sigma: clamp(Math.round(18 + totals.sigma * 8 + accuracy * 12 - missRate * 12), 10, 100),
     era: clamp(Math.round(((totals.eraPull + 16) / 32) * 90 + 10), 10, 100),
   };
   const chaosLean = Math.round((scores.rizz + scores.aura - scores.sigma) / 55);
-  const estimatedAge = clamp(eraConfig[finalEra].midpoint - chaosLean, 12, 60);
+  const estimatedAge = clamp(eraConfig[finalEra].midpoint + totals.incorrect * 4 - totals.correct - chaosLean, 12, 60);
   const strongestAxisIndex = scores.rizz >= scores.aura && scores.rizz >= scores.sigma
     ? 0
     : scores.aura >= scores.sigma

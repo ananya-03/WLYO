@@ -13,19 +13,22 @@ interface LandingScreenProps {
 export function LandingScreen({ audioEnabled, onToggleAudio, onStart }: LandingScreenProps) {
   return (
     <motion.div
-      className="relative min-h-screen min-h-[100dvh] flex flex-col items-center justify-center px-4 py-8 overflow-hidden"
+      className="relative min-h-screen min-h-[100dvh] flex flex-col items-center justify-between px-4 py-8 overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.1 }}
     >
       <PortalBackground />
 
+      {/* Top spacer to keep content vertically centered with justify-between */}
+      <div aria-hidden="true" />
+
       <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mb-4 sm:mb-8"
         >
           <h1
@@ -119,7 +122,7 @@ export function LandingScreen({ audioEnabled, onToggleAudio, onStart }: LandingS
 
       {/* Footer */}
       <motion.footer
-        className="absolute bottom-3 sm:bottom-4 left-0 right-0 text-center text-[10px] sm:text-xs text-lavender/50 px-4"
+        className="relative z-10 mt-8 sm:mt-10 text-center text-[10px] sm:text-xs text-lavender/50 px-4 pb-3 sm:pb-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8, duration: 0.4 }}

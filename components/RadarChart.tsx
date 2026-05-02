@@ -15,6 +15,10 @@ export function RadarChart({ scores }: RadarChartProps) {
   const labels = ["Rizz", "Aura", "Sigma", "Era"];
   const values = [scores.rizz, scores.aura, scores.sigma, scores.era];
   const colors = ["var(--acid)", "var(--magenta)", "var(--electric)", "var(--warning)"];
+
+  // Dominant axis determines polygon accent color
+  const dominantIndex = values.indexOf(Math.max(...values));
+  const dominantColor = colors[dominantIndex];
   
   const centerX = 120;
   const centerY = 120;
@@ -73,16 +77,16 @@ export function RadarChart({ scores }: RadarChartProps) {
           );
         })}
 
-        {/* Data polygon */}
+        {/* Data polygon — colored by dominant axis */}
         <motion.path
           d={pathD}
-          fill="var(--magenta)"
-          fillOpacity={0.2}
-          stroke="var(--magenta)"
+          fill={dominantColor}
+          fillOpacity={0.15}
+          stroke={dominantColor}
           strokeWidth={2}
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         />
 
         {/* Data points */}

@@ -41,8 +41,9 @@ export function VibeReportScreen({
     try {
       setDownloadStatus("rendering");
       const html2canvas = (await import("html2canvas")).default;
+      const voidColor = getComputedStyle(document.documentElement).getPropertyValue("--void").trim() || "#08070f";
       const canvas = await html2canvas(shareCardElement, {
-        backgroundColor: "#08070f",
+        backgroundColor: voidColor,
         logging: false,
         scale: Math.min(2, window.devicePixelRatio || 1.5),
         useCORS: true,
@@ -96,34 +97,37 @@ export function VibeReportScreen({
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            {/* Title card */}
-            <div className="bg-ink/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-lavender/20">
-              <p className="text-lavender text-xs sm:text-sm uppercase tracking-widest mb-1 sm:mb-2">
+            {/* Title card — primary card, full treatment */}
+            <div
+              className="rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2"
+              style={{ borderColor: `${config.color}60`, background: `linear-gradient(135deg, var(--ink) 0%, ${config.color}10 100%)` }}
+            >
+              <p className="text-lavender/70 text-xs sm:text-sm uppercase tracking-widest mb-1 sm:mb-2">
                 Your Verdict
               </p>
               <h2
                 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold leading-tight"
                 style={{
                   color: config.color,
-                  textShadow: `0 0 15px ${config.color}`,
+                  textShadow: `0 0 20px ${config.color}, 0 0 40px ${config.color}40`,
                 }}
               >
                 {title}
               </h2>
             </div>
 
-            {/* Age + Era - side by side */}
+            {/* Age + Era - side by side, plain tiles */}
             <div className="grid grid-cols-2 gap-2 sm:gap-4">
-              <div className="bg-ink/80 backdrop-blur-sm rounded-lg sm:rounded-xl p-3 sm:p-4 border border-lavender/20">
-                <p className="text-lavender text-[10px] sm:text-xs uppercase tracking-widest mb-0.5 sm:mb-1">
+              <div className="bg-ink rounded-lg sm:rounded-xl p-3 sm:p-4 border border-lavender/15">
+                <p className="text-lavender/60 text-[10px] sm:text-xs uppercase tracking-widest mb-0.5 sm:mb-1">
                   Internet Age
                 </p>
                 <p className="font-display text-3xl sm:text-4xl text-offwhite">
                   {estimatedAge}
                 </p>
               </div>
-              <div className="bg-ink/80 backdrop-blur-sm rounded-lg sm:rounded-xl p-3 sm:p-4 border border-lavender/20">
-                <p className="text-lavender text-[10px] sm:text-xs uppercase tracking-widest mb-0.5 sm:mb-1">
+              <div className="bg-ink rounded-lg sm:rounded-xl p-3 sm:p-4 border border-lavender/15">
+                <p className="text-lavender/60 text-[10px] sm:text-xs uppercase tracking-widest mb-0.5 sm:mb-1">
                   Era
                 </p>
                 <p
@@ -135,23 +139,23 @@ export function VibeReportScreen({
               </div>
             </div>
 
-            {/* Radar chart - hidden on very small screens, shown after */}
-            <div className="hidden overflow-visible rounded-xl border border-lavender/20 bg-ink/80 p-4 backdrop-blur-sm sm:block sm:rounded-2xl sm:p-6">
-              <p className="text-lavender text-xs sm:text-sm uppercase tracking-widest mb-3 sm:mb-4 text-center">
+            {/* Radar chart — shown on all screen sizes */}
+            <div className="overflow-visible rounded-xl border border-lavender/20 bg-ink p-4 sm:rounded-2xl sm:p-6">
+              <p className="text-lavender/60 text-xs sm:text-sm uppercase tracking-widest mb-3 sm:mb-4 text-center">
                 Vibe Analysis
               </p>
               <RadarChart scores={scores} />
             </div>
 
-            {/* Axis blurbs - 2x2 grid */}
+            {/* Axis bars — compact strip, no card wrapper */}
             <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {Object.entries(scores).map(([key, value]) => (
                 <div
                   key={key}
-                  className="bg-ink/50 rounded-lg p-2 sm:p-3 border border-lavender/10"
+                  className="rounded-lg p-2 sm:p-3 border border-lavender/10 bg-ink/60"
                 >
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-lavender text-[10px] sm:text-xs uppercase tracking-wider">
+                    <span className="text-lavender/70 text-[10px] sm:text-xs uppercase tracking-wider">
                       {key}
                     </span>
                     <span className="text-offwhite text-sm sm:text-base font-bold">{value}</span>
@@ -160,16 +164,16 @@ export function VibeReportScreen({
                     <motion.div
                       className="h-full rounded-full"
                       style={{
-                        backgroundColor: {
+                        backgroundColor: ({
                           rizz: "var(--acid)",
                           aura: "var(--magenta)",
                           sigma: "var(--electric)",
                           era: "var(--warning)",
-                        }[key],
+                        } as Record<string, string>)[key],
                       }}
                       initial={{ width: 0 }}
                       animate={{ width: `${value}%` }}
-                      transition={{ delay: 0.5, duration: 0.8 }}
+                      transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     />
                   </div>
                 </div>

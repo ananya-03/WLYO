@@ -18,10 +18,10 @@ interface ShareCardProps {
 export function ShareCard({ title, era, estimatedAge, scores, roast }: ShareCardProps) {
   const config = eraConfig[era];
   const colors = {
-    rizz: "#39ff14",
-    aura: "#ff2bd6",
-    sigma: "#00f0ff",
-    era: "#ff9f1c",
+    rizz: "var(--acid)",
+    aura: "var(--magenta)",
+    sigma: "var(--electric)",
+    era: "var(--warning)",
   };
 
   return (

@@ -57,7 +57,7 @@ export function PortalBackground() {
               scale: {
                 duration: 3 + i,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: [0.22, 1, 0.36, 1],
               },
             }}
           />
@@ -84,7 +84,7 @@ export function PortalBackground() {
             duration: p.duration,
             repeat: Infinity,
             delay: p.delay,
-            ease: "easeInOut",
+            ease: [0.22, 1, 0.36, 1],
           }}
         />
       ))}
@@ -103,7 +103,7 @@ export function PortalBackground() {
           transition={{
             duration: 4,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: [0.22, 1, 0.36, 1],
           }}
         />
       </div>

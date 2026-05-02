@@ -154,8 +154,8 @@ const oldAnswers = runA.gates.map((gate) => {
   };
 });
 
-const newAnswers = runA.gates.map((gate) => {
-  const option = gate.options.reduce((newest, item) => item.eraPull > newest.eraPull ? item : newest, gate.options[0]);
+const correctAnswers = runA.gates.map((gate) => {
+  const option = gate.options.find((item) => item.isCorrect) ?? gate.options[0];
   return {
     gateId: gate.id,
     optionId: option.id,
@@ -166,6 +166,40 @@ const newAnswers = runA.gates.map((gate) => {
   };
 });
 
+const allWrongAnswers = runA.gates.map((gate) => {
+  const option = gate.options.find((item) => !item.isCorrect) ?? gate.options[0];
+  return {
+    gateId: gate.id,
+    optionId: option.id,
+    era: option.era,
+    isCorrect: false,
+    eraPull: option.eraPull,
+    axisDeltas: option.axisDeltas,
+  };
+});
+
+const twoWrongAnswers = runA.gates.map((gate, index) => {
+  const option = index < 2
+    ? gate.options.find((item) => !item.isCorrect) ?? gate.options[0]
+    : gate.options.find((item) => item.isCorrect) ?? gate.options[0];
+  return {
+    gateId: gate.id,
+    optionId: option.id,
+    era: option.era,
+    isCorrect: Boolean(option.isCorrect) && index >= 2,
+    eraPull: option.eraPull,
+    axisDeltas: option.axisDeltas,
+  };
+});
+
 assert.equal(game.calculateResults(oldAnswers).finalEra, "boomer", "oldest route should reach Boomer room");
-assert.equal(game.calculateResults(newAnswers).finalEra, "gen-alpha", "newest route should reach Gen Alpha room");
-assert.deepEqual(game.calculateResults(newAnswers), game.calculateResults(newAnswers), "result calculation should be deterministic");
+assert.equal(game.calculateResults(allWrongAnswers).finalEra, "boomer", "all-wrong route should still finish as an old meme age");
+assert.ok(
+  game.calculateResults(allWrongAnswers).estimatedAge > game.calculateResults(twoWrongAnswers).estimatedAge,
+  "two misses should produce a younger meme age than seven misses"
+);
+assert.ok(
+  game.calculateResults(correctAnswers).scores.rizz > game.calculateResults(allWrongAnswers).scores.rizz,
+  "correct answers should produce stronger meme fluency scores than misses"
+);
+assert.deepEqual(game.calculateResults(correctAnswers), game.calculateResults(correctAnswers), "result calculation should be deterministic");
