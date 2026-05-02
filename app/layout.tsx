@@ -14,20 +14,20 @@ const anton = Anton({
 });
 
 export const metadata: Metadata = {
-  title: "BRAINROT MAZE - How Brainrotted Are You?",
-  description: "Sprint through meme-recognition gates, land in your era room, and discover your true brainrot level. A chaotic phonk arcade experience.",
-  keywords: ["meme", "quiz", "brainrot", "gen z", "internet culture", "phonk"],
-  authors: [{ name: "BRAINROT MAZE" }],
+  title: "WLYO - Who Let You Online?",
+  description: "Sprint through meme-recognition gates, land in your era room, and discover what generation of internet you belong to. A chaotic phonk arcade experience.",
+  keywords: ["meme", "quiz", "brainrot", "gen z", "internet culture", "phonk", "wlyo"],
+  authors: [{ name: "WLYO" }],
   openGraph: {
-    title: "BRAINROT MAZE - How Brainrotted Are You?",
-    description: "Sprint through meme-recognition gates and discover your true brainrot level.",
+    title: "WLYO - Who Let You Online?",
+    description: "Sprint through meme-recognition gates and discover what era of internet you belong to.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BRAINROT MAZE - How Brainrotted Are You?",
-    description: "Sprint through meme-recognition gates and discover your true brainrot level.",
+    title: "WLYO - Who Let You Online?",
+    description: "Sprint through meme-recognition gates and discover what era of internet you belong to.",
   },
   robots: {
     index: true,

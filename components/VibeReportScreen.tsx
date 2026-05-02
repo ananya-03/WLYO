@@ -41,7 +41,7 @@ export function VibeReportScreen({
       });
       
       const link = document.createElement("a");
-      link.download = "brainrot-maze-result.png";
+      link.download = "wlyo-result.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
     } catch (error) {
@@ -68,7 +68,7 @@ export function VibeReportScreen({
             VIBE REPORT
           </h1>
           <p className="text-lavender/60 text-sm uppercase tracking-widest">
-            Your brainrot diagnosis is complete
+            Your internet era diagnosis is complete
           </p>
         </motion.div>
 
@@ -122,7 +122,7 @@ export function VibeReportScreen({
             {/* Radar chart */}
             <div className="bg-ink/80 backdrop-blur-sm rounded-2xl p-6 border border-lavender/20">
               <p className="text-lavender text-sm uppercase tracking-widest mb-4 text-center">
-                Brainrot Analysis
+                Vibe Analysis
               </p>
               <RadarChart scores={scores} />
             </div>
@@ -213,7 +213,7 @@ export function VibeReportScreen({
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
       >
-        BRAINROT MAZE - Take the Brainrot Test at brainrotmaze.com
+        WLYO - Who Let You Online? at wlyo.app
       </motion.footer>
     </div>
   );

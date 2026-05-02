@@ -49,7 +49,7 @@ export function ShareCard({ title, era, estimatedAge, scores, roast }: ShareCard
         <div className="flex justify-between items-start mb-4">
           <div>
             <h1 className="font-display text-2xl md:text-3xl text-offwhite tracking-tight">
-              BRAINROT MAZE
+              WLYO
             </h1>
             <p className="text-lavender text-xs uppercase tracking-widest">
               Vibe Report
@@ -111,10 +111,10 @@ export function ShareCard({ title, era, estimatedAge, scores, roast }: ShareCard
         {/* Footer */}
         <div className="flex justify-between items-center mt-4 pt-4 border-t border-lavender/20">
           <p className="text-electric text-sm font-bold">
-            Take the Brainrot Test
+            Who Let You Online?
           </p>
           <p className="text-lavender/60 text-xs">
-            brainrotmaze.com
+            wlyo.app
           </p>
         </div>
       </div>

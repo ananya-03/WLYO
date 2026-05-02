@@ -25,28 +25,28 @@ export function LandingScreen({ audioEnabled, onToggleAudio, onStart }: LandingS
         >
           <h1 
             className="font-display text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight glitch text-glow-magenta"
-            data-text="BRAINROT"
+            data-text="WLYO"
           >
-            <span className="text-offwhite">BRAINROT</span>
+            <span className="text-offwhite">WLYO</span>
           </h1>
           <motion.h2 
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mt-2 chromatic"
+            className="font-display text-xl md:text-2xl lg:text-3xl font-bold tracking-tight mt-2 chromatic"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <span className="text-electric">MAZE</span>
+            <span className="text-electric">Who Let You Online?</span>
           </motion.h2>
         </motion.div>
 
         {/* Core question */}
         <motion.p
-          className="text-xl md:text-2xl lg:text-3xl text-lavender mb-12 font-medium"
+          className="text-lg md:text-xl lg:text-2xl text-lavender mb-12 font-medium"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          How brainrotted are you?
+          Find out what era of internet you belong to
         </motion.p>
 
         {/* CTA Button */}
@@ -62,7 +62,7 @@ export function LandingScreen({ audioEnabled, onToggleAudio, onStart }: LandingS
           }}
           whileTap={{ scale: 0.95 }}
         >
-          ENTER MAZE
+          ENTER THE VOID
         </motion.button>
 
         {/* Audio toggle */}
