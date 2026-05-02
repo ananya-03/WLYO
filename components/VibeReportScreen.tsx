@@ -31,6 +31,49 @@ export function VibeReportScreen({
   const config = eraConfig[era];
   const [downloadStatus, setDownloadStatus] = useState<"idle" | "rendering" | "error">("idle");
 
+  const canvasToBlob = (canvas: HTMLCanvasElement) =>
+    new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob((blob) => {
+        if (blob) resolve(blob);
+        else reject(new Error("Share card image could not be created."));
+      }, "image/png");
+    });
+
+  const downloadCanvas = async (canvas: HTMLCanvasElement) => {
+    const blob = await canvasToBlob(canvas);
+    const file = new File([blob], "wlyo-result.png", { type: "image/png" });
+    const canShareFile = navigator.maxTouchPoints > 0 && navigator.canShare?.({ files: [file] });
+
+    if (canShareFile) {
+      try {
+        await navigator.share({
+          files: [file],
+          title: "WLYO Vibe Report",
+          text: "My WLYO vibe report",
+        });
+        setDownloadStatus("idle");
+        return;
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          setDownloadStatus("idle");
+          return;
+        }
+      }
+    }
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.download = "wlyo-result.png";
+    link.href = url;
+    link.rel = "noopener";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    setDownloadStatus("idle");
+  };
+
   const handleDownload = async () => {
     const shareCardElement = document.getElementById("share-card");
     if (!shareCardElement) {
@@ -42,18 +85,33 @@ export function VibeReportScreen({
       setDownloadStatus("rendering");
       const html2canvas = (await import("html2canvas")).default;
       const voidColor = getComputedStyle(document.documentElement).getPropertyValue("--void").trim() || "#08070f";
-      const canvas = await html2canvas(shareCardElement, {
-        backgroundColor: voidColor,
-        logging: false,
-        scale: Math.min(2, window.devicePixelRatio || 1.5),
-        useCORS: true,
-      });
 
-      const link = document.createElement("a");
-      link.download = "wlyo-result.png";
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-      setDownloadStatus("idle");
+      const exportCard = shareCardElement.cloneNode(true) as HTMLElement;
+      exportCard.id = "share-card-export";
+      exportCard.style.position = "fixed";
+      exportCard.style.left = "-10000px";
+      exportCard.style.top = "0";
+      exportCard.style.width = "1200px";
+      exportCard.style.height = "630px";
+      exportCard.style.maxWidth = "none";
+      exportCard.style.transform = "none";
+      exportCard.style.pointerEvents = "none";
+      document.body.appendChild(exportCard);
+
+      try {
+        const canvas = await html2canvas(exportCard, {
+          backgroundColor: voidColor,
+          logging: false,
+          scale: 1,
+          useCORS: true,
+          windowWidth: 1200,
+          windowHeight: 630,
+        });
+
+        await downloadCanvas(canvas);
+      } finally {
+        exportCard.remove();
+      }
     } catch (error) {
       setDownloadStatus("error");
       console.error("Failed to generate share card:", error);
@@ -62,7 +120,7 @@ export function VibeReportScreen({
 
   return (
     <motion.div
-      className="relative min-h-screen min-h-[100dvh] flex flex-col items-center overflow-x-hidden overflow-y-auto bg-void px-3 sm:px-4 py-6 sm:py-8"
+      className="relative min-h-screen min-h-[100dvh] flex flex-col items-center overflow-x-hidden overflow-y-auto bg-void px-3 py-3 sm:px-6 sm:py-5 lg:px-8"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -73,23 +131,23 @@ export function VibeReportScreen({
         style={{ backgroundColor: config.color }}
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl">
+      <div className="relative z-10 mx-auto w-full max-w-7xl pb-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-6 sm:mb-8"
+          className="mb-4 text-center sm:mb-5"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl text-electric mb-1 sm:mb-2">
+          <h1 className="mb-1 font-display text-2xl text-electric sm:mb-2 sm:text-3xl md:text-4xl">
             VIBE REPORT
           </h1>
-          <p className="text-lavender/60 text-xs sm:text-sm uppercase tracking-widest">
+          <p className="mx-auto max-w-[28rem] text-xs uppercase tracking-widest text-lavender/60 sm:text-sm">
             Your internet era diagnosis is complete
           </p>
         </motion.div>
 
         {/* Mobile-first layout - stack on mobile, grid on larger */}
-        <div className="flex flex-col gap-4 sm:gap-6 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(320px,520px)] lg:gap-8">
+        <div className="flex flex-col gap-4 sm:gap-5 lg:grid lg:grid-cols-[minmax(460px,1fr)_minmax(360px,560px)] lg:items-start lg:gap-8 xl:gap-10">
           {/* Stats column */}
           <motion.div
             className="flex min-w-0 flex-col gap-3 sm:gap-4 lg:gap-6"
@@ -99,14 +157,14 @@ export function VibeReportScreen({
           >
             {/* Title card — primary card, full treatment */}
             <div
-              className="rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2"
+              className="rounded-xl border-2 p-4 sm:rounded-2xl sm:p-6"
               style={{ borderColor: `${config.color}60`, background: `linear-gradient(135deg, var(--ink) 0%, ${config.color}10 100%)` }}
             >
               <p className="text-lavender/70 text-xs sm:text-sm uppercase tracking-widest mb-1 sm:mb-2">
                 Your Verdict
               </p>
               <h2
-                className="font-display text-2xl sm:text-3xl md:text-4xl font-bold leading-tight"
+                className="break-words font-display text-[1.65rem] font-bold leading-none sm:text-3xl md:text-[2rem] xl:text-4xl"
                 style={{
                   color: config.color,
                   textShadow: `0 0 20px ${config.color}, 0 0 40px ${config.color}40`,
@@ -140,7 +198,7 @@ export function VibeReportScreen({
             </div>
 
             {/* Radar chart — shown on all screen sizes */}
-            <div className="overflow-visible rounded-xl border border-lavender/20 bg-ink p-4 sm:rounded-2xl sm:p-6">
+            <div className="hidden overflow-visible rounded-xl border border-lavender/20 bg-ink p-3 sm:block sm:rounded-2xl sm:p-6">
               <p className="text-lavender/60 text-xs sm:text-sm uppercase tracking-widest mb-3 sm:mb-4 text-center">
                 Vibe Analysis
               </p>
@@ -152,7 +210,7 @@ export function VibeReportScreen({
               {Object.entries(scores).map(([key, value]) => (
                 <div
                   key={key}
-                  className="rounded-lg p-2 sm:p-3 border border-lavender/10 bg-ink/60"
+                  className="min-w-0 rounded-lg border border-lavender/10 bg-ink/60 p-2 sm:p-3"
                 >
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-lavender/70 text-[10px] sm:text-xs uppercase tracking-wider">
@@ -183,7 +241,7 @@ export function VibeReportScreen({
 
           {/* Share card column */}
           <motion.div
-            className="flex min-w-0 flex-col gap-3 sm:gap-4 lg:gap-6"
+            className="flex min-w-0 flex-col items-center gap-3 sm:gap-4 lg:items-stretch lg:gap-6"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
@@ -197,11 +255,11 @@ export function VibeReportScreen({
             />
 
             {/* Actions - stack on mobile, row on tablet+ */}
-            <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
+            <div className="flex w-full max-w-[560px] flex-col gap-2 sm:flex-row sm:gap-4 lg:max-w-none">
               <motion.button
                 onClick={handleDownload}
                 disabled={downloadStatus === "rendering"}
-                className="btn-primary flex min-w-0 flex-1 items-center justify-center gap-2 py-3 text-center text-sm disabled:cursor-wait disabled:opacity-70 sm:py-4 sm:text-base"
+                className="btn-primary flex min-h-12 min-w-0 flex-1 items-center justify-center gap-2 px-4 py-3 text-center text-sm disabled:cursor-wait disabled:opacity-70 sm:py-4 sm:text-base"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -213,7 +271,7 @@ export function VibeReportScreen({
 
               <motion.button
                 onClick={onRestart}
-                className="btn-secondary flex min-w-0 flex-1 items-center justify-center gap-2 py-3 text-center text-sm sm:py-4 sm:text-base"
+                className="btn-secondary flex min-h-12 min-w-0 flex-1 items-center justify-center gap-2 px-4 py-3 text-center text-sm sm:py-4 sm:text-base"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -234,7 +292,7 @@ export function VibeReportScreen({
 
       {/* Footer */}
       <motion.footer
-        className="mt-8 sm:mt-12 text-center text-[10px] sm:text-xs text-lavender/40"
+        className="relative z-10 mt-2 pb-4 text-center text-[10px] text-lavender/40 sm:text-xs"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}

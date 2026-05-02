@@ -27,7 +27,7 @@ export function ShareCard({ title, era, estimatedAge, scores, roast }: ShareCard
   return (
     <div
       id="share-card"
-      className="relative w-full aspect-[1200/630] rounded-xl sm:rounded-2xl overflow-hidden"
+      className="relative aspect-[1200/630] w-full max-w-[560px] overflow-hidden rounded-xl sm:rounded-2xl"
       style={{
         background: `linear-gradient(135deg, #08070f 0%, #151124 50%, #08070f 100%)`,
       }}
@@ -44,10 +44,10 @@ export function ShareCard({ title, era, estimatedAge, scores, roast }: ShareCard
       </div>
 
       {/* Content */}
-      <div className="absolute inset-0 p-3 sm:p-4 md:p-6 flex flex-col">
+      <div className="absolute inset-0 flex min-w-0 flex-col p-3 sm:p-4 md:p-5">
         {/* Header */}
-        <div className="flex justify-between items-start mb-2 sm:mb-4">
-          <div>
+        <div className="mb-2 flex min-w-0 items-start justify-between gap-3 sm:mb-3">
+          <div className="min-w-0">
             <h1 className="font-display text-lg sm:text-2xl md:text-3xl text-offwhite tracking-tight">
               WLYO
             </h1>
@@ -64,11 +64,11 @@ export function ShareCard({ title, era, estimatedAge, scores, roast }: ShareCard
         </div>
 
         {/* Main content */}
-        <div className="flex-1 flex gap-2 sm:gap-4">
+        <div className="flex min-h-0 flex-1 gap-2 sm:gap-4">
           {/* Left - Title and age */}
-          <div className="flex-1 flex flex-col justify-center min-w-0">
+          <div className="flex min-w-0 flex-1 flex-col justify-center">
             <h2
-              className="mb-1 overflow-hidden font-display text-xl font-bold leading-none [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] sm:mb-2 sm:text-3xl md:text-4xl lg:text-5xl"
+              className="mb-1 overflow-hidden break-words font-display text-lg font-bold leading-none [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] sm:mb-2 sm:text-2xl md:text-4xl lg:text-5xl"
               style={{
                 color: config.color,
                 textShadow: `0 0 20px ${config.color}`,
@@ -76,17 +76,17 @@ export function ShareCard({ title, era, estimatedAge, scores, roast }: ShareCard
             >
               {title}
             </h2>
-            <div className="flex items-baseline gap-1 sm:gap-2 mb-2 sm:mb-4">
-              <span className="text-lavender text-[10px] sm:text-sm">Internet Age:</span>
+            <div className="mb-2 flex min-w-0 items-baseline gap-1 sm:mb-3 sm:gap-2">
+              <span className="shrink-0 text-lavender text-[10px] sm:text-sm">Internet Age:</span>
               <span className="font-display text-2xl sm:text-4xl text-offwhite">{estimatedAge}</span>
             </div>
-            <p className="text-lavender/80 text-[10px] sm:text-sm font-comic italic line-clamp-2">
+            <p className="overflow-hidden break-words text-[10px] font-comic italic leading-snug text-lavender/80 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] sm:text-sm">
               {`"${roast}"`}
             </p>
           </div>
 
           {/* Right - Stats bars */}
-          <div className="w-20 sm:w-28 md:w-32 flex flex-col justify-center gap-1 sm:gap-2">
+          <div className="flex w-20 shrink-0 flex-col justify-center gap-1 sm:w-28 sm:gap-2 md:w-32">
             {Object.entries(scores).map(([key, value]) => (
               <div key={key} className="flex flex-col gap-0.5 sm:gap-1">
                 <div className="flex justify-between text-[8px] sm:text-xs">
@@ -109,11 +109,11 @@ export function ShareCard({ title, era, estimatedAge, scores, roast }: ShareCard
         </div>
 
         {/* Footer */}
-        <div className="flex justify-between items-center mt-2 sm:mt-4 pt-2 sm:pt-4 border-t border-lavender/20">
-          <p className="text-electric text-[10px] sm:text-sm font-bold">
+        <div className="mt-2 flex min-w-0 items-center justify-between gap-3 border-t border-lavender/20 pt-2 sm:mt-3 sm:pt-3">
+          <p className="min-w-0 truncate text-electric text-[10px] font-bold sm:text-sm">
             Who Let You Online?
           </p>
-          <p className="text-lavender/60 text-[8px] sm:text-xs">
+          <p className="shrink-0 text-lavender/60 text-[8px] sm:text-xs">
             wlyo.app
           </p>
         </div>
