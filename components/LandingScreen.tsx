@@ -51,8 +51,19 @@ export function LandingScreen({ audioEnabled, onToggleAudio, onStart }: LandingS
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          Find out what era of internet you belong to
+          Navigate the maze. Open the gates. Discover your era.
         </motion.p>
+
+        {/* Instructions */}
+        <motion.div
+          className="text-sm text-lavender/60 mb-6 flex flex-col items-center gap-1"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.4 }}
+        >
+          <span className="hidden md:block">Use WASD or Arrow Keys to move</span>
+          <span className="md:hidden">Use the D-Pad or swipe to move</span>
+        </motion.div>
 
         {/* CTA Button */}
         <motion.button
@@ -67,7 +78,7 @@ export function LandingScreen({ audioEnabled, onToggleAudio, onStart }: LandingS
           }}
           whileTap={{ scale: 0.95 }}
         >
-          ENTER THE VOID
+          ENTER THE MAZE
         </motion.button>
 
         {/* Audio toggle */}

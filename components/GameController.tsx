@@ -3,14 +3,11 @@
 import { useState, useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
 import { LandingScreen } from "./LandingScreen";
-import { SeedFlashScreen } from "./SeedFlashScreen";
-import { MazeHubScreen } from "./MazeHubScreen";
-import { GateScreen } from "./GateScreen";
+import { MazeGame } from "./MazeGame";
 import { EraRoomScreen } from "./EraRoomScreen";
 import { VibeReportScreen } from "./VibeReportScreen";
 import {
   initialGameState,
-  memeGates,
   calculateResults,
   type GameState,
   type GameScreen,
@@ -24,71 +21,33 @@ export function GameController() {
     roast: string;
   } | null>(null);
 
-  const currentGate = memeGates[gameState.currentGateIndex];
-
   const navigateTo = useCallback((screen: GameScreen) => {
     setGameState((prev) => ({ ...prev, currentScreen: screen }));
   }, []);
 
   const handleStart = useCallback(() => {
-    navigateTo("seed-flash");
+    navigateTo("maze");
   }, [navigateTo]);
 
   const handleToggleAudio = useCallback(() => {
     setGameState((prev) => ({ ...prev, audioEnabled: !prev.audioEnabled }));
   }, []);
 
-  const handleSeedFlashComplete = useCallback(() => {
-    navigateTo("gate");
-  }, [navigateTo]);
-
-  const handleReplay = useCallback(() => {
-    setGameState((prev) => ({ ...prev, replayUsed: true }));
-  }, []);
-
-  const handleGateSelect = useCallback(
-    (optionId: string, era: Era, isCorrect: boolean) => {
-      const newAnswer = {
-        gateId: currentGate.id,
-        optionId,
-        era,
-        isCorrect,
-      };
-
-      setGameState((prev) => {
-        const newSelectedAnswers = [...prev.selectedAnswers, newAnswer];
-        const newCompletedGates = [...prev.completedGates, prev.currentGateIndex];
-
-        // Check if this was the last gate
-        const isLastGate = prev.currentGateIndex >= memeGates.length - 1;
-
-        if (isLastGate) {
-          // Calculate results
-          const calcResults = calculateResults(newSelectedAnswers);
-          setResults({ title: calcResults.title, roast: calcResults.roast });
-
-          return {
-            ...prev,
-            selectedAnswers: newSelectedAnswers,
-            completedGates: newCompletedGates,
-            scores: calcResults.scores,
-            finalEra: calcResults.finalEra,
-            estimatedAge: calcResults.estimatedAge,
-            currentScreen: "era-room" as GameScreen,
-          };
-        }
-
-        return {
-          ...prev,
-          selectedAnswers: newSelectedAnswers,
-          completedGates: newCompletedGates,
-          currentScreen: "seed-flash" as GameScreen,
-          currentGateIndex: prev.currentGateIndex + 1,
-          replayUsed: false,
-        };
-      });
+  const handleMazeComplete = useCallback(
+    (answers: { gateId: number; optionId: string; era: Era; isCorrect: boolean }[]) => {
+      const calcResults = calculateResults(answers);
+      setResults({ title: calcResults.title, roast: calcResults.roast });
+      
+      setGameState((prev) => ({
+        ...prev,
+        selectedAnswers: answers,
+        scores: calcResults.scores,
+        finalEra: calcResults.finalEra,
+        estimatedAge: calcResults.estimatedAge,
+        currentScreen: "era-room" as GameScreen,
+      }));
     },
-    [currentGate]
+    []
   );
 
   const handleEraRoomContinue = useCallback(() => {
@@ -111,27 +70,14 @@ export function GameController() {
             onStart={handleStart}
           />
         );
-      case "seed-flash":
-        return currentGate ? (
-          <SeedFlashScreen
-            key={`seed-flash-${gameState.currentGateIndex}`}
-            gate={currentGate}
-            replayUsed={gameState.replayUsed}
-            onComplete={handleSeedFlashComplete}
-            onReplay={handleReplay}
+      case "maze":
+        return (
+          <MazeGame
+            key="maze"
+            onComplete={handleMazeComplete}
+            audioEnabled={gameState.audioEnabled}
           />
-        ) : null;
-      case "gate":
-        return currentGate ? (
-          <GateScreen
-            key={`gate-${gameState.currentGateIndex}`}
-            gate={currentGate}
-            gateIndex={gameState.currentGateIndex}
-            totalGates={memeGates.length}
-            completedGates={gameState.completedGates}
-            onSelect={handleGateSelect}
-          />
-        ) : null;
+        );
       case "era-room":
         return gameState.finalEra && results ? (
           <EraRoomScreen
