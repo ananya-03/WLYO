@@ -3,41 +3,41 @@
 export type GameScreen = 
   | "landing" 
   | "seed-flash" 
-  | "maze-hub" 
-  | "fork-gate" 
-  | "audio-door" 
+  | "gate"
   | "era-room" 
   | "vibe-report";
 
 export type Era = "boomer" | "millennial" | "older-gen-z" | "gen-z-core" | "gen-alpha";
 
-export type GateType = "fork" | "audio";
+export type GateType = "image" | "audio";
 
 export interface MemeOption {
   id: string;
-  text?: string;
-  imageUrl?: string;
+  text: string;
   era: Era;
-  points: number; // How many points this choice gives
+  isCorrect?: boolean; // The "right" answer for that meme
 }
 
 export interface MemeGate {
   id: number;
   type: GateType;
-  prompt: string;
-  options: MemeOption[];
-  // For fork gates - seed image to flash
+  // For image gates - the meme shown during seed flash
   seedImage?: string;
-  // For audio doors - audio clip URL
+  seedDuration?: number; // How long to show (default 700ms)
+  // For audio gates
   audioUrl?: string;
-  audioFallbackPrompt?: string; // If audio can't play
+  audioFallbackText?: string;
+  // The question asked after flash/audio
+  prompt: string;
+  // Answer options
+  options: MemeOption[];
 }
 
 export interface GameState {
   currentScreen: GameScreen;
   currentGateIndex: number;
   completedGates: number[];
-  selectedAnswers: { gateId: number; optionId: string; era: Era; points: number }[];
+  selectedAnswers: { gateId: number; optionId: string; era: Era; isCorrect: boolean }[];
   scores: {
     rizz: number;
     aura: number;
@@ -69,100 +69,104 @@ export const initialGameState: GameState = {
   reducedMotion: false,
 };
 
-// Mixed gates with both Fork Gates and Audio Doors
+// 7 Gates - mix of image and audio recognition
 export const memeGates: MemeGate[] = [
-  // Gate 1: Fork Gate - Classic meme recognition
+  // Gate 1: Image Gate - "This is Fine" dog
   {
     id: 1,
-    type: "fork",
-    prompt: "This dog is surrounded by flames. What does he say?",
+    type: "image",
     seedImage: "https://i.imgflip.com/30b1gx.jpg",
+    seedDuration: 700,
+    prompt: "What does the dog say?",
     options: [
-      { id: "1a", text: "This is fine.", era: "older-gen-z", points: 10 },
-      { id: "1b", text: "Not stonks", era: "gen-z-core", points: 5 },
-      { id: "1c", text: "Le epic fail", era: "millennial", points: 3 },
-      { id: "1d", text: "Skibidi fire", era: "gen-alpha", points: 2 },
+      { id: "1a", text: "This is fine.", era: "older-gen-z", isCorrect: true },
+      { id: "1b", text: "Not stonks", era: "gen-z-core" },
+      { id: "1c", text: "Le epic fail", era: "millennial" },
+      { id: "1d", text: "I forgor", era: "gen-alpha" },
     ],
   },
-  // Gate 2: Audio Door - Sound recognition
+  // Gate 2: Audio Gate - Vine boom
   {
     id: 2,
     type: "audio",
-    prompt: "What sound is this from?",
     audioUrl: "/audio/vine-boom.mp3",
-    audioFallbackPrompt: "BOOM! What dramatic sound effect is this?",
+    audioFallbackText: "BOOM! *dramatic bass*",
+    prompt: "What sound effect is this?",
     options: [
-      { id: "2a", text: "Vine Boom", era: "gen-z-core", points: 10 },
-      { id: "2b", text: "Windows XP", era: "millennial", points: 3 },
-      { id: "2c", text: "MLG Airhorn", era: "older-gen-z", points: 5 },
-      { id: "2d", text: "Skibidi Toilet", era: "gen-alpha", points: 2 },
+      { id: "2a", text: "Vine Boom", era: "gen-z-core", isCorrect: true },
+      { id: "2b", text: "Windows XP Error", era: "millennial" },
+      { id: "2c", text: "MLG Airhorn", era: "older-gen-z" },
+      { id: "2d", text: "Fanum Tax Sound", era: "gen-alpha" },
     ],
   },
-  // Gate 3: Fork Gate
+  // Gate 3: Image Gate - Harambe
   {
     id: 3,
-    type: "fork",
-    prompt: "What happened to Harambe?",
-    seedImage: "https://i.imgflip.com/1jgrgn.jpg",
+    type: "image",
+    seedImage: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Harambe_Memorial_at_Cincinnati_Zoo.jpg/220px-Harambe_Memorial_at_Cincinnati_Zoo.jpg",
+    seedDuration: 700,
+    prompt: "Who did you just see?",
     options: [
-      { id: "3a", text: "He got justice", era: "older-gen-z", points: 10 },
-      { id: "3b", text: "Fanum taxed", era: "gen-alpha", points: 2 },
-      { id: "3c", text: "Got yeeted", era: "gen-z-core", points: 5 },
-      { id: "3d", text: "Became a legend", era: "millennial", points: 8 },
+      { id: "3a", text: "Harambe", era: "older-gen-z", isCorrect: true },
+      { id: "3b", text: "King Kong", era: "boomer" },
+      { id: "3c", text: "Monke", era: "gen-z-core" },
+      { id: "3d", text: "Diddy", era: "gen-alpha" },
     ],
   },
-  // Gate 4: Audio Door
+  // Gate 4: Audio Gate - Rickroll
   {
     id: 4,
     type: "audio",
-    prompt: "Complete the lyrics...",
-    audioUrl: "/audio/rick-roll.mp3",
-    audioFallbackPrompt: "Never gonna give you...",
+    audioUrl: "/audio/rickroll.mp3",
+    audioFallbackText: "Never gonna give you up, never gonna let you down...",
+    prompt: "Complete the lyrics: Never gonna give you...",
     options: [
-      { id: "4a", text: "Up!", era: "millennial", points: 10 },
-      { id: "4b", text: "Rizz!", era: "gen-alpha", points: 2 },
-      { id: "4c", text: "The aux!", era: "gen-z-core", points: 3 },
-      { id: "4d", text: "Peace!", era: "boomer", points: 5 },
+      { id: "4a", text: "Up!", era: "millennial", isCorrect: true },
+      { id: "4b", text: "Rizz!", era: "gen-alpha" },
+      { id: "4c", text: "The aux!", era: "gen-z-core" },
+      { id: "4d", text: "My number!", era: "boomer" },
     ],
   },
-  // Gate 5: Fork Gate
+  // Gate 5: Image Gate - Among Us
   {
     id: 5,
-    type: "fork",
-    prompt: "When something is extremely suspicious...",
+    type: "image",
     seedImage: "https://i.imgflip.com/4acd7j.png",
+    seedDuration: 600,
+    prompt: "When someone is acting weird, they are...",
     options: [
-      { id: "5a", text: "SUS", era: "gen-z-core", points: 10 },
-      { id: "5b", text: "Sketch", era: "millennial", points: 5 },
-      { id: "5c", text: "Ohio behavior", era: "gen-alpha", points: 8 },
-      { id: "5d", text: "Weird flex", era: "older-gen-z", points: 6 },
+      { id: "5a", text: "SUS", era: "gen-z-core", isCorrect: true },
+      { id: "5b", text: "Sketch", era: "millennial" },
+      { id: "5c", text: "Ohio", era: "gen-alpha" },
+      { id: "5d", text: "Trolling", era: "older-gen-z" },
     ],
   },
-  // Gate 6: Audio Door
+  // Gate 6: Audio Gate - Oh No TikTok
   {
     id: 6,
     type: "audio",
-    prompt: "What meme does this sound belong to?",
     audioUrl: "/audio/oh-no.mp3",
-    audioFallbackPrompt: "Oh no... Oh no... Oh no no no no no!",
+    audioFallbackText: "Oh no... Oh no... Oh no no no no no!",
+    prompt: "This sound is from...",
     options: [
-      { id: "6a", text: "TikTok Oh No", era: "gen-z-core", points: 10 },
-      { id: "6b", text: "Vine Compilation", era: "older-gen-z", points: 5 },
-      { id: "6c", text: "Nyan Cat", era: "millennial", points: 3 },
-      { id: "6d", text: "Skibidi Bop", era: "gen-alpha", points: 2 },
+      { id: "6a", text: "TikTok Oh No", era: "gen-z-core", isCorrect: true },
+      { id: "6b", text: "A scary movie", era: "boomer" },
+      { id: "6c", text: "Vine", era: "older-gen-z" },
+      { id: "6d", text: "Skibidi Toilet", era: "gen-alpha" },
     ],
   },
-  // Gate 7: Fork Gate - Final boss
+  // Gate 7: Image Gate - Sigma/Gigachad
   {
     id: 7,
-    type: "fork",
-    prompt: "What is peak sigma male behavior?",
-    seedImage: "https://i.imgflip.com/5c7lwq.png",
+    type: "image",
+    seedImage: "https://i.kym-cdn.com/entries/icons/original/000/026/152/gigachad.jpg",
+    seedDuration: 500,
+    prompt: "This man is known as...",
     options: [
-      { id: "7a", text: "Mewing", era: "gen-alpha", points: 10 },
-      { id: "7b", text: "Grinding in silence", era: "gen-z-core", points: 8 },
-      { id: "7c", text: "Trolling the libs", era: "boomer", points: 3 },
-      { id: "7d", text: "Planking", era: "millennial", points: 2 },
+      { id: "7a", text: "Gigachad", era: "gen-z-core", isCorrect: true },
+      { id: "7b", text: "The Rock", era: "millennial" },
+      { id: "7c", text: "Sigma Male", era: "gen-alpha" },
+      { id: "7d", text: "Some guy", era: "boomer" },
     ],
   },
 ];
@@ -171,44 +175,38 @@ export const memeGates: MemeGate[] = [
 export const eraConfig: Record<Era, { 
   name: string; 
   ageRange: string; 
-  description: string;
   color: string;
-  bgGradient: string;
+  bgClass: string;
 }> = {
   boomer: {
     name: "Digital Dinosaur",
     ageRange: "45+",
-    description: "You remember when the internet made dial-up noises",
-    color: "#ff9f1c",
-    bgGradient: "from-warning/30 via-warning/10 to-transparent",
+    color: "var(--warning)",
+    bgClass: "from-warning/30 via-warning/10 to-transparent",
   },
   millennial: {
     name: "Rage Comic Veteran",
     ageRange: "28-44",
-    description: "You survived the trollface era and came out with PTSD",
-    color: "#00f0ff",
-    bgGradient: "from-electric/30 via-electric/10 to-transparent",
+    color: "var(--electric)",
+    bgClass: "from-electric/30 via-electric/10 to-transparent",
   },
   "older-gen-z": {
     name: "Vine Archaeologist",
     ageRange: "22-27",
-    description: "RIP Vine, RIP Harambe, RIP your attention span",
-    color: "#39ff14",
-    bgGradient: "from-acid/30 via-acid/10 to-transparent",
+    color: "var(--acid)",
+    bgClass: "from-acid/30 via-acid/10 to-transparent",
   },
   "gen-z-core": {
     name: "Certified Zoomer",
     ageRange: "16-21",
-    description: "Your brainrot is perfectly marinated",
-    color: "#ff2bd6",
-    bgGradient: "from-magenta/30 via-magenta/10 to-transparent",
+    color: "var(--magenta)",
+    bgClass: "from-magenta/30 via-magenta/10 to-transparent",
   },
   "gen-alpha": {
     name: "Skibidi Overlord",
     ageRange: "10-15",
-    description: "Ohio rizz gyatt fanum tax mewing bop",
-    color: "#b9aee8",
-    bgGradient: "from-lavender/30 via-lavender/10 to-transparent",
+    color: "var(--lavender)",
+    bgClass: "from-lavender/30 via-lavender/10 to-transparent",
   },
 };
 
@@ -221,7 +219,7 @@ const roasts: Record<Era, string[]> = {
   ],
   millennial: [
     "Your humor peaked at rage comics and it shows",
-    "You still quote 'Friday' by Rebecca Black",
+    "You still quote Friday by Rebecca Black",
     "Nyan Cat lives rent-free in your head",
   ],
   "older-gen-z": [
@@ -243,22 +241,22 @@ const roasts: Record<Era, string[]> = {
 
 // Titles per era
 const titles: Record<Era, string[]> = {
-  boomer: ["Certified Fossil", "Internet Explorer User", "Facebook Archaeologist", "AOL Survivor"],
-  millennial: ["Rage Comic Survivor", "Dial-Up Warrior", "Nyan Cat Whisperer", "Rickroll Victim"],
-  "older-gen-z": ["Vine Compilation Curator", "Harambe Mourner", "Doge Prophet", "RIP Vine Enjoyer"],
-  "gen-z-core": ["Brainrot Connoisseur", "Shitpost Scholar", "Sus Detective", "No Cap Analyst"],
-  "gen-alpha": ["Skibidi Toilet PhD", "Rizz Overlord", "Ohio Final Boss", "Fanum Tax Collector"],
+  boomer: ["Certified Fossil", "Internet Explorer User", "Facebook Archaeologist"],
+  millennial: ["Rage Comic Survivor", "Dial-Up Warrior", "Nyan Cat Whisperer"],
+  "older-gen-z": ["Vine Compilation Curator", "Harambe Mourner", "RIP Vine Enjoyer"],
+  "gen-z-core": ["Brainrot Connoisseur", "Shitpost Scholar", "Sus Detective"],
+  "gen-alpha": ["Skibidi Toilet PhD", "Rizz Overlord", "Ohio Final Boss"],
 };
 
 // Calculate final results based on answers
-export function calculateResults(answers: { gateId: number; optionId: string; era: Era; points: number }[]): {
+export function calculateResults(answers: { gateId: number; optionId: string; era: Era; isCorrect: boolean }[]): {
   scores: { rizz: number; aura: number; sigma: number; era: number };
   finalEra: Era;
   estimatedAge: number;
   title: string;
   roast: string;
 } {
-  // Count era occurrences and total points
+  // Count era occurrences and correct answers
   const eraCounts: Record<Era, number> = {
     boomer: 0,
     millennial: 0,
@@ -267,55 +265,47 @@ export function calculateResults(answers: { gateId: number; optionId: string; er
     "gen-alpha": 0,
   };
 
-  const eraPoints: Record<Era, number> = {
-    boomer: 0,
-    millennial: 0,
-    "older-gen-z": 0,
-    "gen-z-core": 0,
-    "gen-alpha": 0,
-  };
-
-  let totalPoints = 0;
+  let correctCount = 0;
 
   answers.forEach((answer) => {
     eraCounts[answer.era]++;
-    eraPoints[answer.era] += answer.points;
-    totalPoints += answer.points;
+    if (answer.isCorrect) correctCount++;
   });
 
-  // Find dominant era by points
-  let maxPoints = 0;
+  // Find dominant era
+  let maxCount = 0;
   let finalEra: Era = "gen-z-core";
-  (Object.keys(eraPoints) as Era[]).forEach((era) => {
-    if (eraPoints[era] > maxPoints) {
-      maxPoints = eraPoints[era];
+  (Object.keys(eraCounts) as Era[]).forEach((era) => {
+    if (eraCounts[era] > maxCount) {
+      maxCount = eraCounts[era];
       finalEra = era;
     }
   });
 
-  // Calculate scores (0-100) based on performance and era alignment
-  const maxPossiblePoints = answers.length * 10;
-  const performanceRatio = totalPoints / maxPossiblePoints;
-
+  // Calculate scores based on performance
+  const accuracy = correctCount / answers.length;
+  
   const rizz = Math.min(100, Math.round(
-    (eraPoints["gen-alpha"] / (answers.length * 10)) * 80 + 
-    performanceRatio * 20 + 
-    Math.random() * 15
+    accuracy * 60 + 
+    (eraCounts["gen-alpha"] / answers.length) * 30 + 
+    Math.random() * 20
   ));
 
   const aura = Math.min(100, Math.round(
-    performanceRatio * 70 + 
+    accuracy * 70 + 
     Math.random() * 30
   ));
 
   const sigma = Math.min(100, Math.round(
-    ((eraPoints["gen-z-core"] + eraPoints["gen-alpha"]) / (answers.length * 10)) * 70 + 
-    Math.random() * 30
+    ((eraCounts["gen-z-core"] + eraCounts["gen-alpha"]) / answers.length) * 60 + 
+    accuracy * 20 +
+    Math.random() * 20
   ));
 
   const era = Math.min(100, Math.round(
-    (maxPoints / (answers.length * 10)) * 80 + 
-    Math.random() * 20
+    (maxCount / answers.length) * 70 + 
+    accuracy * 20 +
+    Math.random() * 10
   ));
 
   // Calculate estimated age based on era

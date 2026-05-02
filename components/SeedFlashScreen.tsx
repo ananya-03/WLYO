@@ -12,42 +12,44 @@ interface SeedFlashScreenProps {
 }
 
 export function SeedFlashScreen({ gate, replayUsed, onComplete, onReplay }: SeedFlashScreenProps) {
-  const [phase, setPhase] = useState<"countdown" | "flash" | "void" | "ready">("countdown");
-  const [countdown, setCountdown] = useState(3);
+  const [phase, setPhase] = useState<"ready" | "flash" | "void" | "done">("ready");
 
-  // For audio gates, we skip the image flash
+  // For audio gates, skip directly to gate
   const isAudioGate = gate.type === "audio";
 
-  const handleReplay = useCallback(() => {
-    if (!replayUsed) {
-      onReplay();
-      setPhase("countdown");
-      setCountdown(3);
+  const handleFlash = useCallback(() => {
+    if (isAudioGate) {
+      // Audio gates skip the flash - go directly to gate
+      onComplete();
+      return;
     }
-  }, [replayUsed, onReplay]);
+    setPhase("flash");
+  }, [isAudioGate, onComplete]);
 
+  const handleReplay = useCallback(() => {
+    if (!replayUsed && !isAudioGate) {
+      onReplay();
+      setPhase("ready");
+    }
+  }, [replayUsed, isAudioGate, onReplay]);
+
+  // Auto-start the flash sequence
   useEffect(() => {
-    if (phase === "countdown" && countdown > 0) {
-      const timer = setTimeout(() => setCountdown(countdown - 1), 250);
+    if (phase === "ready") {
+      const timer = setTimeout(handleFlash, 800);
       return () => clearTimeout(timer);
-    } else if (phase === "countdown" && countdown === 0) {
-      // Audio gates skip the flash
-      if (isAudioGate) {
-        setPhase("ready");
-      } else {
-        setPhase("flash");
-      }
     } else if (phase === "flash") {
-      const timer = setTimeout(() => setPhase("void"), 700);
+      const duration = gate.seedDuration || 700;
+      const timer = setTimeout(() => setPhase("void"), duration);
       return () => clearTimeout(timer);
     } else if (phase === "void") {
-      const timer = setTimeout(() => setPhase("ready"), 200);
+      const timer = setTimeout(() => setPhase("done"), 300);
       return () => clearTimeout(timer);
-    } else if (phase === "ready") {
-      const timer = setTimeout(onComplete, 400);
+    } else if (phase === "done") {
+      const timer = setTimeout(onComplete, 500);
       return () => clearTimeout(timer);
     }
-  }, [phase, countdown, onComplete, isAudioGate]);
+  }, [phase, gate.seedDuration, onComplete, handleFlash]);
 
   return (
     <motion.div
@@ -57,57 +59,69 @@ export function SeedFlashScreen({ gate, replayUsed, onComplete, onReplay }: Seed
       exit={{ opacity: 0 }}
     >
       <AnimatePresence mode="wait">
-        {/* Countdown */}
-        {phase === "countdown" && (
+        {/* Ready - building anticipation */}
+        {phase === "ready" && (
           <motion.div
-            key="countdown"
+            key="ready"
             className="flex flex-col items-center gap-4"
-            initial={{ scale: 0.5, opacity: 0 }}
+            initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 2, opacity: 0 }}
-            transition={{ duration: 0.15 }}
+            exit={{ scale: 1.5, opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <motion.span
-              className="text-7xl sm:text-8xl md:text-9xl font-display text-magenta text-glow-magenta"
+            <motion.div
+              className="w-16 h-16 rounded-full border-4 border-magenta flex items-center justify-center"
               animate={{
                 scale: [1, 1.1, 1],
+                borderColor: ["var(--magenta)", "var(--acid)", "var(--magenta)"],
               }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.5, repeat: Infinity }}
             >
-              {countdown}
-            </motion.span>
-            <p className="text-lavender text-sm sm:text-base uppercase tracking-widest">
-              {isAudioGate ? "Audio incoming..." : "Watch closely..."}
+              <motion.div
+                className="w-3 h-3 rounded-full bg-magenta"
+                animate={{ scale: [1, 1.5, 1] }}
+                transition={{ duration: 0.3, repeat: Infinity }}
+              />
+            </motion.div>
+            <p className="text-lavender text-sm uppercase tracking-widest">
+              Watch closely...
             </p>
           </motion.div>
         )}
 
-        {/* Flash - meme image (only for fork gates) */}
+        {/* Flash - show the meme */}
         {phase === "flash" && gate.seedImage && (
           <motion.div
             key="flash"
-            className="absolute inset-0"
-            initial={{ opacity: 0, scale: 1.1 }}
+            className="absolute inset-0 flex items-center justify-center p-4"
+            initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.08 }}
+            transition={{ duration: 0.05 }}
           >
             <img
               src={gate.seedImage}
-              alt="Meme flash"
-              className="w-full h-full object-contain p-4"
+              alt="Remember this!"
+              className="max-w-full max-h-full object-contain rounded-lg"
               crossOrigin="anonymous"
             />
-            {/* Intense glow effect during flash */}
+            {/* Scanline sweep */}
             <motion.div
-              className="absolute inset-0 bg-magenta/20 mix-blend-overlay"
-              animate={{ opacity: [0.2, 0.4, 0.2] }}
+              className="absolute left-0 right-0 h-2 bg-white/20"
+              initial={{ top: 0 }}
+              animate={{ top: "100%" }}
+              transition={{ duration: gate.seedDuration ? gate.seedDuration / 1000 : 0.7, ease: "linear" }}
+            />
+            {/* Pulse overlay */}
+            <motion.div
+              className="absolute inset-0 bg-magenta/10"
+              animate={{ opacity: [0, 0.3, 0] }}
               transition={{ duration: 0.3, repeat: 2 }}
             />
           </motion.div>
         )}
 
-        {/* Void - black screen */}
+        {/* Void - hard cut to black */}
         {phase === "void" && (
           <motion.div
             key="void"
@@ -117,58 +131,63 @@ export function SeedFlashScreen({ gate, replayUsed, onComplete, onReplay }: Seed
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="w-4 h-4 rounded-full bg-magenta"
+              className="w-2 h-2 rounded-full bg-magenta"
               animate={{
-                scale: [1, 2, 1],
-                opacity: [1, 0.5, 1],
+                scale: [1, 3, 0],
+                opacity: [1, 0.5, 0],
               }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.3 }}
             />
           </motion.div>
         )}
 
-        {/* Ready state - show replay option */}
-        {phase === "ready" && (
+        {/* Done - show replay option */}
+        {phase === "done" && (
           <motion.div
-            key="ready"
-            className="flex flex-col items-center gap-4 sm:gap-6 px-4"
+            key="done"
+            className="flex flex-col items-center gap-6 px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9 }}
           >
-            <p className="text-xl sm:text-2xl md:text-3xl text-lavender font-medium text-center">
-              {isAudioGate ? "Ready to listen?" : "Did you catch that?"}
-            </p>
+            <motion.p
+              className="text-2xl sm:text-3xl text-offwhite font-display"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              Did you catch that?
+            </motion.p>
 
-            {!isAudioGate && (
-              <motion.button
-                onClick={handleReplay}
-                disabled={replayUsed}
-                className={`
-                  flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-lg border-2 
-                  font-bold text-xs sm:text-sm uppercase tracking-wider
-                  transition-all duration-200
-                  ${replayUsed
-                    ? "bg-ink/30 border-lavender/30 text-lavender/50 cursor-not-allowed"
-                    : "bg-warning/20 border-warning text-warning hover:bg-warning/30 shadow-[0_0_15px_var(--warning)]"
-                  }
-                `}
-                whileHover={!replayUsed ? { scale: 1.05 } : {}}
-                whileTap={!replayUsed ? { scale: 0.95 } : {}}
-              >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
-                </svg>
-                <span>Aura Tax Replay</span>
-                {replayUsed && <span className="text-xs">(used)</span>}
-              </motion.button>
-            )}
+            <motion.button
+              onClick={handleReplay}
+              disabled={replayUsed}
+              className={`
+                flex items-center gap-3 px-5 py-3 rounded-xl border-2 
+                font-bold text-sm uppercase tracking-wider
+                transition-all duration-200
+                ${replayUsed
+                  ? "bg-ink/30 border-lavender/30 text-lavender/50 cursor-not-allowed"
+                  : "bg-warning/20 border-warning text-warning hover:bg-warning/30 hover:shadow-[0_0_20px_var(--warning)]"
+                }
+              `}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              whileHover={!replayUsed ? { scale: 1.05 } : {}}
+              whileTap={!replayUsed ? { scale: 0.95 } : {}}
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
+              </svg>
+              <span>Aura Tax Replay</span>
+              {replayUsed && <span className="text-xs opacity-60">(used)</span>}
+            </motion.button>
 
-            {replayUsed && !isAudioGate && (
+            {replayUsed && (
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-xs sm:text-sm text-warning font-comic"
+                className="text-warning text-sm font-comic"
               >
                 Aura has been taxed
               </motion.p>
@@ -177,23 +196,11 @@ export function SeedFlashScreen({ gate, replayUsed, onComplete, onReplay }: Seed
         )}
       </AnimatePresence>
 
-      {/* Scanline effect during flash */}
-      {phase === "flash" && (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <motion.div
-            className="absolute left-0 right-0 h-1 sm:h-2 bg-white/30"
-            initial={{ top: "-8px" }}
-            animate={{ top: "100%" }}
-            transition={{ duration: 0.7, ease: "linear" }}
-          />
-        </div>
-      )}
-
       {/* Corner frame */}
-      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 w-6 h-6 sm:w-8 sm:h-8 border-l-2 border-t-2 border-magenta/50" />
-      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-t-2 border-magenta/50" />
-      <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 w-6 h-6 sm:w-8 sm:h-8 border-l-2 border-b-2 border-electric/50" />
-      <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-b-2 border-electric/50" />
+      <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-magenta/50" />
+      <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-magenta/50" />
+      <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-electric/50" />
+      <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-electric/50" />
     </motion.div>
   );
 }

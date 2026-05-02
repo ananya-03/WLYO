@@ -5,8 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { LandingScreen } from "./LandingScreen";
 import { SeedFlashScreen } from "./SeedFlashScreen";
 import { MazeHubScreen } from "./MazeHubScreen";
-import { ForkGateScreen } from "./ForkGateScreen";
-import { AudioDoorScreen } from "./AudioDoorScreen";
+import { GateScreen } from "./GateScreen";
 import { EraRoomScreen } from "./EraRoomScreen";
 import { VibeReportScreen } from "./VibeReportScreen";
 import {
@@ -40,26 +39,20 @@ export function GameController() {
   }, []);
 
   const handleSeedFlashComplete = useCallback(() => {
-    // Navigate to the appropriate gate type
-    const gate = memeGates[gameState.currentGateIndex];
-    if (gate.type === "audio") {
-      navigateTo("audio-door");
-    } else {
-      navigateTo("fork-gate");
-    }
-  }, [gameState.currentGateIndex, navigateTo]);
+    navigateTo("gate");
+  }, [navigateTo]);
 
   const handleReplay = useCallback(() => {
     setGameState((prev) => ({ ...prev, replayUsed: true }));
   }, []);
 
   const handleGateSelect = useCallback(
-    (optionId: string, era: Era, points: number) => {
+    (optionId: string, era: Era, isCorrect: boolean) => {
       const newAnswer = {
         gateId: currentGate.id,
         optionId,
         era,
-        points,
+        isCorrect,
       };
 
       setGameState((prev) => {
@@ -89,21 +82,14 @@ export function GameController() {
           ...prev,
           selectedAnswers: newSelectedAnswers,
           completedGates: newCompletedGates,
-          currentScreen: "maze-hub" as GameScreen,
+          currentScreen: "seed-flash" as GameScreen,
+          currentGateIndex: prev.currentGateIndex + 1,
+          replayUsed: false,
         };
       });
     },
     [currentGate]
   );
-
-  const handleMazeTransitionComplete = useCallback(() => {
-    setGameState((prev) => ({
-      ...prev,
-      currentGateIndex: prev.currentGateIndex + 1,
-      currentScreen: "seed-flash",
-      replayUsed: false,
-    }));
-  }, []);
 
   const handleEraRoomContinue = useCallback(() => {
     navigateTo("vibe-report");
@@ -135,31 +121,10 @@ export function GameController() {
             onReplay={handleReplay}
           />
         ) : null;
-      case "maze-hub":
-        return (
-          <MazeHubScreen
-            key="maze-hub"
-            totalGates={memeGates.length}
-            currentGate={gameState.currentGateIndex + 1}
-            completedGates={gameState.completedGates}
-            onTransitionComplete={handleMazeTransitionComplete}
-          />
-        );
-      case "fork-gate":
+      case "gate":
         return currentGate ? (
-          <ForkGateScreen
-            key={`fork-gate-${gameState.currentGateIndex}`}
-            gate={currentGate}
-            gateIndex={gameState.currentGateIndex}
-            totalGates={memeGates.length}
-            completedGates={gameState.completedGates}
-            onSelect={handleGateSelect}
-          />
-        ) : null;
-      case "audio-door":
-        return currentGate ? (
-          <AudioDoorScreen
-            key={`audio-door-${gameState.currentGateIndex}`}
+          <GateScreen
+            key={`gate-${gameState.currentGateIndex}`}
             gate={currentGate}
             gateIndex={gameState.currentGateIndex}
             totalGates={memeGates.length}
