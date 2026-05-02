@@ -68,7 +68,7 @@ export function ShareCard({ title, era, estimatedAge, scores, roast }: ShareCard
           {/* Left - Title and age */}
           <div className="flex-1 flex flex-col justify-center min-w-0">
             <h2
-              className="font-display text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2 leading-tight truncate"
+              className="mb-1 overflow-hidden font-display text-xl font-bold leading-none [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] sm:mb-2 sm:text-3xl md:text-4xl lg:text-5xl"
               style={{
                 color: config.color,
                 textShadow: `0 0 20px ${config.color}`,

@@ -10,6 +10,8 @@
   --warning: #ff9f1c;
   --offwhite: #f7f0ff;
   --lavender: #b9aee8;
+  --font-inter: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-anton: Impact, "Arial Black", ui-sans-serif, sans-serif;
   
   /* Semantic tokens */
   --background: var(--void);

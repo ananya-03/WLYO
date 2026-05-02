@@ -7,15 +7,17 @@ import { MazeGame } from "./MazeGame";
 import { EraRoomScreen } from "./EraRoomScreen";
 import { VibeReportScreen } from "./VibeReportScreen";
 import {
+  createGameRun,
   initialGameState,
   calculateResults,
+  type GeneratedRun,
   type GameState,
   type GameScreen,
-  type Era,
 } from "@/lib/game-store";
 
 export function GameController() {
   const [gameState, setGameState] = useState<GameState>(initialGameState);
+  const [activeRun, setActiveRun] = useState<GeneratedRun | null>(null);
   const [results, setResults] = useState<{
     title: string;
     roast: string;
@@ -26,15 +28,21 @@ export function GameController() {
   }, []);
 
   const handleStart = useCallback(() => {
-    navigateTo("maze");
-  }, [navigateTo]);
+    setActiveRun(createGameRun());
+    setResults(null);
+    setGameState((prev) => ({
+      ...initialGameState,
+      audioEnabled: prev.audioEnabled,
+      currentScreen: "maze",
+    }));
+  }, []);
 
   const handleToggleAudio = useCallback(() => {
     setGameState((prev) => ({ ...prev, audioEnabled: !prev.audioEnabled }));
   }, []);
 
   const handleMazeComplete = useCallback(
-    (answers: { gateId: number; optionId: string; era: Era; isCorrect: boolean }[]) => {
+    (answers: GameState["selectedAnswers"]) => {
       const calcResults = calculateResults(answers);
       setResults({ title: calcResults.title, roast: calcResults.roast });
       
@@ -55,8 +63,13 @@ export function GameController() {
   }, [navigateTo]);
 
   const handleRestart = useCallback(() => {
-    setGameState(initialGameState);
+    setActiveRun(createGameRun());
     setResults(null);
+    setGameState((prev) => ({
+      ...initialGameState,
+      audioEnabled: prev.audioEnabled,
+      currentScreen: "maze",
+    }));
   }, []);
 
   const renderScreen = () => {
@@ -71,13 +84,15 @@ export function GameController() {
           />
         );
       case "maze":
-        return (
+        return activeRun ? (
           <MazeGame
-            key="maze"
+            key={`maze-${activeRun.seed}`}
+            run={activeRun}
             onComplete={handleMazeComplete}
+            onRestart={handleRestart}
             audioEnabled={gameState.audioEnabled}
           />
-        );
+        ) : null;
       case "era-room":
         return gameState.finalEra && results ? (
           <EraRoomScreen

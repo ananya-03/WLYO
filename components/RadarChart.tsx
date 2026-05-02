@@ -16,9 +16,10 @@ export function RadarChart({ scores }: RadarChartProps) {
   const values = [scores.rizz, scores.aura, scores.sigma, scores.era];
   const colors = ["var(--acid)", "var(--magenta)", "var(--electric)", "var(--warning)"];
   
-  const centerX = 100;
-  const centerY = 100;
-  const maxRadius = 80;
+  const centerX = 120;
+  const centerY = 120;
+  const maxRadius = 74;
+  const labelRadius = 98;
   
   // Calculate points for the radar polygon
   const getPoint = (index: number, value: number) => {
@@ -37,8 +38,8 @@ export function RadarChart({ scores }: RadarChartProps) {
   const gridLevels = [25, 50, 75, 100];
 
   return (
-    <div className="relative w-full aspect-square max-w-[250px] mx-auto">
-      <svg viewBox="0 0 200 200" className="w-full h-full">
+    <div className="relative mx-auto aspect-square w-full max-w-[280px]">
+      <svg viewBox="0 0 240 240" className="h-full w-full" role="img" aria-label="Vibe score radar chart">
         {/* Grid circles */}
         {gridLevels.map((level) => (
           <circle
@@ -106,8 +107,8 @@ export function RadarChart({ scores }: RadarChartProps) {
         {/* Labels */}
         {labels.map((label, i) => {
           const angle = (i / 4) * Math.PI * 2 - Math.PI / 2;
-          const x = centerX + Math.cos(angle) * (maxRadius + 20);
-          const y = centerY + Math.sin(angle) * (maxRadius + 20);
+          const x = centerX + Math.cos(angle) * labelRadius;
+          const y = centerY + Math.sin(angle) * labelRadius;
           return (
             <text
               key={label}

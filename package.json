@@ -12,7 +12,9 @@
     "assets:memes": "node scripts/build-meme-deck.mjs",
     "assets:memes:tinyfish": "TINYFISH_AGENT=1 node scripts/build-meme-deck.mjs --force",
     "assets:report": "node scripts/asset-report.mjs",
-    "test:frontend": "node frontend/ui_kits/wlyo/gameData.test.mjs"
+    "test:frontend": "node frontend/ui_kits/wlyo/gameData.test.mjs",
+    "test:active-game": "node tests/active-game-data.test.mjs",
+    "test:maze-ui": "node tests/maze-ui-regression.test.mjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.4",

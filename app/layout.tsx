@@ -1,17 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Anton } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const anton = Anton({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-anton",
-});
 
 export const metadata: Metadata = {
   title: "WLYO - Who Let You Online?",
@@ -49,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${anton.variable} bg-void`}>
+    <html lang="en" className="bg-void">
       <body className="font-sans antialiased scanlines noise">
         {children}
       </body>

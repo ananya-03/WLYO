@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { RadarChart } from "./RadarChart";
 import { ShareCard } from "./ShareCard";
@@ -28,23 +29,32 @@ export function VibeReportScreen({
   onRestart,
 }: VibeReportScreenProps) {
   const config = eraConfig[era];
+  const [downloadStatus, setDownloadStatus] = useState<"idle" | "rendering" | "error">("idle");
 
   const handleDownload = async () => {
     const shareCardElement = document.getElementById("share-card");
-    if (!shareCardElement) return;
+    if (!shareCardElement) {
+      setDownloadStatus("error");
+      return;
+    }
 
     try {
+      setDownloadStatus("rendering");
       const html2canvas = (await import("html2canvas")).default;
       const canvas = await html2canvas(shareCardElement, {
         backgroundColor: "#08070f",
-        scale: 2,
+        logging: false,
+        scale: Math.min(2, window.devicePixelRatio || 1.5),
+        useCORS: true,
       });
 
       const link = document.createElement("a");
       link.download = "wlyo-result.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
+      setDownloadStatus("idle");
     } catch (error) {
+      setDownloadStatus("error");
       console.error("Failed to generate share card:", error);
     }
   };
@@ -62,7 +72,7 @@ export function VibeReportScreen({
         style={{ backgroundColor: config.color }}
       />
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto">
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
         {/* Header */}
         <motion.div
           className="text-center mb-6 sm:mb-8"
@@ -78,10 +88,10 @@ export function VibeReportScreen({
         </motion.div>
 
         {/* Mobile-first layout - stack on mobile, grid on larger */}
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+        <div className="flex flex-col gap-4 sm:gap-6 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(320px,520px)] lg:gap-8">
           {/* Stats column */}
           <motion.div
-            className="flex flex-col gap-3 sm:gap-4 lg:gap-6"
+            className="flex min-w-0 flex-col gap-3 sm:gap-4 lg:gap-6"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
@@ -126,7 +136,7 @@ export function VibeReportScreen({
             </div>
 
             {/* Radar chart - hidden on very small screens, shown after */}
-            <div className="hidden sm:block bg-ink/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-lavender/20">
+            <div className="hidden overflow-visible rounded-xl border border-lavender/20 bg-ink/80 p-4 backdrop-blur-sm sm:block sm:rounded-2xl sm:p-6">
               <p className="text-lavender text-xs sm:text-sm uppercase tracking-widest mb-3 sm:mb-4 text-center">
                 Vibe Analysis
               </p>
@@ -169,7 +179,7 @@ export function VibeReportScreen({
 
           {/* Share card column */}
           <motion.div
-            className="flex flex-col gap-3 sm:gap-4 lg:gap-6"
+            className="flex min-w-0 flex-col gap-3 sm:gap-4 lg:gap-6"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
@@ -183,22 +193,23 @@ export function VibeReportScreen({
             />
 
             {/* Actions - stack on mobile, row on tablet+ */}
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
               <motion.button
                 onClick={handleDownload}
-                className="btn-primary flex-1 flex items-center justify-center gap-2 py-3 sm:py-4 text-sm sm:text-base"
+                disabled={downloadStatus === "rendering"}
+                className="btn-primary flex min-w-0 flex-1 items-center justify-center gap-2 py-3 text-center text-sm disabled:cursor-wait disabled:opacity-70 sm:py-4 sm:text-base"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
                 </svg>
-                Download Share Card
+                {downloadStatus === "rendering" ? "Rendering Card" : "Download Card"}
               </motion.button>
 
               <motion.button
                 onClick={onRestart}
-                className="btn-secondary flex-1 flex items-center justify-center gap-2 py-3 sm:py-4 text-sm sm:text-base"
+                className="btn-secondary flex min-w-0 flex-1 items-center justify-center gap-2 py-3 text-center text-sm sm:py-4 sm:text-base"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -208,6 +219,11 @@ export function VibeReportScreen({
                 Run It Back
               </motion.button>
             </div>
+            {downloadStatus === "error" && (
+              <p className="text-center text-xs text-warning">
+                Could not render the share card. Try again after the card finishes loading.
+              </p>
+            )}
           </motion.div>
         </div>
       </div>
