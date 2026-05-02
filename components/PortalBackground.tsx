@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 // Generate deterministic particle positions to avoid hydration mismatches
 const PARTICLE_POSITIONS = [
@@ -18,6 +18,12 @@ const PARTICLE_DURATIONS = [4.5, 5.2, 3.8, 6.1, 4.9, 3.5, 5.8, 4.2, 6.5, 3.9, 5.
 const PARTICLE_DELAYS = [0.5, 1.2, 0.3, 1.8, 0.8, 1.5, 0.2, 1.1, 0.6, 1.9, 0.4, 1.3, 0.7, 1.6, 0.1, 1.4, 0.9, 1.7, 0.35, 1.25];
 
 export function PortalBackground() {
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const particles = useMemo(() => PARTICLE_POSITIONS.map((pos, i) => ({
     ...pos,
     color: ["var(--magenta)", "var(--acid)", "var(--electric)", "var(--warning)"][i % 4],
@@ -61,8 +67,8 @@ export function PortalBackground() {
         ))}
       </div>
 
-      {/* Floating particles with deterministic positions */}
-      {particles.map((particle, i) => (
+      {/* Floating particles - only render on client to avoid hydration issues */}
+      {mounted && particles.map((particle, i) => (
         <motion.div
           key={`particle-${i}`}
           className="absolute w-1 h-1 rounded-full"

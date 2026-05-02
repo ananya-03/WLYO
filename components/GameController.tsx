@@ -114,81 +114,90 @@ export function GameController() {
     setResults(null);
   }, []);
 
+  const renderScreen = () => {
+    switch (gameState.currentScreen) {
+      case "landing":
+        return (
+          <LandingScreen
+            key="landing"
+            audioEnabled={gameState.audioEnabled}
+            onToggleAudio={handleToggleAudio}
+            onStart={handleStart}
+          />
+        );
+      case "seed-flash":
+        return currentGate ? (
+          <SeedFlashScreen
+            key={`seed-flash-${gameState.currentGateIndex}`}
+            gate={currentGate}
+            replayUsed={gameState.replayUsed}
+            onComplete={handleSeedFlashComplete}
+            onReplay={handleReplay}
+          />
+        ) : null;
+      case "maze-hub":
+        return (
+          <MazeHubScreen
+            key="maze-hub"
+            totalGates={memeGates.length}
+            currentGate={gameState.currentGateIndex + 1}
+            completedGates={gameState.completedGates}
+            onTransitionComplete={handleMazeTransitionComplete}
+          />
+        );
+      case "fork-gate":
+        return currentGate ? (
+          <ForkGateScreen
+            key={`fork-gate-${gameState.currentGateIndex}`}
+            gate={currentGate}
+            gateIndex={gameState.currentGateIndex}
+            totalGates={memeGates.length}
+            completedGates={gameState.completedGates}
+            onSelect={handleGateSelect}
+          />
+        ) : null;
+      case "audio-door":
+        return currentGate ? (
+          <AudioDoorScreen
+            key={`audio-door-${gameState.currentGateIndex}`}
+            gate={currentGate}
+            gateIndex={gameState.currentGateIndex}
+            totalGates={memeGates.length}
+            completedGates={gameState.completedGates}
+            onSelect={handleGateSelect}
+          />
+        ) : null;
+      case "era-room":
+        return gameState.finalEra && results ? (
+          <EraRoomScreen
+            key="era-room"
+            era={gameState.finalEra}
+            title={results.title}
+            estimatedAge={gameState.estimatedAge || 0}
+            roast={results.roast}
+            onContinue={handleEraRoomContinue}
+          />
+        ) : null;
+      case "vibe-report":
+        return gameState.finalEra && results ? (
+          <VibeReportScreen
+            key="vibe-report"
+            title={results.title}
+            era={gameState.finalEra}
+            estimatedAge={gameState.estimatedAge || 0}
+            scores={gameState.scores}
+            roast={results.roast}
+            onRestart={handleRestart}
+          />
+        ) : null;
+      default:
+        return null;
+    }
+  };
+
   return (
     <AnimatePresence mode="wait">
-      {gameState.currentScreen === "landing" && (
-        <LandingScreen
-          key="landing"
-          audioEnabled={gameState.audioEnabled}
-          onToggleAudio={handleToggleAudio}
-          onStart={handleStart}
-        />
-      )}
-
-      {gameState.currentScreen === "seed-flash" && currentGate && (
-        <SeedFlashScreen
-          key={`seed-flash-${gameState.currentGateIndex}`}
-          gate={currentGate}
-          replayUsed={gameState.replayUsed}
-          onComplete={handleSeedFlashComplete}
-          onReplay={handleReplay}
-        />
-      )}
-
-      {gameState.currentScreen === "maze-hub" && (
-        <MazeHubScreen
-          key="maze-hub"
-          totalGates={memeGates.length}
-          currentGate={gameState.currentGateIndex + 1}
-          completedGates={gameState.completedGates}
-          onTransitionComplete={handleMazeTransitionComplete}
-        />
-      )}
-
-      {gameState.currentScreen === "fork-gate" && currentGate && (
-        <ForkGateScreen
-          key={`fork-gate-${gameState.currentGateIndex}`}
-          gate={currentGate}
-          gateIndex={gameState.currentGateIndex}
-          totalGates={memeGates.length}
-          completedGates={gameState.completedGates}
-          onSelect={handleGateSelect}
-        />
-      )}
-
-      {gameState.currentScreen === "audio-door" && currentGate && (
-        <AudioDoorScreen
-          key={`audio-door-${gameState.currentGateIndex}`}
-          gate={currentGate}
-          gateIndex={gameState.currentGateIndex}
-          totalGates={memeGates.length}
-          completedGates={gameState.completedGates}
-          onSelect={handleGateSelect}
-        />
-      )}
-
-      {gameState.currentScreen === "era-room" && gameState.finalEra && results && (
-        <EraRoomScreen
-          key="era-room"
-          era={gameState.finalEra}
-          title={results.title}
-          estimatedAge={gameState.estimatedAge || 0}
-          roast={results.roast}
-          onContinue={handleEraRoomContinue}
-        />
-      )}
-
-      {gameState.currentScreen === "vibe-report" && gameState.finalEra && results && (
-        <VibeReportScreen
-          key="vibe-report"
-          title={results.title}
-          era={gameState.finalEra}
-          estimatedAge={gameState.estimatedAge || 0}
-          scores={gameState.scores}
-          roast={results.roast}
-          onRestart={handleRestart}
-        />
-      )}
+      {renderScreen()}
     </AnimatePresence>
   );
 }
