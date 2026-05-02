@@ -6,11 +6,12 @@ import { LandingScreen } from "./LandingScreen";
 import { SeedFlashScreen } from "./SeedFlashScreen";
 import { MazeHubScreen } from "./MazeHubScreen";
 import { ForkGateScreen } from "./ForkGateScreen";
+import { AudioDoorScreen } from "./AudioDoorScreen";
 import { EraRoomScreen } from "./EraRoomScreen";
 import { VibeReportScreen } from "./VibeReportScreen";
-import { 
-  initialGameState, 
-  memeGates, 
+import {
+  initialGameState,
+  memeGates,
   calculateResults,
   type GameState,
   type GameScreen,
@@ -39,51 +40,61 @@ export function GameController() {
   }, []);
 
   const handleSeedFlashComplete = useCallback(() => {
-    navigateTo("fork-gate");
-  }, [navigateTo]);
+    // Navigate to the appropriate gate type
+    const gate = memeGates[gameState.currentGateIndex];
+    if (gate.type === "audio") {
+      navigateTo("audio-door");
+    } else {
+      navigateTo("fork-gate");
+    }
+  }, [gameState.currentGateIndex, navigateTo]);
 
   const handleReplay = useCallback(() => {
     setGameState((prev) => ({ ...prev, replayUsed: true }));
   }, []);
 
-  const handleGateSelect = useCallback((optionId: string, era: Era) => {
-    const newAnswer = { 
-      gateId: currentGate.id, 
-      optionId, 
-      era,
-    };
+  const handleGateSelect = useCallback(
+    (optionId: string, era: Era, points: number) => {
+      const newAnswer = {
+        gateId: currentGate.id,
+        optionId,
+        era,
+        points,
+      };
 
-    setGameState((prev) => {
-      const newSelectedAnswers = [...prev.selectedAnswers, newAnswer];
-      const newCompletedGates = [...prev.completedGates, prev.currentGateIndex];
-      
-      // Check if this was the last gate
-      const isLastGate = prev.currentGateIndex >= memeGates.length - 1;
-      
-      if (isLastGate) {
-        // Calculate results
-        const calcResults = calculateResults(newSelectedAnswers);
-        setResults({ title: calcResults.title, roast: calcResults.roast });
-        
+      setGameState((prev) => {
+        const newSelectedAnswers = [...prev.selectedAnswers, newAnswer];
+        const newCompletedGates = [...prev.completedGates, prev.currentGateIndex];
+
+        // Check if this was the last gate
+        const isLastGate = prev.currentGateIndex >= memeGates.length - 1;
+
+        if (isLastGate) {
+          // Calculate results
+          const calcResults = calculateResults(newSelectedAnswers);
+          setResults({ title: calcResults.title, roast: calcResults.roast });
+
+          return {
+            ...prev,
+            selectedAnswers: newSelectedAnswers,
+            completedGates: newCompletedGates,
+            scores: calcResults.scores,
+            finalEra: calcResults.finalEra,
+            estimatedAge: calcResults.estimatedAge,
+            currentScreen: "era-room" as GameScreen,
+          };
+        }
+
         return {
           ...prev,
           selectedAnswers: newSelectedAnswers,
           completedGates: newCompletedGates,
-          scores: calcResults.scores,
-          finalEra: calcResults.finalEra,
-          estimatedAge: calcResults.estimatedAge,
-          currentScreen: "era-room" as GameScreen,
+          currentScreen: "maze-hub" as GameScreen,
         };
-      }
-      
-      return {
-        ...prev,
-        selectedAnswers: newSelectedAnswers,
-        completedGates: newCompletedGates,
-        currentScreen: "maze-hub" as GameScreen,
-      };
-    });
-  }, [currentGate]);
+      });
+    },
+    [currentGate]
+  );
 
   const handleMazeTransitionComplete = useCallback(() => {
     setGameState((prev) => ({
@@ -137,6 +148,17 @@ export function GameController() {
       {gameState.currentScreen === "fork-gate" && currentGate && (
         <ForkGateScreen
           key={`fork-gate-${gameState.currentGateIndex}`}
+          gate={currentGate}
+          gateIndex={gameState.currentGateIndex}
+          totalGates={memeGates.length}
+          completedGates={gameState.completedGates}
+          onSelect={handleGateSelect}
+        />
+      )}
+
+      {gameState.currentScreen === "audio-door" && currentGate && (
+        <AudioDoorScreen
+          key={`audio-door-${gameState.currentGateIndex}`}
           gate={currentGate}
           gateIndex={gameState.currentGateIndex}
           totalGates={memeGates.length}

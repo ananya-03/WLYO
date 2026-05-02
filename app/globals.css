@@ -300,6 +300,36 @@ body {
   box-shadow: 0 0 10px var(--acid);
 }
 
+/* Screen Shake / Slam Animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  10% { transform: translateX(-4px) translateY(2px); }
+  20% { transform: translateX(4px) translateY(-2px); }
+  30% { transform: translateX(-3px) translateY(1px); }
+  40% { transform: translateX(3px) translateY(-1px); }
+  50% { transform: translateX(-2px) translateY(1px); }
+  60% { transform: translateX(2px) translateY(-1px); }
+  70% { transform: translateX(-1px) translateY(0); }
+  80% { transform: translateX(1px) translateY(0); }
+  90% { transform: translateX(0) translateY(0); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes slam {
+  0% { transform: scale(1); }
+  15% { transform: scale(0.98) translateY(2px); }
+  30% { transform: scale(1.01) translateY(-1px); }
+  50% { transform: scale(0.99); }
+  100% { transform: scale(1); }
+}
+
+.animate-slam {
+  animation: slam 0.35s ease-out;
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -313,6 +343,11 @@ body {
   .glitch::before,
   .glitch::after {
     display: none;
+  }
+  
+  .animate-shake,
+  .animate-slam {
+    animation: none !important;
   }
 }
 
