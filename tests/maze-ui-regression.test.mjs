@@ -48,6 +48,18 @@ assert.doesNotMatch(
 
 assert.match(
   source,
+  /const\s+IMAGE_STIMULUS_DURATION_MS\s*=\s*4000;/,
+  "image meme flash should stay visible for four seconds"
+);
+
+assert.match(
+  source,
+  /schedule\(\(\)\s*=>\s*\{[\s\S]*?setShowStimulus\(false\);[\s\S]*?setShowQuestion\(true\);[\s\S]*?\},\s*IMAGE_STIMULUS_DURATION_MS\)/,
+  "image gates should use the four-second flash timer before showing text options"
+);
+
+assert.match(
+  source,
   /fallbackImage\s*&&/,
   "only audio fallback images should render in the answer panel"
 );

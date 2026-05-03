@@ -24,6 +24,7 @@ const PLAYER_SIZE = 28;
 const JUDGMENT_SOUND = "/audio/windows_xp_error.mp3";
 const JUDGMENT_MEME = "/memes/trollface.webp";
 const TOTAL_GATES = 7;
+const IMAGE_STIMULUS_DURATION_MS = 4000;
 
 function buildGateInstances(run: GeneratedRun): Gate[] {
   return run.maze.gatePositions.map((pos, index) => ({
@@ -199,15 +200,15 @@ export function MazeGame({ run, onComplete, onRestart, audioEnabled }: MazeGameP
 
     const gateAtNewPos = gates.find((gate) => gate.position.x === newX && gate.position.y === newY && !gate.isOpen);
     if (gateAtNewPos) {
-          setActiveGate(gateAtNewPos);
-          setAudioUnavailable(false);
-          setJudgment(null);
-          if (gateAtNewPos.gateData.type === "image") {
-            setShowStimulus(true);
+      setActiveGate(gateAtNewPos);
+      setAudioUnavailable(false);
+      setJudgment(null);
+      if (gateAtNewPos.gateData.type === "image") {
+        setShowStimulus(true);
         schedule(() => {
           setShowStimulus(false);
           setShowQuestion(true);
-        }, 700);
+        }, IMAGE_STIMULUS_DURATION_MS);
       } else {
         setShowQuestion(true);
       }
